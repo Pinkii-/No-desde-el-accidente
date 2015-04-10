@@ -2,24 +2,24 @@
 #define UTILS_HPP
 
 //SFML (Simple Fast Media Library)
+#include <SFML/Audio.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 
 //STL (Standard Toolkit Library)
-#include <cmath>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <cstring>
-#include <vector>
+#include <map>
 #include <list>
+#include <cmath>
 #include <stack>
 #include <queue>
-#include <map>
+#include <string>
+#include <vector>
 #include <complex>
+#include <cstring>
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
 typedef std::complex<double> point;
 
