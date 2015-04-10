@@ -1,0 +1,46 @@
+#include <iostream>
+#include <complex>
+
+using namespace std;
+
+typedef complex<double> point;
+
+double prodesc(point p1,point p2)
+{
+  return real(conj(p1)*p2);
+}
+
+double prodvec(point p1,point p2)
+{
+  return imag(cong(p1)*p2);
+}
+
+struct estado {
+  bool atado,tenso;
+  point p,v,c;
+};
+
+void evoluciona(estado &e,double delta)
+{
+  if (not atado) {
+    e.p+=e.v*delta;
+    return;
+  }
+  if (not tenso) {
+    e.p+=e.v*delta;
+    if (prodesc(e.v,e.p-e.c)>=0)
+      tenso=true;
+    return;
+  }
+  e.p-=e.c;
+  double modulov=abs(e.v);
+  double desp=modulov*delta;
+  double r=abs(e.p);
+  double alfa=desp/r;
+  int signo=prodvec(e.p,e.v)>0?1:-1;
+  e.p*=polar(1.0,signo*alfa);
+  e.p+=e.c;
+  e.v=e.p*polar(1.0,signo*M_PI/2.0);
+  e.v=(modulov/abs(e.v))*e.v;
+}
+
