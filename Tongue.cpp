@@ -45,12 +45,12 @@ void Tongue::draw(sf::RenderWindow &window) {
     sprite.setTexture(texture);
 
     float tongueLength = (getModule(dest,orig)/sprite.getLocalBounds().width);
+    float tongueWidth = size/sprite.getLocalBounds().height;
     if(timeSinceTriggered < animationTime) {
         sprite.setScale( tongueLength * timeSinceTriggered/animationTime,
-                                    size/sprite.getLocalBounds().height);
+                                                                tongueWidth);
     }
-    else sprite.setScale(getModule(dest,orig)/sprite.getLocalBounds().width,
-                                        size/sprite.getLocalBounds().height);
+    else sprite.setScale(tongueLength, tongueWidth);
 
     sprite.setOrigin(0, sprite.getLocalBounds().height/2);
     sprite.setPosition(orig);
