@@ -6,7 +6,7 @@ Player::Player() {}
 Player::Player(sf::Vector2f pos, sf::Vector2f speed) :
     pos(pos), speed(speed){
     sprite.setTexture(Resources::ship);
-    angle = AngleHelper::speedToAngle(speed);
+    //angle = AngleHelper::speedToAngle(speed);
 }
 
 void Player::update(float deltaTime) {

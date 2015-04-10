@@ -10,12 +10,13 @@ SOURCES += main.cpp \
     Resources.cpp \
     utils.cpp \
     Scene.cpp \
-    Player.cpp
+    Player.cpp \
+    Tongue.cpp
 
 HEADERS += \
     Game.hpp \
     Resources.hpp \
     utils.hpp \
     Scene.hpp \
-    Player.hpp
-
+    Player.hpp \
+    Tongue.hpp
