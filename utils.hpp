@@ -19,8 +19,15 @@
 #include <stack>
 #include <queue>
 #include <map>
+#include <complex>
 
-// If you want to declare global variables you can do it here:
-extern int number; // You must to declare this avariable again on utils.cpp
+/*class AngleHelper {
+public:
+    static float speedToAngle(sf::Vector2f speed);
+
+    static float radToAngle(float rad);
+
+    static float angleToRad(float angle);
+};*/
 
 #endif // UTILS_HPP

@@ -30,3 +30,6 @@
 # Qmake
 *.pro.user
 *.autosave
+
+*~
+*.sh

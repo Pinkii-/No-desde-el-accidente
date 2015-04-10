@@ -5,7 +5,7 @@
 class Resources {
 public:
     static void load();
-    static sf::Texture texture;
+    static sf::Texture ship;
     static sf::Font font;
     static sf::SoundBuffer sound;
     static sf::Music music;
