@@ -1,4 +1,4 @@
-#include "MyGame.hpp"
+#include "Scene.hpp"
 
 MyGame::MyGame(int scrwidth, int scrheight, std::string title, int style)
     : Game(scrwidth,scrheight,title,style) {
