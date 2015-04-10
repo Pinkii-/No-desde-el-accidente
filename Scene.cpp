@@ -1,21 +1,21 @@
-#include "MyGame.hpp"
+#include "Scene.hpp"
 
-MyGame::MyGame(int scrwidth, int scrheight, std::string title, int style)
+Scene::Scene(int scrwidth, int scrheight, std::string title, int style)
     : Game(scrwidth,scrheight,title,style) {
     //Create the components of the game and init them
 }
 
-MyGame::~MyGame() {}
+Scene::~Scene() {}
 
-void MyGame::update(float deltaTime){
+void Scene::update(float deltaTime){
     // Update the game
 }
 
-void MyGame::draw(){
+void Scene::draw(){
     // Draw the game
 }
 
-void MyGame::processEvents(){
+void Scene::processEvents(){
     sf::Event event;
     while (window.pollEvent(event)) {
         switch (event.type) {

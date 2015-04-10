@@ -1,11 +1,11 @@
-#ifndef MYGAME_H
-#define MYGAME_H
+#ifndef SCENE_H
+#define SCENE_H
 #include "Game.hpp"
 
-class MyGame : public Game {
+class Scene : public Game {
 public:
-    MyGame(int scrwidth, int scrheight, std::string title, int style);
-    ~MyGame();
+    Scene(int scrwidth, int scrheight, std::string title, int style);
+    ~Scene();
     void update(float deltaTime);
     void draw();
     void processEvents();
@@ -13,4 +13,4 @@ private:
     //The components of the game
 };
 
-#endif // MYGAME_H
+#endif // SCENE_H
