@@ -1,6 +1,8 @@
 #ifndef SCENE_H
 #define SCENE_H
 #include "Game.hpp"
+#include "Player.hpp"
+#include "Chameleon.hpp"
 
 class Scene : public Game {
 public:
@@ -10,7 +12,8 @@ public:
     void draw();
     void processEvents();
 private:
-    //The components of the game
+    Player player;
+    std::vector<Chameleon> chameleons;
 };
 
 #endif // SCENE_H

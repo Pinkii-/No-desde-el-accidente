@@ -1,18 +1,23 @@
 #include "Scene.hpp"
 
 Scene::Scene(int scrwidth, int scrheight, std::string title, int style)
-    : Game(scrwidth,scrheight,title,style) {
-    //Create the components of the game and init them
+    : Game(scrwidth,scrheight,title,style),
+      player(sf::Vector2f(200,200),sf::Vector2f(50,50))
+{
+    chameleons = std::vector<Chameleon>();
+    chameleons.push_back(Chameleon(sf::Vector2f(400,400)));
 }
 
 Scene::~Scene() {}
 
 void Scene::update(float deltaTime){
-    // Update the game
+    player.update(deltaTime);
+    for (Chameleon c : chameleons) c.update(deltaTime, player.getPosition());
 }
 
 void Scene::draw(){
-    // Draw the game
+    player.draw(window);
+    for (Chameleon c : chameleons) c.draw(window);
 }
 
 void Scene::processEvents(){

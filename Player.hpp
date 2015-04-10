@@ -8,7 +8,9 @@ public:
     Player();
     Player(sf::Vector2f pos, sf::Vector2f speed);
     void update(float deltaTime);
-    void draw(sf::RenderWindow* window);
+    void draw(sf::RenderWindow &window);
+
+    sf::Vector2f getPosition();
 
 private:
     float angle;

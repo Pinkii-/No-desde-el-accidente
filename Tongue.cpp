@@ -1,11 +1,12 @@
 #include "Tongue.hpp"
+#include "Resources.hpp"
 
 Tongue::Tongue(){
     angle = 0;
     size = 10; //HARDCODED ALERT it will be the width of the tongue
     animationTime = 0.2; //HARDCODED ALERT 2 the time needed to reach full length
     timeSinceTriggered = 0;
-    texture.loadFromFile("res/tongue.png");
+    texture = Resources::tongue;
 }
 
 void Tongue::reset(){

@@ -6,7 +6,11 @@ Player::Player() {}
 Player::Player(sf::Vector2f pos, sf::Vector2f speed) :
     pos(pos), speed(speed){
     sprite.setTexture(Resources::ship);
-    //angle = AngleHelper::speedToAngle(speed);
+    sprite.setOrigin(sprite.getGlobalBounds().width/2,sprite.getGlobalBounds().height/2);
+    angle = speedToAngle(speed);
+
+
+    licked = true;
 }
 
 void Player::update(float deltaTime) {
@@ -14,9 +18,13 @@ void Player::update(float deltaTime) {
     sprite.setPosition(pos);
 }
 
-void Player::draw(sf::RenderWindow *window) {
+void Player::draw(sf::RenderWindow &window) {
     sprite.setRotation(angle);
-    window->draw(sprite);
+    window.draw(sprite);
+}
+
+sf::Vector2f Player::getPosition() {
+    return pos;
 }
 
 //Private functions
