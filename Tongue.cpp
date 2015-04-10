@@ -54,7 +54,7 @@ void Tongue::draw(sf::RenderWindow &window) {
 
     sprite.setOrigin(0, sprite.getLocalBounds().height/2);
     sprite.setPosition(orig);
-    sprite.setRotation(getAngle(dest,orig)-180);
+    sprite.setRotation(getAngle(orig,dest));
     window.draw(sprite);
 
 }
