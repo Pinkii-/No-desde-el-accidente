@@ -20,6 +20,8 @@ private:
     bool licked;
     bool tensioning;
     sf::Vector2f camaleonPos;
+
+    void evoluciona(float fdelta);
 };
 
 #endif // PLAYER_HPP

@@ -21,13 +21,17 @@
 #include <map>
 #include <complex>
 
-/*class AngleHelper {
-public:
-    static float speedToAngle(sf::Vector2f speed);
 
-    static float radToAngle(float rad);
+float speedToAngle(sf::Vector2f speed);
+float radToAngle(float rad);
+float angleToRad(float angle);
 
-    static float angleToRad(float angle);
-};*/
+typedef std::complex<double> point;
+
+point vector2point(sf::Vector2f p);
+sf::Vector2f point2vector(point p);
+double prodesc(point p1,point p2);
+double prodvec(point p1,point p2);
+
 
 #endif // UTILS_HPP
