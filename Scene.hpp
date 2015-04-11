@@ -6,6 +6,7 @@
 #include "Chameleon.hpp"
 #include "IngameMenu.hpp"
 #include "readlevels.hpp"
+#include "Resources.hpp"
 
 class Scene : public Game {
 public:
@@ -22,6 +23,7 @@ public:
 private:
     Goal goal;
     Player player;
+    sf::Sound sound;
     Chameleon *currentChameleon;
     std::vector<Chameleon> chameleons;
 

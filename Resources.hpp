@@ -13,7 +13,7 @@ public:
     static sf::Texture goal;
 
     static sf::Font font;
-    static sf::SoundBuffer sound;
+    static sf::SoundBuffer buffer;
     static sf::Music music;
 };
 
