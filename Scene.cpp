@@ -1,15 +1,21 @@
 #include "Scene.hpp"
 
 Scene::Scene(sf::RenderWindow* w)
-    : Game(w),
-      player(sf::Vector2f(200,200),sf::Vector2f(200,200))
+      : Game(w)
 {
+    goal.setPosition(900,150);
+
+    player.setSpeed(sf::Vector2f(200,200));
+    player.setPosition(sf::Vector2f(200,200));
+
     currentChameleon = nullptr;
     chameleons = std::vector<Chameleon>();
     chameleons.push_back(Chameleon(sf::Vector2f(600,200)));
     chameleons.push_back(Chameleon(sf::Vector2f(200,200)));
     chameleons.push_back(Chameleon(sf::Vector2f(400,20)));
     chameleons.push_back(Chameleon(sf::Vector2f(100,600)));
+
+
 }
 
 Scene::~Scene() {}
@@ -17,9 +23,11 @@ Scene::~Scene() {}
 void Scene::update(float deltaTime){
     player.update(deltaTime);
     for (Chameleon &c : chameleons) c.update(deltaTime, player.getPosition());
+    goal.update(deltaTime);
 }
 
 void Scene::draw(){
+    goal.draw(*window);
     player.draw(*window);
     for (Chameleon &c : chameleons) c.draw(*window);
 }

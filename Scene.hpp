@@ -1,23 +1,29 @@
 #ifndef SCENE_H
 #define SCENE_H
+#include "Goal.hpp"
 #include "Game.hpp"
 #include "Player.hpp"
 #include "Chameleon.hpp"
 
 class Scene : public Game {
 public:
+
     Scene(sf::RenderWindow *w);
+
     ~Scene();
-    void update(float deltaTime);
+
     void draw();
     void processEvents();
-private:
-    Player player;
-    std::vector<Chameleon> chameleons;
-    Chameleon *currentChameleon;
+    void update(float deltaTime);
 
-    void activeChameleon(sf::Vector2f pos);
+private:
+    Goal goal;
+    Player player;
+    Chameleon *currentChameleon;
+    std::vector<Chameleon> chameleons;
+
     void releaseChameleon();
+    void activeChameleon(sf::Vector2f pos);
 };
 
 #endif // SCENE_H

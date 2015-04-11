@@ -5,12 +5,21 @@
 
 class Player {
 public:
+
+    //Creadores
     Player();
     Player(sf::Vector2f pos, sf::Vector2f speed);
+
+    //Game Functions
     void update(float deltaTime);
     void draw(sf::RenderWindow &window);
 
+    //Getters
     sf::Vector2f getPosition();
+
+    //Setters
+    void setSpeed(sf::Vector2f newSpeed);
+    void setPosition(sf::Vector2f newPos);
     void setLicked(bool b, sf::Vector2f cPos);
 
 private:
@@ -27,9 +36,9 @@ private:
     float timeSinceNextSprite;
 
     // Camaleon related things
-    float timeSinceTriggered;
     bool licked;
     bool tensioning;
+    float timeSinceTriggered;
     sf::Vector2f camaleonPos;
 
     void evoluciona(float fdelta);

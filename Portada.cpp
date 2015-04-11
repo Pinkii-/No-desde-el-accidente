@@ -30,6 +30,7 @@ void Portada::display(sf::RenderWindow* window){
             }
         }
 
+
         t.loadFromFile("res/Portada.png");
         s.setTexture(t);
         if(window->getSize().y/s.getGlobalBounds().height < window->getSize().x/s.getGlobalBounds().width)

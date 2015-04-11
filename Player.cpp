@@ -1,10 +1,24 @@
 #include "Player.hpp"
 #include "Resources.hpp"
 
-Player::Player() {}
+Player::Player() :
+    pos(sf::Vector2f(0,0)), speed(sf::Vector2f(0,0))
+{
+    spriteTimer = 0.0;
+    spriteAnimation = 0.0;
+    timeSinceNextSprite = 0.2;
+    angle = speedToRad(speed);
+    sprite.setTexture(Resources::ship);
+    spriteHeight = Resources::ship.getSize().y;
+    spriteWidth = Resources::ship.getSize().x/15;
+    sprite.setTextureRect(sf::IntRect(spriteAnimation*spriteWidth, 0, spriteWidth, spriteHeight));
+    sprite.setOrigin(sprite.getGlobalBounds().width/2,sprite.getGlobalBounds().height/2);
+    licked = tensioning = false;
+}
 
 Player::Player(sf::Vector2f pos, sf::Vector2f speed) :
-    pos(pos), speed(speed){
+    pos(pos), speed(speed)
+{
     spriteTimer = 0.0;
     spriteAnimation = 0.0;
     timeSinceNextSprite = 0.2;
@@ -16,6 +30,14 @@ Player::Player(sf::Vector2f pos, sf::Vector2f speed) :
     sprite.setOrigin(sprite.getGlobalBounds().width/2,sprite.getGlobalBounds().height/2);
     licked = tensioning = false;
 
+}
+
+void Player::setPosition(sf::Vector2f newPos){
+    pos = newPos;
+}
+
+void Player::setSpeed(sf::Vector2f newSpeed){
+    speed = newSpeed;
 }
 
 void Player::update(float deltaTime) {
@@ -35,6 +57,7 @@ void Player::draw(sf::RenderWindow &window) {
     sprite.setRotation(angle);sprite.setScale(sf::Vector2f(0.5,0.5));
     window.draw(sprite);
 }
+
 
 sf::Vector2f Player::getPosition() {
     return pos;
