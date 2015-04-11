@@ -1,28 +1,27 @@
 #ifndef BUTTON_H
 #define BUTTON_H
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <iostream>
-#include <string.h>
+
+#include "utils.hpp"
 
 class Button{
 
 public:
 
     //CONSTRUCTOR
-    
+
+
     /* Initialize the private variables */
     Button();
-    
+
     /* Initialize the button with the parameters as the text, texture, size and position */
     Button(std::string text, std::string texturePath, float sizeX, float sizeY);
 
     /* Initialize the button with the parameters as the text, texture, size and position */
     Button(std::string text, std::string texturePath, std::string pressedTexturePath, float sizeX, float sizeY);
-    
-    
-    // SET PROPERTIES 
-    
+
+
+    // SET PROPERTIES
+
     /* Set the text on the button */
     void setText(std::string s);
 
@@ -43,11 +42,12 @@ public:
     /* Set the size of the characters of the button text*/
     void setCharacterSize(uint u);
 
-    /* Set the text on the button and scale the button 
+
+    /* Set the text on the button and scale the button
     so the text fits on it */
     void setTextResizeButton(std::string s);
 
-    /* Set the text on the button and scale the text 
+    /* Set the text on the button and scale the text
     so the it fits on the button */
     void setTextResizeText(std::string s);
 
@@ -66,12 +66,13 @@ public:
 
 
     //  GET INFORMATION
-    
+
+
     /* The return indicates if the button is
     clicked or not*/
     bool isClicked();
 
-    /* Return true if the button has been clicked and this function has 
+    /* Return true if the button has been clicked and this function has
      not been checked yet */
     bool hasBeenClicked();
 
@@ -98,7 +99,9 @@ public:
     sf::Color getTextColor();
 
 
-    // ACTION PERFORM 
+
+    // ACTION PERFORM
+
 
     /* Draw the button on the window passed as parameter */
     void draw(sf::RenderWindow &w);
@@ -106,7 +109,7 @@ public:
     /* Update the private variables if needed acordingly to the event*/
     void handleEvent(sf::Event e);
 
-    
+
 private:
 
     bool clicked;

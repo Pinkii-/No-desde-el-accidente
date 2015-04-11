@@ -2,13 +2,21 @@
 
 IngameMenu::IngameMenu() {}
 
-IngameMenu::IngameMenu(sf::Vector2f center) {
-    resume.setText("Resume");
-    resume.setSize(center.x/8,center.y/6);
+IngameMenu::IngameMenu(sf::Vector2f center) :
+    resume("Resume", "res/button.png", center.x/8,center.y/6),
+    menu("Menu", "res/button.png", center.x/8,center.y/6)
+{
+//    resume.setTexture("res/button.png");
+//    resume.setText("Resume");
+//    resume.setSize(center.x/8,center.y/6);
+    resume.setFont("res/font.otf");
     resume.setPosition(center.x-resume.getSize().x,center.y + 10);
 
-    menu.setText("Menu");
-    menu.setSize(center.x/8,center.y/6);
+
+//    menu.setTexture("res/button.png");
+//    menu.setText("Menu");
+//    menu.setSize(center.x/8,center.y/6);
+    menu.setFont("res/font.otf");
     menu.setPosition(center.x-menu.getSize().x,center.y - center.y/6);
 
     background = sf::RectangleShape(
