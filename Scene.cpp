@@ -1,7 +1,7 @@
 #include "Scene.hpp"
 
-Scene::Scene(int scrwidth, int scrheight, std::string title, int style)
-    : Game(scrwidth,scrheight,title,style),
+Scene::Scene(sf::RenderWindow* w)
+    : Game(w),
       player(sf::Vector2f(200,200),sf::Vector2f(200,200))
 {
     currentChameleon = nullptr;
@@ -20,28 +20,28 @@ void Scene::update(float deltaTime){
 }
 
 void Scene::draw(){
-    player.draw(window);
-    for (Chameleon &c : chameleons) c.draw(window);
+    player.draw(*window);
+    for (Chameleon &c : chameleons) c.draw(*window);
 }
 
 void Scene::processEvents(){
     sf::Event event;
-    while (window.pollEvent(event)) {
+    while (window->pollEvent(event)) {
         switch (event.type) {
             case sf::Event::Closed:
-                window.close();
+                window->close();
                 break;
             case  sf::Event::KeyPressed:
                 //Close key
                 if (event.key.code == sf::Keyboard::Escape) {
-                    window.close();
+                    window->close();
                 }
                 break;
             default:
                 break;
         }
     }
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) activeChameleon(sf::Vector2f(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y));
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) activeChameleon(sf::Vector2f(sf::Mouse::getPosition(*window).x,sf::Mouse::getPosition(*window).y));
     else releaseChameleon();
 }
 

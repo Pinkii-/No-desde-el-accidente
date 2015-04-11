@@ -1,9 +1,7 @@
 #include "Game.hpp"
 
-Game::Game(int scrwidth, int scrheight, std::string title, int style)
-    : window(sf::VideoMode(scrwidth,scrheight),title,style) {
-    window.setMouseCursorVisible(true); //Config as you want
-    window.setVerticalSyncEnabled(true); //Config as you want
+Game::Game(sf::RenderWindow *w) {
+    window = w;
 }
 
 Game::~Game() {}
@@ -11,7 +9,7 @@ Game::~Game() {}
 void Game::run() {
     sf::Clock c;
     srand(time(0));
-    while(window.isOpen()) {
+    while(window->isOpen()) {
         float deltaTime = c.restart().asSeconds();
         processEvents();
         update(deltaTime);
@@ -20,7 +18,7 @@ void Game::run() {
 }
 
 void Game::render() {
-    window.clear();
+    window->clear();
     draw();
-    window.display();
+    window->display();
 }

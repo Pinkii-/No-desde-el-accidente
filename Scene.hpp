@@ -6,7 +6,7 @@
 
 class Scene : public Game {
 public:
-    Scene(int scrwidth, int scrheight, std::string title, int style);
+    Scene(sf::RenderWindow *w);
     ~Scene();
     void update(float deltaTime);
     void draw();
