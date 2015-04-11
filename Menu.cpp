@@ -3,16 +3,15 @@
 int Menu::run(sf::RenderWindow* w) {
 
     window = w;
+    running = true;
 
     std::string actual;
-
     std::ifstream myfile;
+
     myfile.open("res/lastlevel.txt");
     getline(myfile,actual);
     myfile.close();
-
-
-    running = true;
+    level = my_stoi(actual);
 
     //Buttons initialization
     buttonL.setPosition(window->getSize().x - buttonL.getSize().x -10, window->getSize().y/2);
@@ -23,10 +22,22 @@ int Menu::run(sf::RenderWindow* w) {
     buttonR.setSize(window->getSize().x/20, window->getSize().x/40);
     buttonR.setText(">");
 
+    Button b;
+    b.disableClickEffect();
+    sf::Font f;
+    f.loadFromFile("res/font.otf");
+    b.setFont(f);
+    b.setTexture("res/levelButton.png");
+    b.setSize(window->getSize().x/20, window->getSize().x/40);
+    b.setText(actual);
+    b.setPosition(window->getSize().x/2, window->getSize().y/2);
+
+
     while(running){
 
         sf::Event event;
         while(window->pollEvent(event)){
+            b.handleEvent(event);
             buttonL.handleEvent(event);
             buttonR.handleEvent(event);
             switch (event.type){
@@ -46,6 +57,14 @@ int Menu::run(sf::RenderWindow* w) {
         if (buttonR.hasBeenClicked()) {
 
         }
+
+        if(b.hasBeenClicked()){
+            return level;
+        }
+
+        buttonL.draw(*window);
+        buttonR.draw(*window);
+        b.draw(*window);
     }
 }
 
