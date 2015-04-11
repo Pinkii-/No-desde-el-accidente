@@ -15,6 +15,7 @@ public:
 
     //Getters
     sf::Vector2f getPosition() const;
+    float getSize() const;
 
     //Setters
     void setPosition(const sf::Vector2f &value);

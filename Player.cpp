@@ -54,7 +54,7 @@ void Player::update(float deltaTime) {
 
 void Player::draw(sf::RenderWindow &window) {
     sprite.setTextureRect(sf::IntRect(spriteAnimation*spriteWidth, 0, spriteWidth, spriteHeight));
-    sprite.setRotation(angle);sprite.setScale(sf::Vector2f(0.5,0.5));
+    sprite.setRotation(angle);sprite.setScale(sf::Vector2f(scalePlayer,scalePlayer));
     window.draw(sprite);
 }
 
@@ -70,6 +70,12 @@ void Player::setLicked(bool b, sf::Vector2f cPos) {
         tensioning = false;
         timeSinceTriggered = 0;
     }
+}
+
+sf::CircleShape Player::getBox() {
+    sf::CircleShape aux(spriteWidth/2*scalePlayer*0.5);
+    aux.setPosition(pos);
+    return aux;
 }
 
 //Private functions
