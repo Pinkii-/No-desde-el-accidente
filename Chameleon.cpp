@@ -26,7 +26,7 @@ void Chameleon::update(float deltaTime, sf::Vector2f playerPos) {
 
 void Chameleon::draw(sf::RenderWindow& window) {
     if (licking) tongue.draw(window);
-    //window.draw(sprite);
+    window.draw(sprite);
 }
 
 void Chameleon::lick() {

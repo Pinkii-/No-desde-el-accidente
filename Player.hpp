@@ -27,6 +27,7 @@ private:
     float timeSinceNextSprite;
 
     // Camaleon related things
+    float timeSinceTriggered;
     bool licked;
     bool tensioning;
     sf::Vector2f camaleonPos;

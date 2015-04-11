@@ -31,7 +31,7 @@ void Tongue::setDest(const sf::Vector2f value) {
 }
 
 void Tongue::update(float deltatime) {
-    if(timeSinceTriggered < 1) timeSinceTriggered += deltatime;
+    if(timeSinceTriggered < animationTime) timeSinceTriggered += deltatime;
 }
 
 float Tongue::getAngle(sf::Vector2f &orig, sf::Vector2f &des) {

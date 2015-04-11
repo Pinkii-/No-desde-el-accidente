@@ -9,7 +9,7 @@ sf::SoundBuffer Resources::sound;
 sf::Music       Resources::music;
 
 void Resources::load() {
-    ship.loadFromFile("res/tongue.png");
+    ship.loadFromFile("res/ship.png");
     chameleon.loadFromFile("res/tongue.png");
     tongue.loadFromFile("res/tongue.png");
     /*

@@ -23,7 +23,9 @@ pos.y = 0;
 }
 
 void Player::update(float deltaTime) {
+    if (licked) timeSinceTriggered += deltaTime;
     evoluciona(deltaTime);
+    angle = radToAngle(speedToAngle(speed))+90;
     sprite.setPosition(pos);
     spriteTimer += deltaTime;
     if(spriteTimer >= timeSinceNextSprite){
@@ -45,7 +47,10 @@ sf::Vector2f Player::getPosition() {
 void Player::setLicked(bool b, sf::Vector2f cPos) {
     camaleonPos = cPos;
     licked = b;
-    if (!b) tensioning = false;
+    if (!b) {
+        tensioning = false;
+        timeSinceTriggered = 0;
+    }
 }
 
 //Private functions
@@ -56,7 +61,7 @@ void Player::evoluciona(float fdelta)
   point p=vector2point(pos);
   point v=vector2point(speed);
   point c=vector2point(camaleonPos);
-  if (not licked) {
+  if (not licked || timeSinceTriggered < animationTime) {
     p+=v*delta;
     pos=point2vector(p);
     return;
