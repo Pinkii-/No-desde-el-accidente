@@ -2,6 +2,7 @@
 
 Game::Game(sf::RenderWindow *w) {
     window = w;
+    goToMenu = false;
 }
 
 Game::~Game() {}
@@ -12,6 +13,7 @@ bool Game::run() {
     while(window->isOpen()) {
         float deltaTime = c.restart().asSeconds();
         processEvents();
+        if (goToMenu) return false;
         if (update(deltaTime)) return true;
         render();
     }

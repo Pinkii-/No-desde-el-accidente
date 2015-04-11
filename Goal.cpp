@@ -32,7 +32,7 @@ sf::Vector2f Goal::getPosition() const {
 }
 
 float Goal::getSize() const {
-    return animationSize;
+    return 50;
 }
 
 void Goal::setPosition(const sf::Vector2f &value) {

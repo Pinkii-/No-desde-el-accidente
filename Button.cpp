@@ -6,6 +6,7 @@ Button::Button(){
     is_clicked = false;
     clickEffect = true;
 
+
     if(!font.loadFromFile("defaultFont.otf")){ std::cerr << "Can't find the font file" << std::endl; }
     else setFont(font); setCharacterSize(30); setTextColor(sf::Color::White);
 
@@ -13,6 +14,7 @@ Button::Button(){
     else sprite.setTexture(texture);
 
     if(!pressed_texture.loadFromFile("defaultPressedButton.png")) std::cerr << "presedButton text. not loaded" << std::endl;
+
 
     setPosition(0,0);
 }
@@ -22,6 +24,7 @@ Button::Button(std::string myText, std::string texturePath, float sizeX, float s
     clicked = false;
     is_clicked = false;
     clickEffect = true;
+
 
     if(!font.loadFromFile("defaultFont.otf")){ std::cerr << "Can't find the font file" << std::endl; }
     else setFont(font); setCharacterSize(30); setTextColor(sf::Color::White);
@@ -39,6 +42,7 @@ Button::Button(std::string myText, std::string texturePath, std::string pressedT
     clicked = false;
     is_clicked = false;
     clickEffect = true;
+
 
     if(!font.loadFromFile("defaultFont.otf")){ std::cerr << "Can't find the font file" << std::endl; }
     else setFont(font); setCharacterSize(30); setTextColor(sf::Color::White);

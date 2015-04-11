@@ -1,5 +1,6 @@
 #ifndef BUTTON_H
 #define BUTTON_H
+
 #include "utils.hpp"
 
 class Button{
@@ -7,6 +8,7 @@ class Button{
 public:
 
     //CONSTRUCTOR
+
 
     /* Initialize the private variables */
     Button();
@@ -40,6 +42,7 @@ public:
     /* Set the size of the characters of the button text*/
     void setCharacterSize(uint u);
 
+
     /* Set the text on the button and scale the button
     so the text fits on it */
     void setTextResizeButton(std::string s);
@@ -63,6 +66,7 @@ public:
 
 
     //  GET INFORMATION
+
 
     /* The return indicates if the button is
     clicked or not*/
@@ -95,7 +99,9 @@ public:
     sf::Color getTextColor();
 
 
+
     // ACTION PERFORM
+
 
     /* Draw the button on the window passed as parameter */
     void draw(sf::RenderWindow &w);

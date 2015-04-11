@@ -15,6 +15,7 @@ public:
     void reset();//Basicaly sets time to 0 ;
     void setOrig(const sf::Vector2f &value);
     void setDest(const sf::Vector2f value);
+    void setFatherRadius(float value);
 
     //Game Functions
     void update(float deltatime);
@@ -38,6 +39,7 @@ private:
     float size;
     float angle;
     float timeSinceTriggered;
+    float fatherRadius;
 
 
 };

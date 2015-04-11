@@ -1,11 +1,12 @@
 #include "Scene.hpp"
 
 Scene::Scene(sf::RenderWindow* w, std::string path)
-      : Game(w)
+      : Game(w),
+        iMenu(sf::Vector2f(w->getSize().x/2,w->getSize().y/2))
 {
-
     finishLvl = false;
     success = false;
+    menuIsActive = false;
 
     goal.setPosition(900,150);
 
@@ -27,6 +28,7 @@ Scene::Scene(sf::RenderWindow* w, std::string path)
 Scene::~Scene() {}
 
 bool Scene::update(float deltaTime){
+    if (menuIsActive) return false;
     player.update(deltaTime);
     for (Chameleon &c : chameleons) c.update(deltaTime, player.getPosition());
     goal.update(deltaTime);
@@ -35,19 +37,17 @@ bool Scene::update(float deltaTime){
     return finishLvl;
 }
 
-bool Scene::getSuccess() const {
-    return success;
-}
-
 void Scene::draw(){
     goal.draw(*window);
     player.draw(*window);
     for (Chameleon &c : chameleons) c.draw(*window);
+    if (menuIsActive) iMenu.draw(*window);
 }
 
 void Scene::processEvents(){
     sf::Event event;
     while (window->pollEvent(event)) {
+        if (menuIsActive) iMenu.handleEvent(event);
         switch (event.type) {
             case sf::Event::Closed:
                 window->close();
@@ -55,15 +55,25 @@ void Scene::processEvents(){
             case  sf::Event::KeyPressed:
                 //Close key
                 if (event.key.code == sf::Keyboard::Escape) {
-                    window->close();
+                    menuIsActive = !menuIsActive;
                 }
                 break;
             default:
                 break;
         }
     }
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) activeChameleon(sf::Vector2f(sf::Mouse::getPosition(*window).x,sf::Mouse::getPosition(*window).y));
-    else releaseChameleon();
+    if (menuIsActive) {
+        if (iMenu.wantToResume()) menuIsActive = false;
+        else if (iMenu.wantToMenu()) goToMenu = true;
+    }
+    else {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) activeChameleon(sf::Vector2f(sf::Mouse::getPosition(*window).x,sf::Mouse::getPosition(*window).y));
+        else releaseChameleon();
+    }
+}
+
+bool Scene::getSuccess() const {
+    return success;
 }
 
 void Scene::releaseChameleon() {
