@@ -28,6 +28,9 @@ private:
     sf::Texture texture;
     sf::Vector2f position;
 
+    int qttyAnimations;
+    int actualAnimation;
+    float animationSize;
     float timeBetweenAnimations;
     float timeSinceLastAnimaiton;
 

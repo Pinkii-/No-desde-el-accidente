@@ -1,12 +1,15 @@
 #include "Goal.hpp"
 
 Goal::Goal(){
+    qttyAnimations = 1; //set here the qtty
+    actualAnimation = 0;
     reached = false;
     timeBetweenAnimations = 0.2;
     timeSinceLastAnimaiton = 0.0;
 
     if(!texture.loadFromFile("res/goal.png")) std::cout << "goal texture not loaded" << std::endl;
     sprite.setTexture(texture);
+    animationSize = sprite.getGlobalBounds().width/qttyAnimations;
     sprite.setScale(50/sprite.getLocalBounds().width, 50/sprite.getLocalBounds().height);
 
 }
@@ -14,7 +17,7 @@ Goal::Goal(){
 void Goal::update(float deltatime) {
     timeSinceLastAnimaiton += deltatime;
     if(timeSinceLastAnimaiton >= timeBetweenAnimations){
-        //++anim
+        actualAnimation = (actualAnimation + 1) % qttyAnimations;
         timeSinceLastAnimaiton = 0.0;
     }
 }
