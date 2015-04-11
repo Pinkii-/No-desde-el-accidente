@@ -11,6 +11,7 @@ public:
     static sf::Texture chameleon3;
     static sf::Texture tongue;
     static sf::Texture goal;
+    static sf::Texture background;
 
     static sf::Font font;
     static sf::SoundBuffer buffer;

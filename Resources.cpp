@@ -6,6 +6,7 @@ sf::Texture     Resources::chameleon2;
 sf::Texture     Resources::chameleon3;
 sf::Texture     Resources::tongue;
 sf::Texture     Resources::goal;
+sf::Texture     Resources::background;
 
 sf::Font        Resources::font;
 
@@ -21,6 +22,7 @@ void Resources::load() {
     tongue.loadFromFile("res/tongue.png");
     goal.loadFromFile("res/End_01.png");
     font.loadFromFile("res/font.otf");
+    background.loadFromFile("res/background.jpg");
     /*
     font.loadFromFile("resources/font.ttf");
     sound.loadFromFile("resources/sound.wav"); //sound must be a short audio

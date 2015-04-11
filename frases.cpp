@@ -46,7 +46,7 @@ void Frases::dibujafrase(int centropantalla,int hobservador,int despobservador,
 }
 
 
-Frases::Frases() {
+Frases::Frases(sf::RenderWindow& window) : background(window){
 
     tiempo=0;
     velocidad=24;
@@ -87,7 +87,9 @@ void Frases::run(sf::RenderWindow & window)
                 return;
             }
         }
+        background.update(deltaTime);
         window.clear();
+        background.draw(window);
         dibujafrases(window.getSize().x/2.0,window.getSize().y+100,-100,20,window,deltaTime);
         window.display();
     }
