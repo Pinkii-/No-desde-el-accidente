@@ -5,6 +5,8 @@ Player::Player() :
     pos(sf::Vector2f(0,0)), speed(sf::Vector2f(0,0))
 {
     expl.setBuffer(Resources::expbuf);
+
+    expl.setVolume(100);
     alive = true;
     endReached = false;
     spriteTimer = 0.0;
@@ -57,11 +59,7 @@ void Player::update(float deltaTime) {
 }
 
 void Player::draw(sf::RenderWindow &window) {
-    if (!alive) {
-        expl.play();
-        expl.setVolume(100);
-        return;
-    }
+    if (!alive) return;
     sprite.setTextureRect(sf::IntRect(spriteAnimation*spriteWidth, 0, spriteWidth, spriteHeight));
     sprite.setRotation(angle);sprite.setScale(sf::Vector2f(scalePlayer,scalePlayer));
     window.draw(sprite);
@@ -82,7 +80,10 @@ void Player::setLicked(bool b, sf::Vector2f cPos) {
 }
 
 void Player::setAlive(bool b) {
+    if (!b && alive) {
     alive = b;
+    expl.play();
+    }
 }
 bool Player::getEndReached() const {
     return endReached;
