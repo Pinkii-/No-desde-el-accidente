@@ -14,7 +14,8 @@ SOURCES += main.cpp \
     Scene.cpp \
     Player.cpp \
     Tongue.cpp \
-    Chameleon.cpp
+    Chameleon.cpp \
+    Portada.cpp
 
 HEADERS += \
     Game.hpp \
@@ -23,4 +24,5 @@ HEADERS += \
     Scene.hpp \
     Player.hpp \
     Tongue.hpp \
-    Chameleon.hpp
+    Chameleon.hpp \
+    Portada.hpp

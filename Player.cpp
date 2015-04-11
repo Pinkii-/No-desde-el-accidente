@@ -5,8 +5,8 @@ Player::Player() {}
 
 Player::Player(sf::Vector2f pos, sf::Vector2f speed) :
     pos(pos), speed(speed){
-pos.x = 0;
-pos.y = 0;
+    pos.x = 0;
+    pos.y = 0;
     spriteTimer = 0.0;
     spriteAnimation = 0.0;
     timeSinceNextSprite = 0.2;
