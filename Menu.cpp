@@ -5,22 +5,23 @@ int Menu::run(sf::RenderWindow* w) {
     window = w;
     running = true;
 
+    float maxLvl;
     std::string actual;
     std::ifstream myfile;
 
     myfile.open("res/lastlevel.txt");
     getline(myfile,actual);
     myfile.close();
-    level = my_stoi(actual);
+    maxLvl = my_stoi(actual);
 
     //Buttons initialization
-    buttonL.setPosition(window->getSize().x - buttonL.getSize().x -10, window->getSize().y/2);
+    buttonL.setTextResizeText("<");
     buttonL.setSize(window->getSize().x/20, window->getSize().x/40);
-    buttonL.setText("<");
+    buttonL.setPosition(0 +10, window->getSize().y/2);
 
-    buttonR.setPosition(0 +10, window->getSize().y/2);
+    buttonR.setTextResizeText(">");
     buttonR.setSize(window->getSize().x/20, window->getSize().x/40);
-    buttonR.setText(">");
+    buttonR.setPosition(window->getSize().x - buttonR.getSize().x -10, window->getSize().y/2);
 
     Button b;
     b.disableClickEffect();
@@ -52,19 +53,29 @@ int Menu::run(sf::RenderWindow* w) {
         }
 
         if (buttonL.hasBeenClicked()) {
-
+            if(level > 0) level--;
         }
-        if (buttonR.hasBeenClicked()) {
 
+        if (buttonR.hasBeenClicked()) {
+            if(level < maxLvl) ++level;
         }
 
         if(b.hasBeenClicked()){
             return level;
         }
 
+
+        window->clear();
+
         buttonL.draw(*window);
         buttonR.draw(*window);
+        std::stringstream ss;
+        ss << level;
+        std::string str = ss.str();
+        b.setTextResizeText(str);
         b.draw(*window);
+
+        window->display();
     }
 }
 
