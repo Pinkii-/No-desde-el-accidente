@@ -16,7 +16,9 @@ SOURCES += main.cpp \
     Tongue.cpp \
     Chameleon.cpp \
     Portada.cpp \
-    Goal.cpp
+    Goal.cpp \
+    Menu.cpp \
+    Button.cpp
 
 HEADERS += \
     Game.hpp \
@@ -27,4 +29,6 @@ HEADERS += \
     Tongue.hpp \
     Chameleon.hpp \
     Portada.hpp \
-    Goal.hpp
+    Goal.hpp \
+    Menu.hpp \
+    Button.hpp

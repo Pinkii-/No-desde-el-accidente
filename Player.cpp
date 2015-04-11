@@ -4,6 +4,7 @@
 Player::Player() :
     pos(sf::Vector2f(0,0)), speed(sf::Vector2f(0,0))
 {
+    endReached = false;
     spriteTimer = 0.0;
     spriteAnimation = 0.0;
     timeSinceNextSprite = 0.2;
@@ -71,14 +72,22 @@ void Player::setLicked(bool b, sf::Vector2f cPos) {
         timeSinceTriggered = 0;
     }
 }
+bool Player::getEndReached() const {
+    return endReached;
+}
+
+void Player::setEndReached(bool value) {
+    endReached = value;
+}
+
 
 //Private functions
 
-void Player::evoluciona(float fdelta)
-{
-  double delta=fdelta;
-  point p=vector2point(pos);
-  point v=vector2point(speed);
+void Player::evoluciona(float fdelta){
+
+    double delta=fdelta;
+    point p=vector2point(pos);
+    point v=vector2point(speed);
   point c=vector2point(camaleonPos);
   if (not licked || timeSinceTriggered < animationTime) {
     p+=v*delta;
