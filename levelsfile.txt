@@ -1,0 +1,14 @@
+inicio 3 4
+final 3 4
+velocidad 3 4
+camaleon 3 4
+
+// empezamos un nuevo nivel
+nuevonivel
+inicio 3 7
+final 4 4
+velocidad 4 4
+camaleon 3 8
+camaleon 3 8
+camaleon 3 8
+camaleon 4 6
