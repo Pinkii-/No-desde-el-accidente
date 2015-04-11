@@ -14,24 +14,24 @@ int Menu::run(sf::RenderWindow* w) {
     myfile.close();
     maxLvl = my_stoi(actual);
 
+    buttonL.setText("<");
+    buttonR.setText(">");
     //Buttons initialization
-    buttonL.setTextResizeText("<");
-    buttonL.setSize(window->getSize().x/20, window->getSize().x/40);
+    buttonL.setSize(window->getSize().x/20, window->getSize().x/10);
     buttonL.setPosition(0 +10, window->getSize().y/2);
 
-    buttonR.setTextResizeText(">");
-    buttonR.setSize(window->getSize().x/20, window->getSize().x/40);
+    buttonR.setSize(window->getSize().x/20, window->getSize().x/10);
     buttonR.setPosition(window->getSize().x - buttonR.getSize().x -10, window->getSize().y/2);
 
     Button b;
     b.disableClickEffect();
-    sf::Font f;
-    f.loadFromFile("res/font.otf");
-    b.setFont(f);
-    b.setTexture("res/levelButton.png");
-    b.setSize(window->getSize().x/20, window->getSize().x/40);
+  //  sf::Font f;
+    //f.loadFromFile("res/font.otf");
+    //b.setFont(f);
+    b.setTexture("res/empty.png");
     b.setText(actual);
     b.setPosition(window->getSize().x/2, window->getSize().y/2);
+    b.setSize(window->getSize().x/20, window->getSize().x/10);
 
 
     while(running){
@@ -85,10 +85,10 @@ Menu::Menu(){
     level = 0;
     running = false;
 
-    buttonL.setTexture("res/button.png");
-    buttonR.setTexture("res/button.png");
-    buttonL.setPressedTexture("res/pressedButton.png");
-    buttonR.setPressedTexture("res/pressedButton.png");
+    buttonL.setTexture("res/empty.png");
+    buttonR.setTexture("res/empty.png");
+    buttonL.setPressedTexture("res/empty.png");
+    buttonR.setPressedTexture("res/empty.png");
 
 }
 
