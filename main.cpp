@@ -29,6 +29,10 @@ int main() {
 
     music.stop();
 
+    if (!music.openFromFile("res/music.ogg")) std::cout << "fail on music2 load" << std::endl; // error
+    music.play();
+    music.setLoop(true);
+
     // Aqui tendrá que ir el menú {
     while (true) {
         int currentLvl = menu.run(&window);
@@ -42,6 +46,7 @@ int main() {
             }
         }
     }
+    music.stop();
     return 0;
 }
 
