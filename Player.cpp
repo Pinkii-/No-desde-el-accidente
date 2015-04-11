@@ -4,6 +4,7 @@
 Player::Player() :
     pos(sf::Vector2f(0,0)), speed(sf::Vector2f(0,0))
 {
+    alive = true;
     endReached = false;
     spriteTimer = 0.0;
     spriteAnimation = 0.0;
@@ -17,7 +18,7 @@ Player::Player() :
     licked = tensioning = false;
 }
 
-Player::Player(sf::Vector2f pos, sf::Vector2f speed) :
+/*Player::Player(sf::Vector2f pos, sf::Vector2f speed) :
     pos(pos), speed(speed)
 {
     spriteTimer = 0.0;
@@ -31,7 +32,7 @@ Player::Player(sf::Vector2f pos, sf::Vector2f speed) :
     sprite.setOrigin(sprite.getGlobalBounds().width/2,sprite.getGlobalBounds().height/2);
     licked = tensioning = false;
 
-}
+}*/
 
 void Player::setPosition(sf::Vector2f newPos){
     pos = newPos;
@@ -42,6 +43,7 @@ void Player::setSpeed(sf::Vector2f newSpeed){
 }
 
 void Player::update(float deltaTime) {
+    if (!alive) return;
     if (licked) timeSinceTriggered += deltaTime;
     evoluciona(deltaTime);
     angle = radToAngle(speedToRad(speed))+90;
@@ -54,6 +56,7 @@ void Player::update(float deltaTime) {
 }
 
 void Player::draw(sf::RenderWindow &window) {
+    if (!alive) return;
     sprite.setTextureRect(sf::IntRect(spriteAnimation*spriteWidth, 0, spriteWidth, spriteHeight));
     sprite.setRotation(angle);sprite.setScale(sf::Vector2f(scalePlayer,scalePlayer));
     window.draw(sprite);
@@ -72,8 +75,16 @@ void Player::setLicked(bool b, sf::Vector2f cPos) {
         timeSinceTriggered = 0;
     }
 }
+
+void Player::setAlive(bool b) {
+    alive = b;
+}
 bool Player::getEndReached() const {
     return endReached;
+}
+
+bool Player::isAlive() {
+    return alive;
 }
 
 void Player::setEndReached(bool value) {

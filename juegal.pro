@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     Goal.cpp \
     IngameMenu.cpp \
     Menu.cpp \
-    Button.cpp
+    Button.cpp \
+    readlevels.cpp
 
 HEADERS += \
     Game.hpp \
@@ -33,4 +34,5 @@ HEADERS += \
     Goal.hpp \
     IngameMenu.hpp \
     Menu.hpp \
-    Button.hpp
+    Button.hpp \
+    readlevels.hpp

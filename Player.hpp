@@ -17,12 +17,14 @@ public:
     //Getters
     sf::Vector2f getPosition();
     bool getEndReached() const;
+    bool isAlive();
 
     //Setters
     void setEndReached(bool value);
     void setSpeed(sf::Vector2f newSpeed);
     void setPosition(sf::Vector2f newPos);
     void setLicked(bool b, sf::Vector2f cPos);
+    void setAlive(bool b);
 
     sf::CircleShape getBox();
 
@@ -48,6 +50,9 @@ private:
     sf::Vector2f camaleonPos;
 
     void evoluciona(float fdelta);
+
+    // Comido
+    bool alive;
 };
 
 #endif // PLAYER_HPP

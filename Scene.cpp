@@ -1,27 +1,27 @@
 #include "Scene.hpp"
 
-Scene::Scene(sf::RenderWindow* w, std::string path)
-      : Game(w),
-        iMenu(sf::Vector2f(w->getSize().x/2,w->getSize().y/2))
+Scene::Scene(sf::RenderWindow* w, Level lvl)
+    : Game(w),
+      iMenu(sf::Vector2f(w->getSize().x/2,w->getSize().y/2))
 {
     finishLvl = false;
     success = false;
     menuIsActive = false;
 
-    goal.setPosition(900,150);
+    goal.setPosition(lvl.final);
 
-    player.setSpeed(sf::Vector2f(200,200));
-    player.setPosition(sf::Vector2f(400,400));
+    player.setSpeed(lvl.velocidad);
+    player.setPosition(lvl.inicio);
 
     currentChameleon = nullptr;
-    chameleons = std::vector<Chameleon>();
-    chameleons.push_back(Chameleon(sf::Vector2f(600,200)));
-    chameleons.push_back(Chameleon(sf::Vector2f(200,200)));
-    chameleons.push_back(Chameleon(sf::Vector2f(400,20)));
-    chameleons.push_back(Chameleon(sf::Vector2f(100,600)));
-    chameleons.push_back(Chameleon(sf::Vector2f(1000,800)));
 
-    std::cout << path << std::endl;
+    chameleons = std::vector<Chameleon>();
+    for (int i = 0; i < lvl.camaleon.size(); ++i) chameleons.push_back(Chameleon(lvl.camaleon[i]));
+
+    //    chameleons.push_back(Chameleon(sf::Vector2f(200,200)));
+    //    chameleons.push_back(Chameleon(sf::Vector2f(400,20)));
+    //    chameleons.push_back(Chameleon(sf::Vector2f(100,600)));
+    //    chameleons.push_back(Chameleon(sf::Vector2f(1000,800)));
 
 }
 
@@ -29,6 +29,13 @@ Scene::~Scene() {}
 
 bool Scene::update(float deltaTime){
     if (menuIsActive) return false;
+    if (!player.isAlive()) {
+        timeFromDeath += deltaTime;
+        if (timeFromDeath > 0.5) {
+            finishLvl = true;
+            success = false;
+        }
+    }
     player.update(deltaTime);
     for (Chameleon &c : chameleons) c.update(deltaTime, player.getPosition());
     goal.update(deltaTime);
@@ -105,10 +112,12 @@ void Scene::lookCollisions() {
     for (Chameleon& c : chameleons) {
         if (isCollisioning(playerBounds.getPosition(),playerBounds.getRadius(),c.getPosition(),c.getRadius())) {
             //WOPS HA CHOCADO. DO THINGS
-            finishLvl = true;
-            success = false;
-
-            return;
+            if (player.isAlive()) {
+                player.setAlive(false);
+                timeFromDeath = 0;
+                c.eating();
+                return;
+            }
         }
     }
     if (isCollisioning(playerBounds.getPosition(),playerBounds.getRadius(),goal.getPosition(),goal.getSize()/2)) {

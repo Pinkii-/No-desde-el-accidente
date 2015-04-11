@@ -13,6 +13,7 @@ public:
 
     void lick();
     void release();
+    void eating();
 
     sf::Vector2f getPosition();
     float getRadius();

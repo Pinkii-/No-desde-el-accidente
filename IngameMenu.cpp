@@ -1,4 +1,5 @@
 #include "IngameMenu.hpp"
+#include "Resources.hpp"
 
 IngameMenu::IngameMenu() {}
 
@@ -8,24 +9,27 @@ IngameMenu::IngameMenu(sf::Vector2f center) :
 {
 //    resume.setTexture("res/button.png");
 //    resume.setText("Resume");
-//    resume.setSize(center.x/8,center.y/6);
-    resume.setFont("res/font.otf");
+    resume.setFont(Resources::font);
+    resume.setSize(center.x/8,center.y/6);
     resume.setPosition(center.x-resume.getSize().x,center.y + 10);
 
 
 //    menu.setTexture("res/button.png");
 //    menu.setText("Menu");
-//    menu.setSize(center.x/8,center.y/6);
-    menu.setFont("res/font.otf");
+    menu.setFont(Resources::font);
+    menu.setSize(center.x/8,center.y/6);
     menu.setPosition(center.x-menu.getSize().x,center.y - center.y/6);
 
     background = sf::RectangleShape(
                 sf::Vector2f(
-                    std::max(resume.getSize().x, menu.getSize().x),
-                    std::max(resume.getSize().y, menu.getSize().y)));
-    background.setOrigin(background.getSize().x, background.getSize().y);
+                    std::max(resume.getSize().x, menu.getSize().x) + 20,
+                    resume.getSize().y + menu.getSize().y +30));
+    background.setOrigin(background.getSize().x/2, background.getSize().y/2);
     background.setPosition(center);
-    background.setFillColor(sf::Color::White);
+    background.setFillColor(sf::Color::Blue);
+
+    resume.setPosition(resume.getPosition().x+background.getSize().x/2-10, resume.getPosition().y);
+    menu.setPosition(menu.getPosition().x+background.getSize().x/2-10, menu.getPosition().y);
 }
 
 void IngameMenu::draw(sf::RenderWindow &window) {

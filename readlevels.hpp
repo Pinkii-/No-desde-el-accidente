@@ -1,3 +1,6 @@
+#ifndef LEVELMANAGER_HPP
+#define LEVELMANAGER_HPP
+
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -39,3 +42,4 @@ public:
   void escribe();
 };
 
+#endif

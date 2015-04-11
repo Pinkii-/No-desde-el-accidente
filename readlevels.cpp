@@ -55,7 +55,7 @@ void LevelManager::checkwelldefined(int numlevel,Level level)
 
 LevelManager::LevelManager()
 {
-  ifstream fci("levelsfile.txt");
+  ifstream fci("res/levelsfile.txt");
   if (not fci.is_open()) {
     cout<<"ERROR opening levelsfile.txt"<<endl;
     exit(0);
@@ -162,9 +162,9 @@ void LevelManager::escribe()
   }
 }
 
-LevelManager levelManager;
+//LevelManager levelManager;
 
-int main()
-{
-  levelManager.escribe();
-}
+//int main()
+//{
+//  levelManager.escribe();
+//}
