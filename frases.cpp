@@ -13,9 +13,6 @@
 
 using namespace std;
 
-const int SCRWIDTH  = 800;
-const int SCRHEIGHT = 600;
-
 
 float Frases::computaEscala(float h,float despobjeto)
 {
@@ -25,9 +22,10 @@ float Frases::computaEscala(float h,float despobjeto)
 void Frases::dibujafrase(int centropantalla,int hobservador,int despobservador,
                          int numfrase,int desp,int hcaracter,string &frase,sf::RenderWindow &window)
 {
-  float factor=0.5;
+  float factor=3.0;
 
-  float despobjeto=desp-(hcaracter+40)*numfrase;
+  float despobjeto=desp-(hcaracter+10)*numfrase;
+  if (despobjeto<despobservador/2.0) return;
   hobservador-=despobjeto*factor;
   float escala=computaEscala(float(hobservador),despobjeto-despobservador);
   float escalacaracter=computaEscala(float(hobservador),40+despobjeto-despobservador);
@@ -39,7 +37,7 @@ void Frases::dibujafrase(int centropantalla,int hobservador,int despobservador,
   float hfrase=escala*despobjeto;
   float midahfrase=escalacaracter*hcaracter;
   text.setOrigin(sf::Vector2f(text.getLocalBounds().width/2.0,text.getLocalBounds().height/2.0));
-  text.setScale(sf::Vector2f(midahfrase/text.getLocalBounds().height,midahfrase/text.getLocalBounds().height));
+  text.setScale(sf::Vector2f(midahfrase/(1.7*text.getLocalBounds().height),midahfrase/text.getLocalBounds().height));
   text.setPosition(sf::Vector2f(float(centropantalla),hobservador-hfrase));
 
   //text.setPosition(sf::Vector2f(float(centropantalla),0));
@@ -51,7 +49,7 @@ void Frases::dibujafrase(int centropantalla,int hobservador,int despobservador,
 Frases::Frases()
 {
     tiempo=0;
-    velocidad=50;
+    velocidad=24;
     if (!font.loadFromFile("res/font.otf")) {
         cout<<"no carrega la font"<<endl;
         exit(0);
@@ -70,7 +68,7 @@ void Frases::dibujafrases(int centropantalla,int hobservador,int despobservador,
                           sf::RenderWindow &window,float delta)
 {
     tiempo+=delta;
-    int desp=400+tiempo*velocidad;
+    int desp=50+tiempo*velocidad;
     for (int i=0;i<int(frases.size());i++)
         dibujafrase(centropantalla,hobservador,despobservador,i,desp,hcaracter,frases[i],window);
 }
@@ -90,7 +88,7 @@ void Frases::run(sf::RenderWindow & window)
             }
         }
         window.clear();
-        dibujafrases(window.getSize().x/2.0,window.getSize().y+200,-100,20,window,deltaTime);
+        dibujafrases(window.getSize().x/2.0,window.getSize().y+100,-100,20,window,deltaTime);
         window.display();
     }
 }

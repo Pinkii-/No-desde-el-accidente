@@ -18,7 +18,7 @@ void Resources::load() {
     chameleon2.loadFromFile("res/chameleon2.png");
     chameleon3.loadFromFile("res/Eating.png");
     tongue.loadFromFile("res/tongue.png");
-    goal.loadFromFile("res/tongue2.png");
+    goal.loadFromFile("res/End_01.png");
     font.loadFromFile("res/font.otf");
     /*
     font.loadFromFile("resources/font.ttf");

@@ -53,7 +53,7 @@ void Portada::display(sf::RenderWindow* window, std::string pathImage){
     width = 5;
     height = 2;
     actualAnimation = 0;
-    timeBetweenAnimations = 0.2;
+    timeBetweenAnimations = 0.25;
     timeSinceLastAnimation = -1.0;
 
     animationWidth = s.getGlobalBounds().width/width;
@@ -94,18 +94,19 @@ void Portada::display(sf::RenderWindow* window, std::string pathImage){
 
         timeSinceLastAnimation += deltaTime;
         if(timeSinceLastAnimation >= timeBetweenAnimations){
-            if (actualAnimation+2  >= width*height) {
-                //sleep(1);
-                break;
-            }
+            if (actualAnimation+2  >= width*height) timeSinceLastAnimation = -2;
+            if (actualAnimation+1  >= width*height) break;
+
             actualAnimation = (actualAnimation + 1);
-            timeSinceLastAnimation = 0.0;
+            if (actualAnimation == 1) timeSinceLastAnimation = -0.5;
+            else timeSinceLastAnimation = 0.0;
         }
 
 
 
         window->clear();
-        s.setTextureRect(sf::IntRect((actualAnimation%width)*animationWidth, (actualAnimation/width)*animationHeight, animationWidth, animationHeight));
+        if (actualAnimation+2  < width*height)
+            s.setTextureRect(sf::IntRect((actualAnimation%width)*animationWidth, (actualAnimation/width)*animationHeight, animationWidth, animationHeight));
         window->draw(s);
         window->display();
     }
