@@ -25,7 +25,7 @@ typedef std::complex<double> point;
 
 float radToAngle(float rad);
 float angleToRad(float angle);
-float speedToAngle(sf::Vector2f speed);
+float speedToRad(sf::Vector2f speed);
 
 double prodesc(point p1,point p2);
 double prodvec(point p1,point p2);

@@ -2,11 +2,14 @@
 
 Scene::Scene(int scrwidth, int scrheight, std::string title, int style)
     : Game(scrwidth,scrheight,title,style),
-      player(sf::Vector2f(200,200),sf::Vector2f(500,500))
+      player(sf::Vector2f(200,200),sf::Vector2f(200,200))
 {
     currentChameleon = nullptr;
     chameleons = std::vector<Chameleon>();
     chameleons.push_back(Chameleon(sf::Vector2f(600,200)));
+    chameleons.push_back(Chameleon(sf::Vector2f(200,200)));
+    chameleons.push_back(Chameleon(sf::Vector2f(400,20)));
+    chameleons.push_back(Chameleon(sf::Vector2f(100,600)));
 }
 
 Scene::~Scene() {}
@@ -38,13 +41,20 @@ void Scene::processEvents(){
                 break;
         }
     }
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) activeChameleon(sf::Vector2f(sf::Mouse::getPosition().x,sf::Mouse::getPosition().y));
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) activeChameleon(sf::Vector2f(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y));
     else releaseChameleon();
 }
 
 void Scene::activeChameleon(sf::Vector2f pos) {
     // TODO: elegir que chamaleon hay que elegir
-    currentChameleon = &chameleons[0];
+    if (currentChameleon != nullptr) return;
+    for (Chameleon &c : chameleons) {
+        if (getModule(pos,c.getPosition()) < c.getRadius()) {
+            currentChameleon = &c;
+            break;
+        }
+    }
+    if (currentChameleon == nullptr) return;
 
 
     currentChameleon->lick();

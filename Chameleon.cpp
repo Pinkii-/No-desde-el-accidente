@@ -5,8 +5,11 @@ Chameleon::Chameleon() {}
 
 Chameleon::Chameleon(sf::Vector2f pos) {
 
+    radius = 30; // Elegir el radio segund algo(?)
+
     licking = false;
-    sprite.setTexture(Resources::chameleon);
+    sprite.setRadius(radius);
+    sprite.setTexture(&Resources::chameleon);
     sprite.setOrigin(sprite.getGlobalBounds().width/2,sprite.getGlobalBounds().height/2);
     sprite.setPosition(pos);
 
@@ -21,7 +24,7 @@ void Chameleon::update(float deltaTime, sf::Vector2f playerPos) {
         tongue.setDest(playerPos);
         tongue.update(deltaTime);
     }
-    sprite.setRotation(getAngle(sprite.getPosition(),playerPos));
+    sprite.setRotation(getAngle(sprite.getPosition(),playerPos)+90);
 }
 
 void Chameleon::draw(sf::RenderWindow& window) {
@@ -42,6 +45,10 @@ void Chameleon::release() {
 
 sf::Vector2f Chameleon::getPosition() {
     return sprite.getPosition();
+}
+
+float Chameleon::getRadius() {
+    return radius;
 }
 
 

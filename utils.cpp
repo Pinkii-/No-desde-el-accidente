@@ -1,6 +1,6 @@
 #include "utils.hpp"
 
-float speedToAngle(sf::Vector2f speed) {
+float speedToRad(sf::Vector2f speed) {
     return atan2(speed.y,speed.x);
 }
 

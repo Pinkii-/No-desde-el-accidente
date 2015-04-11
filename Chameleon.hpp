@@ -15,11 +15,13 @@ public:
     void release();
 
     sf::Vector2f getPosition();
+    float getRadius();
 private:
-    sf::Sprite sprite;
+    sf::CircleShape sprite;
     Tongue tongue;
     float angle;
     bool licking;
+    float radius;
 };
 
 #endif // CHAMELEON_HPP
