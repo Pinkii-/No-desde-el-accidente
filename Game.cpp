@@ -6,15 +6,16 @@ Game::Game(sf::RenderWindow *w) {
 
 Game::~Game() {}
 
-void Game::run() {
+bool Game::run() {
     sf::Clock c;
     srand(time(0));
     while(window->isOpen()) {
         float deltaTime = c.restart().asSeconds();
         processEvents();
-        update(deltaTime);
+        if (update(deltaTime)) return true;
         render();
     }
+    return false;
 }
 
 void Game::render() {

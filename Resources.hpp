@@ -8,6 +8,7 @@ public:
     static sf::Texture ship;
     static sf::Texture chameleon;
     static sf::Texture tongue;
+    static sf::Texture goal;
 
     static sf::Font font;
     static sf::SoundBuffer sound;

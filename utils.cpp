@@ -35,3 +35,8 @@ double prodesc(point p1,point p2) {
 double prodvec(point p1,point p2) {
   return imag(conj(p1)*p2);
 }
+
+
+bool isCollisioning(sf::Vector2f point1, float radius1, sf::Vector2f point2, float radius2) {
+    return (getModule(point1,point2) < radius1+radius2);
+}

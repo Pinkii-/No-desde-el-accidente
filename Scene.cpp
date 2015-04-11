@@ -1,12 +1,16 @@
 #include "Scene.hpp"
 
-Scene::Scene(sf::RenderWindow* w)
+Scene::Scene(sf::RenderWindow* w, std::string path)
       : Game(w)
 {
+
+    finishLvl = false;
+    success = false;
+
     goal.setPosition(900,150);
 
     player.setSpeed(sf::Vector2f(200,200));
-    player.setPosition(sf::Vector2f(200,200));
+    player.setPosition(sf::Vector2f(400,400));
 
     currentChameleon = nullptr;
     chameleons = std::vector<Chameleon>();
@@ -14,16 +18,25 @@ Scene::Scene(sf::RenderWindow* w)
     chameleons.push_back(Chameleon(sf::Vector2f(200,200)));
     chameleons.push_back(Chameleon(sf::Vector2f(400,20)));
     chameleons.push_back(Chameleon(sf::Vector2f(100,600)));
+    chameleons.push_back(Chameleon(sf::Vector2f(1000,800)));
 
+    std::cout << path << std::endl;
 
 }
 
 Scene::~Scene() {}
 
-void Scene::update(float deltaTime){
+bool Scene::update(float deltaTime){
     player.update(deltaTime);
     for (Chameleon &c : chameleons) c.update(deltaTime, player.getPosition());
     goal.update(deltaTime);
+
+    lookCollisions();
+    return finishLvl;
+}
+
+bool Scene::getSuccess() const {
+    return success;
 }
 
 void Scene::draw(){
@@ -53,6 +66,14 @@ void Scene::processEvents(){
     else releaseChameleon();
 }
 
+void Scene::releaseChameleon() {
+    if (currentChameleon == nullptr) return;
+
+    currentChameleon->release();
+    currentChameleon = nullptr;
+    player.setLicked(false,sf::Vector2f(0,0));
+}
+
 void Scene::activeChameleon(sf::Vector2f pos) {
     // TODO: elegir que chamaleon hay que elegir
     if (currentChameleon != nullptr) return;
@@ -69,11 +90,21 @@ void Scene::activeChameleon(sf::Vector2f pos) {
     player.setLicked(true,currentChameleon->getPosition());
 }
 
-void Scene::releaseChameleon() {
-    if (currentChameleon == nullptr) return;
+void Scene::lookCollisions() {
+    sf::CircleShape playerBounds = player.getBox();
+    for (Chameleon& c : chameleons) {
+        if (isCollisioning(playerBounds.getPosition(),playerBounds.getRadius(),c.getPosition(),c.getRadius())) {
+            //WOPS HA CHOCADO. DO THINGS
+            finishLvl = true;
+            success = false;
 
-    currentChameleon->release();
-    currentChameleon = nullptr;
-    player.setLicked(false,sf::Vector2f(0,0));
+            return;
+        }
+    }
+    if (isCollisioning(playerBounds.getPosition(),playerBounds.getRadius(),goal.getPosition(),goal.getSize()/2)) {
+        finishLvl = true;
+        success = true;
+    }
 }
+
 
