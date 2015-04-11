@@ -1,3 +1,4 @@
+#include <SFML/Audio.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -15,15 +16,15 @@ class Frases {
 
 private:
 
-  sf::Font font;
-  vector<string> frases;
   float tiempo;
+  sf::Font font;
   float velocidad;
+  vector<string> frases;
 
   float computaEscala(float h,float despobjeto);
 
   void dibujafrase(int centropantalla,int hobservador,int despobservador,
-		   int numfrase,int desp,int hcaracter,string &frase,sf::RenderWindow &window);
+                   int numfrase,int desp,int hcaracter,string &frase,sf::RenderWindow &window);
 
 public:
 

@@ -10,6 +10,13 @@ int main() {
             ,"Space Tongue" // Title of the window
             ,sf::Style::Fullscreen);
     Resources::load();
+
+    sf::Music music;
+    if (!music.openFromFile("res/starwars.ogg")) std::cout << "fail on music load" << std::endl; // error
+    music.play();
+    sf::Time t1 = sf::seconds(21);
+    music.setPlayingOffset(t1);
+
     Portada portada;
     portada.display(&window, "res/portada.png");
 
@@ -19,6 +26,8 @@ int main() {
     LevelManager lvlMng;
 
     Menu menu;
+
+    music.stop();
 
     // Aqui tendrá que ir el menú {
     while (true) {

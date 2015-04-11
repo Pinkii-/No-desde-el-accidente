@@ -48,8 +48,8 @@ void Frases::dibujafrase(int centropantalla,int hobservador,int despobservador,
 }
 
 
-Frases::Frases()
-{
+Frases::Frases() {
+
     tiempo=0;
     velocidad=50;
     if (!font.loadFromFile("res/font.otf")) {
@@ -93,4 +93,5 @@ void Frases::run(sf::RenderWindow & window)
         dibujafrases(window.getSize().x/2.0,window.getSize().y+200,-100,20,window,deltaTime);
         window.display();
     }
+
 }
