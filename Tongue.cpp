@@ -30,6 +30,10 @@ void Tongue::setDest(const sf::Vector2f value) {
     dest = value;
 }
 
+void Tongue::setFatherRadius(float value) {
+    fatherRadius = value;
+}
+
 void Tongue::update(float deltatime) {
     if(timeSinceTriggered < animationTime) timeSinceTriggered += deltatime;
 }
@@ -44,7 +48,15 @@ float Tongue::getModule(const sf::Vector2f &orig, const sf::Vector2f &des) {
 
 void Tongue::draw(sf::RenderWindow &window) {
 
-    float tongueLength = (getModule(orig,dest)/sprite.getLocalBounds().width);
+    sf::Vector2f desp = dest-orig;
+    float moduloDesp = getModule(orig,dest);
+    float constante = fatherRadius*0.8;
+    desp.x *= constante/moduloDesp;
+    desp.y *= constante/moduloDesp;
+
+    sf::Vector2f newOrig = orig + desp;
+
+    float tongueLength = (getModule(newOrig,dest)/sprite.getLocalBounds().width);
     float tongueWidth = size/sprite.getLocalBounds().height;
     if(timeSinceTriggered < animationTime) {
         sprite.setScale( tongueLength * timeSinceTriggered/animationTime,
@@ -53,8 +65,8 @@ void Tongue::draw(sf::RenderWindow &window) {
     else sprite.setScale(tongueLength, tongueWidth);
 
     sprite.setOrigin(0, sprite.getLocalBounds().height/2);
-    sprite.setPosition(orig);
-    sprite.setRotation(getAngle(orig,dest));
+    sprite.setPosition(newOrig);
+    sprite.setRotation(getAngle(newOrig,dest));
     window.draw(sprite);
 
 }

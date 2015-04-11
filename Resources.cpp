@@ -2,6 +2,7 @@
 
 sf::Texture     Resources::ship;
 sf::Texture     Resources::chameleon;
+sf::Texture     Resources::chameleon2;
 sf::Texture     Resources::tongue;
 sf::Texture     Resources::goal;
 
@@ -12,6 +13,7 @@ sf::Music       Resources::music;
 void Resources::load() {
     ship.loadFromFile("res/ship.png");
     chameleon.loadFromFile("res/chameleon.png");
+    chameleon2.loadFromFile("res/chameleon2.png");
     tongue.loadFromFile("res/tongue.png");
     goal.loadFromFile("res/tongue2.png");
     /*

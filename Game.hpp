@@ -13,6 +13,7 @@ public:
     virtual void processEvents() = 0;
 protected:
     sf::RenderWindow *window;
+    bool goToMenu;
 private:
     void render();
 

@@ -14,6 +14,7 @@ Chameleon::Chameleon(sf::Vector2f pos) {
     sprite.setPosition(pos);
 
     tongue.setOrig(pos);
+    tongue.setFatherRadius(radius);
 
 
     //std::cout << "chamaleon" << std::endl;
@@ -28,19 +29,23 @@ void Chameleon::update(float deltaTime, sf::Vector2f playerPos) {
 }
 
 void Chameleon::draw(sf::RenderWindow& window) {
-    if (licking) tongue.draw(window);
     window.draw(sprite);
+    if (licking) tongue.draw(window);
 }
 
 void Chameleon::lick() {
     if (!licking) {
+        sprite.setTexture(&Resources::chameleon2);
         licking = true;
         tongue.reset();
     }
 }
 
 void Chameleon::release() {
-    licking = false;
+    if (licking) {
+        sprite.setTexture(&Resources::chameleon);
+        licking = false;
+    }
 }
 
 sf::Vector2f Chameleon::getPosition() {

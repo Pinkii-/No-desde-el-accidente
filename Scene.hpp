@@ -4,6 +4,7 @@
 #include "Game.hpp"
 #include "Player.hpp"
 #include "Chameleon.hpp"
+#include "IngameMenu.hpp"
 
 class Scene : public Game {
 public:
@@ -26,6 +27,8 @@ private:
     // lvl aids
     bool finishLvl; // Said if the level has finish (restart or go to the next lvl, menu, etc);
     bool success; // if you have pass the lvl or not
+    IngameMenu iMenu;
+    bool menuIsActive;
 
     void releaseChameleon();
     void activeChameleon(sf::Vector2f pos);
