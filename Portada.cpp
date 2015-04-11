@@ -95,7 +95,7 @@ void Portada::display(sf::RenderWindow* window, std::string pathImage){
         timeSinceLastAnimation += deltaTime;
         if(timeSinceLastAnimation >= timeBetweenAnimations){
             if (actualAnimation+2  >= width*height) {
-                sleep(0.7);
+                //sleep(1);
                 break;
             }
             actualAnimation = (actualAnimation + 1);

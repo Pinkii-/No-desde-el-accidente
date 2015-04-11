@@ -3,6 +3,7 @@
 #include "Portada.hpp"
 #include "readlevels.hpp"
 #include <Resources.hpp>
+#include "frases.hpp"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(sf::VideoMode::getFullscreenModes()[0].width,sf::VideoMode::getFullscreenModes()[0].height) // Size of the window <width,height>
@@ -11,6 +12,9 @@ int main() {
     Resources::load();
     Portada portada;
     portada.display(&window, "res/portada.png");
+
+    Frases frases;
+    frases.run(window);
 
     LevelManager lvlMng;
 

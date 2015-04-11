@@ -20,7 +20,8 @@ SOURCES += main.cpp \
     IngameMenu.cpp \
     Menu.cpp \
     Button.cpp \
-    readlevels.cpp
+    readlevels.cpp \
+    frases.cpp
 
 HEADERS += \
     Game.hpp \
@@ -35,4 +36,5 @@ HEADERS += \
     IngameMenu.hpp \
     Menu.hpp \
     Button.hpp \
-    readlevels.hpp
+    readlevels.hpp \
+    frases.hpp

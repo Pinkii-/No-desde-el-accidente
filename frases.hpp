@@ -31,4 +31,6 @@ public:
 
   void dibujafrases(int centropantalla,int hobservador,int despobservador,int hcaracter,
 		    sf::RenderWindow &window,float delta);
+
+  void run(sf::RenderWindow & window);
 };
