@@ -1,5 +1,12 @@
 #include "utils.hpp"
 
+int my_stoi(std::string s) {
+  int x=0;
+  for (int i=0;i<int(s.size());i++)
+    x=10*x+s[i]-'0';
+  return x;
+}
+
 float speedToRad(sf::Vector2f speed) {
     return atan2(speed.y,speed.x);
 }

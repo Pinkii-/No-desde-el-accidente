@@ -23,6 +23,7 @@
 
 typedef std::complex<double> point;
 
+int my_stoi(std::string s);
 float radToAngle(float rad);
 float angleToRad(float angle);
 float speedToRad(sf::Vector2f speed);
