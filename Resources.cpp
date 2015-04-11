@@ -10,6 +10,7 @@ sf::Texture     Resources::goal;
 sf::Font        Resources::font;
 
 sf::SoundBuffer Resources::buffer;
+sf::SoundBuffer Resources::expbuf;
 sf::Music       Resources::music;
 
 void Resources::load() {
@@ -25,4 +26,5 @@ void Resources::load() {
     sound.loadFromFile("resources/sound.wav"); //sound must be a short audio
     music.openFromFile("resources/music.ogg"); //Im not sure if this a good way to do that :/ */
     buffer.loadFromFile("res/Cobra2.ogg");
+    expbuf.loadFromFile("res/explos.ogg");
 }
