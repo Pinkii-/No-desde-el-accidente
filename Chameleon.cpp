@@ -16,7 +16,7 @@ Chameleon::Chameleon(sf::Vector2f pos) {
     tongue.setOrig(pos);
 
 
-    std::cout << "chamaleon" << std::endl;
+    //std::cout << "chamaleon" << std::endl;
 }
 
 void Chameleon::update(float deltaTime, sf::Vector2f playerPos) {
