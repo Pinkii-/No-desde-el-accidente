@@ -14,7 +14,7 @@ public:
     //Setters
     void reset();//Basicaly sets time to 0 ;
     void setOrig(const sf::Vector2f &value);
-    void setDest(const sf::Vector2f &value);
+    void setDest(const sf::Vector2f value);
 
     //Game Functions
     void update(float deltatime);
@@ -22,7 +22,7 @@ public:
 
     //Utility Functions
     float getAngle(sf::Vector2f &orig, sf::Vector2f &des);
-    float getModule(sf::Vector2f &orig, sf::Vector2f &des);
+    float getModule(const sf::Vector2f &orig, const sf::Vector2f &des);
 
 private:
 
@@ -37,7 +37,6 @@ private:
     //Variables
     float size;
     float angle;
-    float animationTime;
     float timeSinceTriggered;
 
 

@@ -36,4 +36,6 @@ sf::Vector2f point2vector(point p);
 float getAngle(const sf::Vector2f &orig, const sf::Vector2f &des);
 float getModule(const sf::Vector2f &orig, const sf::Vector2f &des);
 
+const float animationTime = 0.2; //HARDCODED ALERT 2 the time needed to reach full length
+
 #endif // UTILS_HPP

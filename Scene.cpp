@@ -2,23 +2,23 @@
 
 Scene::Scene(int scrwidth, int scrheight, std::string title, int style)
     : Game(scrwidth,scrheight,title,style),
-      player(sf::Vector2f(200,200),sf::Vector2f(50,50))
+      player(sf::Vector2f(200,200),sf::Vector2f(500,500))
 {
     currentChameleon = nullptr;
     chameleons = std::vector<Chameleon>();
-    chameleons.push_back(Chameleon(sf::Vector2f(400,400)));
+    chameleons.push_back(Chameleon(sf::Vector2f(600,200)));
 }
 
 Scene::~Scene() {}
 
 void Scene::update(float deltaTime){
     player.update(deltaTime);
-    for (Chameleon c : chameleons) c.update(deltaTime, player.getPosition());
+    for (Chameleon &c : chameleons) c.update(deltaTime, player.getPosition());
 }
 
 void Scene::draw(){
     player.draw(window);
-    for (Chameleon c : chameleons) c.draw(window);
+    for (Chameleon &c : chameleons) c.draw(window);
 }
 
 void Scene::processEvents(){
@@ -42,6 +42,7 @@ void Scene::activeChameleon(sf::Vector2f pos) {
 
 
     currentChameleon->lick();
+    player.setLicked(true,currentChameleon->getPosition());
 }
 
 void Scene::releaseChameleon() {
@@ -49,5 +50,6 @@ void Scene::releaseChameleon() {
 
     currentChameleon->release();
     currentChameleon = nullptr;
+    player.setLicked(false,sf::Vector2f(0,0));
 }
 

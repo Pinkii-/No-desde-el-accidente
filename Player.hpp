@@ -11,6 +11,7 @@ public:
     void draw(sf::RenderWindow &window);
 
     sf::Vector2f getPosition();
+    void setLicked(bool b, sf::Vector2f cPos);
 
 private:
     float angle;

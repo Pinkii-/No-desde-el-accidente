@@ -13,6 +13,8 @@ public:
 
     void lick();
     void release();
+
+    sf::Vector2f getPosition();
 private:
     sf::Sprite sprite;
     Tongue tongue;

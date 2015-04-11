@@ -8,6 +8,7 @@ Player::Player(sf::Vector2f pos, sf::Vector2f speed) :
     sprite.setTexture(Resources::ship);
     sprite.setOrigin(sprite.getGlobalBounds().width/2,sprite.getGlobalBounds().height/2);
     angle = speedToAngle(speed);
+    licked = tensioning = false;
 }
 
 void Player::update(float deltaTime) {
@@ -22,6 +23,12 @@ void Player::draw(sf::RenderWindow &window) {
 
 sf::Vector2f Player::getPosition() {
     return pos;
+}
+
+void Player::setLicked(bool b, sf::Vector2f cPos) {
+    camaleonPos = cPos;
+    licked = b;
+    if (!b) tensioning = false;
 }
 
 //Private functions
