@@ -41,6 +41,7 @@ int main() {
             Scene mygame(&window, lvlMng.getLevel(currentLvl)); // Style of the window
             playing = mygame.run();
             if (mygame.getSuccess()) {
+                system("echo > res/lastlevel.txt");
                 currentLvl += 1;
                 if (currentLvl >= lvlMng.getNumLevels()) break;
             }
