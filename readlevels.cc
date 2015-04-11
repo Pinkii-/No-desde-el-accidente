@@ -7,6 +7,13 @@
 
 using namespace std;
 
+int stoi(string s) {
+  int x=0;
+  for (int i=0;i<int(s.size());i++)
+    x=10*x+s[i]-'0';
+  return x;
+}
+
 struct Level {
   Vector2f inicio,velocidad,final;
   vector<Vector2f> camaleon;
