@@ -10,6 +10,8 @@
 #include <vector>
 #include <cstdlib>
 
+#include <Background.hpp>
+
 using namespace std;
 
 class Frases {
@@ -26,9 +28,11 @@ private:
   void dibujafrase(int centropantalla,int hobservador,int despobservador,
                    int numfrase,int desp,int hcaracter,string &frase,sf::RenderWindow &window);
 
+  Background background;
+
 public:
 
-  Frases();
+  Frases(sf::RenderWindow &window);
 
   void dibujafrases(int centropantalla,int hobservador,int despobservador,int hcaracter,
 		    sf::RenderWindow &window,float delta);

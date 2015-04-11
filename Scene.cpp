@@ -2,7 +2,8 @@
 
 Scene::Scene(sf::RenderWindow* w, Level lvl)
     : Game(w),
-      iMenu(sf::Vector2f(w->getSize().x/2,w->getSize().y/2))
+      iMenu(sf::Vector2f(w->getSize().x/2,w->getSize().y/2)),
+      background(*w)
 {
 
     sound.setBuffer(Resources::buffer);
@@ -31,6 +32,7 @@ Scene::Scene(sf::RenderWindow* w, Level lvl)
 Scene::~Scene() {}
 
 bool Scene::update(float deltaTime){
+    background.update(deltaTime);
     if (menuIsActive) return false;
     if (!player.isAlive()) {
         timeFromDeath += deltaTime;
@@ -48,6 +50,7 @@ bool Scene::update(float deltaTime){
 }
 
 void Scene::draw(){
+    background.draw(*window);
     goal.draw(*window);
     player.draw(*window);
     for (Chameleon &c : chameleons) c.draw(*window);

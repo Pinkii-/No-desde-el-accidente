@@ -20,7 +20,7 @@ int main() {
     Portada portada;
     portada.display(&window, "res/portada.png");
 
-    Frases frases;
+    Frases frases(window);
     frases.run(window);
 
     LevelManager lvlMng;
