@@ -21,6 +21,8 @@
 #include <sstream>
 #include <iostream>
 
+#include <unistd.h>
+
 typedef std::complex<double> point;
 
 int my_stoi(std::string s);
