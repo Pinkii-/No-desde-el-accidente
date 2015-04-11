@@ -68,7 +68,7 @@ void Frases::dibujafrases(int centropantalla,int hobservador,int despobservador,
                           sf::RenderWindow &window,float delta)
 {
     tiempo+=delta;
-    int desp=200+tiempo*velocidad;
+    int desp=400+tiempo*velocidad;
     for (int i=0;i<int(frases.size());i++)
         dibujafrase(centropantalla,hobservador,despobservador,i,desp,hcaracter,frases[i],window);
 }
@@ -88,7 +88,7 @@ void Frases::run(sf::RenderWindow & window)
             }
         }
         window.clear();
-        dibujafrases(window.getSize().x/2.0,window.getSize().y+30,-100,20,window,deltaTime);
+        dibujafrases(window.getSize().x/2.0,window.getSize().y+200,-100,20,window,deltaTime);
         window.display();
     }
 }
