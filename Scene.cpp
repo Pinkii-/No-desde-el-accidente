@@ -28,6 +28,12 @@ void Scene::processEvents(){
             case sf::Event::Closed:
                 window.close();
                 break;
+            case  sf::Event::KeyPressed:
+                //Close key
+                if (event.key.code == sf::Keyboard::Escape) {
+                    window.close();
+                }
+                break;
             default:
                 break;
         }

@@ -13,10 +13,17 @@ public:
     sf::Vector2f getPosition();
 
 private:
-    float angle;
+    //Player properties
     sf::Vector2f pos;
     sf::Sprite sprite;
     sf::Vector2f speed;
+
+    float angle;
+    float spriteTimer;
+    float spriteWidth;
+    float spriteHeight;
+    float spriteAnimation;
+    float timeSinceNextSprite;
 
     // Camaleon related things
     bool licked;
