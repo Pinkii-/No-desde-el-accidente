@@ -1,6 +1,7 @@
-#include <Resources.hpp>
+#include "Menu.hpp"
 #include <Scene.hpp>
 #include "Portada.hpp"
+#include <Resources.hpp>
 
 std::string levels[] = {
     "level1",
@@ -15,8 +16,9 @@ int main() {
     Portada portada;
     portada.display(&window, "res/portada.png");
 
+    Menu menu;
     // Aqui tendrá que ir el menú {
-    int currentLvl = 0;
+    int currentLvl = menu.run(&window);
     bool playing = true;
     while (playing) {
         Scene mygame(&window,levels[currentLvl]+".txt"); // Style of the window
