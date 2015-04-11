@@ -5,11 +5,43 @@ camaleon 300 400
 camaleon 800 200
 camaleon 500 500
 
-// empezamos un nuevo nivel
 nuevonivel
 inicio 100 100
-final 1000 560
-velocidad 1000 1000
-camaleon 300 400
-camaleon 800 200
+final 1500 700
+velocidad 100 100
+camaleon 300 300
+camaleon 800 300
+camaleon 120 300
+camaleon 300 700
+camaleon 800 700
+camaleon 120 700
+
+nuevonivel
+inicio 100 100
+final 100 900
+velocidad 100 0
+camaleon 100 500
+camaleon 300 500
 camaleon 500 500
+camaleon 700 500
+camaleon 900 500
+camaleon 1200 500
+
+
+nuevonivel
+inicio 100 100
+final 100 500
+velocidad 100 0
+camaleon 100 300
+camaleon 300 300
+camaleon 500 300
+camaleon 700 300
+camaleon 900 300
+camaleon 1200 300
+camaleon 100 900
+camaleon 300 900
+camaleon 500 900
+camaleon 700 900
+camaleon 900 900
+camaleon 1200 900
+
