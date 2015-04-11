@@ -10,7 +10,7 @@ int main() {
             ,sf::Style::Fullscreen);
     Resources::load();
     Portada portada;
-    portada.display(&window, "res/ship.png");
+    portada.display(&window, "res/portada.png");
 
     LevelManager lvlMng;
 

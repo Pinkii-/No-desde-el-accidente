@@ -13,9 +13,12 @@ private:
 
     int qttyAnimations;
     int actualAnimation;
-    float animationSize;
+    int width;
+    int height;
+    float animationWidth;
+    float animationHeight;
     float timeBetweenAnimations;
-    float timeSinceLastAnimaiton;
+    float timeSinceLastAnimation;
 
 public:
     Portada();
