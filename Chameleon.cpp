@@ -11,7 +11,10 @@ Chameleon::Chameleon(sf::Vector2f pos) : licking(false){
 }
 
 void Chameleon::update(float deltaTime, sf::Vector2f playerPos) {
-    if (licking) tongue.update(deltaTime);
+    if (licking) {
+        tongue.setDest(playerPos);
+        tongue.update(deltaTime);
+    }
     sprite.setRotation(getAngle(sprite.getPosition(),playerPos));
 }
 
@@ -19,5 +22,15 @@ void Chameleon::draw(sf::RenderWindow& window) {
     if (licking) tongue.draw(window);
     window.draw(sprite);
 }
+
+void Chameleon::lick() {
+    licking = true;
+    tongue.reset();
+}
+
+void Chameleon::release() {
+    licking = false;
+}
+
 
 

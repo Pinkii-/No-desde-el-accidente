@@ -14,6 +14,10 @@ public:
 private:
     Player player;
     std::vector<Chameleon> chameleons;
+    Chameleon *currentChameleon;
+
+    void activeChameleon(sf::Vector2f pos);
+    void releaseChameleon();
 };
 
 #endif // SCENE_H

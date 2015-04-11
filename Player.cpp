@@ -8,9 +8,6 @@ Player::Player(sf::Vector2f pos, sf::Vector2f speed) :
     sprite.setTexture(Resources::ship);
     sprite.setOrigin(sprite.getGlobalBounds().width/2,sprite.getGlobalBounds().height/2);
     angle = speedToAngle(speed);
-
-
-    licked = true;
 }
 
 void Player::update(float deltaTime) {

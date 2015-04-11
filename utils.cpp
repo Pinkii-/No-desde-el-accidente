@@ -4,11 +4,11 @@ float speedToAngle(sf::Vector2f speed) {
     return atan2(speed.y,speed.x);
 }
 
-float getAngle(sf::Vector2f &orig, sf::Vector2f &des) {
+float getAngle(const sf::Vector2f &orig,const sf::Vector2f &des) {
     return std::atan2(des.y - orig.y, des.x - orig.x)*180/(M_PI);
 }
 
-float getModule(sf::Vector2f &orig, sf::Vector2f &des) {
+float getModule(const sf::Vector2f &orig, const sf::Vector2f &des) {
     return std::sqrt(std::pow(std::abs(des.x-orig.x), 2) + std::pow(std::abs(des.y-orig.y), 2));
 }
 
