@@ -32,7 +32,7 @@ void Frases::dibujafrase(int centropantalla,int hobservador,int despobservador,
   sf::Text text;
   text.setString(frase);
   text.setFont(font);
-  
+  text.setColor(sf::Color::Yellow);
   
   float hfrase=escala*despobjeto;
   float midahfrase=escalacaracter*hcaracter;
@@ -76,7 +76,7 @@ void Frases::dibujafrases(int centropantalla,int hobservador,int despobservador,
 void Frases::run(sf::RenderWindow & window)
 {
     sf::Clock c;
-    while(window.isOpen() && tiempo < 15) {
+    while(window.isOpen() && tiempo < 25) {
         float deltaTime = c.restart().asSeconds();
         sf::Event event;
         while(window.pollEvent(event)) {

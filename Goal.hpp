@@ -10,7 +10,7 @@ public:
     Goal();
 
     //Game Functions
-    void update(float deltatime);
+    void update(float deltatime, sf::Vector2f playerPos);
     void draw(sf::RenderWindow &window);
 
     //Getters
@@ -22,7 +22,7 @@ public:
     void setPosition(float valueX, float valueY);
 
 private:
-
+    float size;
     bool  reached;
 
     sf::Sprite sprite;

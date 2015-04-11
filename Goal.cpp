@@ -8,18 +8,22 @@ Goal::Goal(){
     timeBetweenAnimations = 0.2;
     timeSinceLastAnimaiton = 0.0;
 
+    size = 100;
+
     sprite.setTexture(Resources::goal);
+    sprite.setOrigin(sprite.getGlobalBounds().width/2,sprite.getGlobalBounds().height/2);
     animationSize = sprite.getGlobalBounds().width/qttyAnimations;
-    sprite.setScale(50/sprite.getLocalBounds().width, 50/sprite.getLocalBounds().height);
+    sprite.setScale(size/sprite.getLocalBounds().width, size/sprite.getLocalBounds().height);
 
 }
 
-void Goal::update(float deltatime) {
+void Goal::update(float deltatime, sf::Vector2f playerPos) {
     timeSinceLastAnimaiton += deltatime;
     if(timeSinceLastAnimaiton >= timeBetweenAnimations){
         actualAnimation = (actualAnimation + 1) % qttyAnimations;
         timeSinceLastAnimaiton = 0.0;
     }
+    sprite.setRotation(getAngle(sprite.getPosition(),playerPos)+180);
 }
 
 void Goal::draw(sf::RenderWindow& window) {
@@ -32,7 +36,7 @@ sf::Vector2f Goal::getPosition() const {
 }
 
 float Goal::getSize() const {
-    return 50;
+    return size;
 }
 
 void Goal::setPosition(const sf::Vector2f &value) {
