@@ -25,24 +25,26 @@ float Frases::computaEscala(float h,float despobjeto)
 void Frases::dibujafrase(int centropantalla,int hobservador,int despobservador,
                          int numfrase,int desp,int hcaracter,string &frase,sf::RenderWindow &window)
 {
+  float factor=0.5;
 
-    float despobjeto=desp-(hcaracter+40)*numfrase;
-    float escala=computaEscala(float(hobservador),despobjeto-despobservador);
-    float escalacaracter=computaEscala(float(hobservador),40+despobjeto-despobservador);
-    sf::Text text;
-    text.setString(frase);
-    text.setFont(font);
+  float despobjeto=desp-(hcaracter+40)*numfrase;
+  hobservador-=despobjeto*factor;
+  float escala=computaEscala(float(hobservador),despobjeto-despobservador);
+  float escalacaracter=computaEscala(float(hobservador),40+despobjeto-despobservador);
+  sf::Text text;
+  text.setString(frase);
+  text.setFont(font);
+  
+  
+  float hfrase=escala*despobjeto;
+  float midahfrase=escalacaracter*hcaracter;
+  text.setOrigin(sf::Vector2f(text.getLocalBounds().width/2.0,text.getLocalBounds().height/2.0));
+  text.setScale(sf::Vector2f(midahfrase/text.getLocalBounds().height,midahfrase/text.getLocalBounds().height));
+  text.setPosition(sf::Vector2f(float(centropantalla),hobservador-hfrase));
 
-
-    float hfrase=escala*despobjeto;
-    float midahfrase=escalacaracter*hcaracter;
-    text.setOrigin(sf::Vector2f(text.getLocalBounds().width/2.0,text.getLocalBounds().height/2.0));
-    text.setScale(sf::Vector2f(midahfrase/text.getLocalBounds().height,midahfrase/text.getLocalBounds().height));
-    text.setPosition(sf::Vector2f(float(centropantalla),hobservador-hfrase));
-
-    //text.setPosition(sf::Vector2f(float(centropantalla),0));
-
-    window.draw(text);
+  //text.setPosition(sf::Vector2f(float(centropantalla),0));
+  
+  window.draw(text);
 }
 
 
