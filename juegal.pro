@@ -21,7 +21,8 @@ SOURCES += main.cpp \
     Menu.cpp \
     Button.cpp \
     readlevels.cpp \
-    frases.cpp
+    frases.cpp \
+    Background.cpp
 
 HEADERS += \
     Game.hpp \
@@ -37,4 +38,5 @@ HEADERS += \
     Menu.hpp \
     Button.hpp \
     readlevels.hpp \
-    frases.hpp
+    frases.hpp \
+    Background.hpp
