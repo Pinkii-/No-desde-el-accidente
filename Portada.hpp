@@ -11,11 +11,18 @@ private:
 //    sf::Button b;
     bool open;
 
+    int qttyAnimations;
+    int actualAnimation;
+    float animationSize;
+    float timeBetweenAnimations;
+    float timeSinceLastAnimaiton;
+
 public:
     Portada();
     ~Portada();
     void display(sf::RenderWindow* window);
     void display(sf::RenderWindow* window, std::string pathImage);
+
 
 };
 
