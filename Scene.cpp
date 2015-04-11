@@ -41,7 +41,7 @@ bool Scene::update(float deltaTime){
     }
     player.update(deltaTime);
     for (Chameleon &c : chameleons) c.update(deltaTime, player.getPosition());
-    goal.update(deltaTime);
+    goal.update(deltaTime,player.getPosition());
 
     lookCollisions();
     return finishLvl;
