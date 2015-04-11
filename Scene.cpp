@@ -4,6 +4,9 @@ Scene::Scene(sf::RenderWindow* w, Level lvl)
     : Game(w),
       iMenu(sf::Vector2f(w->getSize().x/2,w->getSize().y/2))
 {
+
+    sound.setBuffer(Resources::buffer);
+
     finishLvl = false;
     success = false;
     menuIsActive = false;
@@ -97,6 +100,8 @@ void Scene::activeChameleon(sf::Vector2f pos) {
     for (Chameleon &c : chameleons) {
         if (getModule(pos,c.getPosition()) < c.getRadius()) {
             currentChameleon = &c;
+            sound.play();
+            sound.setVolume(100);
             break;
         }
     }
