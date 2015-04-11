@@ -24,6 +24,8 @@ public:
     void setPosition(sf::Vector2f newPos);
     void setLicked(bool b, sf::Vector2f cPos);
 
+    sf::CircleShape getBox();
+
 
 private:
     //Player properties

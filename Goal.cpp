@@ -1,4 +1,5 @@
 #include "Goal.hpp"
+#include "Resources.hpp"
 
 Goal::Goal(){
     qttyAnimations = 1; //set here the qtty
@@ -7,8 +8,7 @@ Goal::Goal(){
     timeBetweenAnimations = 0.2;
     timeSinceLastAnimaiton = 0.0;
 
-    if(!texture.loadFromFile("res/goal.png")) std::cout << "goal texture not loaded" << std::endl;
-    sprite.setTexture(texture);
+    sprite.setTexture(Resources::goal);
     animationSize = sprite.getGlobalBounds().width/qttyAnimations;
     sprite.setScale(50/sprite.getLocalBounds().width, 50/sprite.getLocalBounds().height);
 
@@ -29,6 +29,10 @@ void Goal::draw(sf::RenderWindow& window) {
 
 sf::Vector2f Goal::getPosition() const {
     return position;
+}
+
+float Goal::getSize() const {
+    return animationSize;
 }
 
 void Goal::setPosition(const sf::Vector2f &value) {

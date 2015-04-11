@@ -36,6 +36,9 @@ sf::Vector2f point2vector(point p);
 float getAngle(const sf::Vector2f &orig, const sf::Vector2f &des);
 float getModule(const sf::Vector2f &orig, const sf::Vector2f &des);
 
+bool isCollisioning(sf::Vector2f point1, float radius1, sf::Vector2f point2, float radius2);
+
 const float animationTime = 0.2; //HARDCODED ALERT 2 the time needed to reach full length
+const float scalePlayer = 0.5;
 
 #endif // UTILS_HPP
