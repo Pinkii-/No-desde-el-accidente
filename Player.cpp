@@ -4,6 +4,7 @@
 Player::Player() :
     pos(sf::Vector2f(0,0)), speed(sf::Vector2f(0,0))
 {
+    expl.setBuffer(Resources::expbuf);
     alive = true;
     endReached = false;
     spriteTimer = 0.0;
@@ -56,7 +57,11 @@ void Player::update(float deltaTime) {
 }
 
 void Player::draw(sf::RenderWindow &window) {
-    if (!alive) return;
+    if (!alive) {
+        expl.play();
+        expl.setVolume(100);
+        return;
+    }
     sprite.setTextureRect(sf::IntRect(spriteAnimation*spriteWidth, 0, spriteWidth, spriteHeight));
     sprite.setRotation(angle);sprite.setScale(sf::Vector2f(scalePlayer,scalePlayer));
     window.draw(sprite);

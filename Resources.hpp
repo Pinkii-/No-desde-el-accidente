@@ -15,6 +15,7 @@ public:
 
     static sf::Font font;
     static sf::SoundBuffer buffer;
+    static sf::SoundBuffer expbuf;
     static sf::Music music;
 };
 

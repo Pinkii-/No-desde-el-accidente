@@ -31,9 +31,11 @@ public:
 
 private:
     //Player properties
+    sf::Sound expl;
     sf::Vector2f pos;
     sf::Sprite sprite;
     sf::Vector2f speed;
+
 
     float angle;
     bool endReached;
