@@ -1,6 +1,6 @@
 #include "utils.hpp"
 
-float speedToAngle(sf::Vector2f speed) {
+float speedToRad(sf::Vector2f speed) {
     return atan2(speed.y,speed.x);
 }
 
@@ -13,11 +13,11 @@ float getModule(const sf::Vector2f &orig, const sf::Vector2f &des) {
 }
 
 float radToAngle(float rad) {
-    return rad * 180 / 3.14159;
+    return rad * 180 / M_PI;
 }
 
 float floatangleToRad(float angle) {
-    return angle * 3.14159 / 180;
+    return angle * M_PI / 180;
 }
 
 point vector2point(sf::Vector2f p) {

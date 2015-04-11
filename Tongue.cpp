@@ -4,9 +4,10 @@
 Tongue::Tongue(){
     angle = 0;
     size = 10; //HARDCODED ALERT it will be the width of the tongue
-    animationTime = 0.2; //HARDCODED ALERT 2 the time needed to reach full length
     timeSinceTriggered = 0;
     texture = Resources::tongue;
+    dest = sf::Vector2f(600,600);
+    sprite.setTexture(Resources::tongue);
 }
 
 void Tongue::reset(){
@@ -25,27 +26,25 @@ sf::Vector2f Tongue::getDest() const {
     return dest;
 }
 
-void Tongue::setDest(const sf::Vector2f &value) {
+void Tongue::setDest(const sf::Vector2f value) {
     dest = value;
 }
 
 void Tongue::update(float deltatime) {
-    if(timeSinceTriggered < 1) timeSinceTriggered += deltatime;
+    if(timeSinceTriggered < animationTime) timeSinceTriggered += deltatime;
 }
 
 float Tongue::getAngle(sf::Vector2f &orig, sf::Vector2f &des) {
     return std::atan2(des.y - orig.y, des.x - orig.x)*180/(M_PI);
 }
 
-float Tongue::getModule(sf::Vector2f &orig, sf::Vector2f &des) {
+float Tongue::getModule(const sf::Vector2f &orig, const sf::Vector2f &des) {
     return std::sqrt(std::pow(std::abs(des.x-orig.x), 2) + std::pow(std::abs(des.y-orig.y), 2));
 }
 
 void Tongue::draw(sf::RenderWindow &window) {
 
-    sprite.setTexture(texture);
-
-    float tongueLength = (getModule(dest,orig)/sprite.getLocalBounds().width);
+    float tongueLength = (getModule(orig,dest)/sprite.getLocalBounds().width);
     float tongueWidth = size/sprite.getLocalBounds().height;
     if(timeSinceTriggered < animationTime) {
         sprite.setScale( tongueLength * timeSinceTriggered/animationTime,

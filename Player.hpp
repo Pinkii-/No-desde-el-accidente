@@ -11,6 +11,7 @@ public:
     void draw(sf::RenderWindow &window);
 
     sf::Vector2f getPosition();
+    void setLicked(bool b, sf::Vector2f cPos);
 
 private:
     //Player properties
@@ -26,6 +27,7 @@ private:
     float timeSinceNextSprite;
 
     // Camaleon related things
+    float timeSinceTriggered;
     bool licked;
     bool tensioning;
     sf::Vector2f camaleonPos;
