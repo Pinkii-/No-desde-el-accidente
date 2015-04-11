@@ -16,13 +16,16 @@ public:
 
     //Getters
     sf::Vector2f getPosition();
+    bool getEndReached() const;
 
     //Setters
+    void setEndReached(bool value);
     void setSpeed(sf::Vector2f newSpeed);
     void setPosition(sf::Vector2f newPos);
     void setLicked(bool b, sf::Vector2f cPos);
 
     sf::CircleShape getBox();
+
 
 private:
     //Player properties
@@ -31,6 +34,7 @@ private:
     sf::Vector2f speed;
 
     float angle;
+    bool endReached;
     float spriteTimer;
     float spriteWidth;
     float spriteHeight;
