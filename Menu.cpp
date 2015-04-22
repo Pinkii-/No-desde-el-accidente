@@ -1,27 +1,18 @@
 #include "Menu.hpp"
 
-int Menu::run(sf::RenderWindow* w) {
-
-    window = w;
+int Menu::run() {
     running = true;
 
-    float maxLvl;
     std::string actual;
     std::ifstream myfile;
+
+    float maxLvl;
 
     myfile.open("res/lastlevel.txt");
     getline(myfile,actual);
     myfile.close();
     maxLvl = my_stoi(actual);
 
-    buttonL.setText("<");
-    buttonR.setText(">");
-    //Buttons initialization
-    buttonL.setSize(window->getSize().x/20, window->getSize().x/10);
-    buttonL.setPosition(0 +10, window->getSize().y/2);
-
-    buttonR.setSize(window->getSize().x/20, window->getSize().x/10);
-    buttonR.setPosition(window->getSize().x - buttonR.getSize().x -10, window->getSize().y/2);
 
     Button b;
     b.disableClickEffect();
@@ -79,9 +70,10 @@ int Menu::run(sf::RenderWindow* w) {
     }
 }
 
-Menu::Menu(){
+Menu::Menu(sf::RenderWindow* w){
 
     //Variable initialization
+    window = w;
     level = 0;
     running = false;
 
@@ -89,14 +81,23 @@ Menu::Menu(){
     buttonR.setTexture("res/empty.png");
     buttonL.setPressedTexture("res/empty.png");
     buttonR.setPressedTexture("res/empty.png");
+    buttonL.setText("<");
+    buttonR.setText(">");
 
-}
+    //Buttons initialization
+    buttonL.setSize(window->getSize().x/20, window->getSize().x/10);
+    buttonL.setPosition(0 +10, window->getSize().y/2);
 
-int Menu::getLevel() const {
-    return level;
+    buttonR.setSize(window->getSize().x/20, window->getSize().x/10);
+    buttonR.setPosition(window->getSize().x - buttonR.getSize().x -10, window->getSize().y/2);
 }
 
 void Menu::setLevel(int value) {
-    level = value;
+    if (value > level) {
+      level = value;
+      char command[256];
+      snprintf(command, 256, "echo -n %d > res/lastlevel.txt", value);
+      system(command);
+    }
 }
 

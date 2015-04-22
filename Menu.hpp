@@ -8,13 +8,11 @@ class Menu {
 public:
 
 
-    Menu();
-
-    int getLevel() const;
+    Menu(sf::RenderWindow *w);
 
     void setLevel(int value);
 
-    int run(sf::RenderWindow *w);
+    int run();
 
 private:
 
