@@ -1,18 +1,8 @@
-#include "Menu.hpp"
+    #include "Menu.hpp"
 
 int Menu::run() {
     running = true;
-
-    std::string actual;
-    std::ifstream myfile;
-
-    float maxLvl;
-
-    myfile.open("res/lastlevel.txt");
-    getline(myfile,actual);
-    myfile.close();
-    maxLvl = my_stoi(actual);
-
+    int maxLvl = readMaxLvl();
 
     Button b;
     b.disableClickEffect();
@@ -20,7 +10,7 @@ int Menu::run() {
     //f.loadFromFile("res/font.otf");
     //b.setFont(f);
     b.setTexture("res/empty.png");
-    b.setText(actual);
+    b.setText(std::to_string(maxLvl));
     b.setPosition(window->getSize().x/2, window->getSize().y/2);
     b.setSize(window->getSize().x/20, window->getSize().x/10);
 
@@ -77,27 +67,35 @@ Menu::Menu(sf::RenderWindow* w){
     level = 0;
     running = false;
 
-    buttonL.setTexture("res/empty.png");
-    buttonR.setTexture("res/empty.png");
-    buttonL.setPressedTexture("res/empty.png");
-    buttonR.setPressedTexture("res/empty.png");
-    buttonL.setText("<");
-    buttonR.setText(">");
+    buttonL.setTexture("res/flecha_izquierda.png");
+    buttonR.setTexture("res/flecha_derecha.png");
+    buttonL.setPressedTexture("res/flecha_izquierda.png");
+    buttonR.setPressedTexture("res/flecha_derecha.png");
+    buttonL.setText("");
+    buttonR.setText("");
 
     //Buttons initialization
-    buttonL.setSize(window->getSize().x/20, window->getSize().x/10);
+    buttonL.setSize(5*145, 5*146);
     buttonL.setPosition(0 +10, window->getSize().y/2);
 
-    buttonR.setSize(window->getSize().x/20, window->getSize().x/10);
+    buttonR.setSize(5*145, 5*146);
     buttonR.setPosition(window->getSize().x - buttonR.getSize().x -10, window->getSize().y/2);
 }
 
 void Menu::setLevel(int value) {
-    if (value > level) {
-      level = value;
+    level = value;
+    if (value > readMaxLvl()) {
       char command[256];
       snprintf(command, 256, "echo -n %d > res/lastlevel.txt", value);
       system(command);
     }
 }
 
+int Menu::readMaxLvl() {
+    std::string actual;
+    std::ifstream myfile;
+    myfile.open("res/lastlevel.txt");
+    getline(myfile,actual);
+    myfile.close();
+    return my_stoi(actual);
+}

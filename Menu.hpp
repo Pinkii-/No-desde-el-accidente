@@ -23,7 +23,7 @@ private:
     sf::RenderWindow* window;
     std::vector<Button> levels;
 
-
+    int readMaxLvl();
 };
 
 #endif // MENU_HPP

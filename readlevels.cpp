@@ -138,7 +138,7 @@ int LevelManager::getNumLevels()
 
 Level LevelManager::getLevel(int i)
 {
-  return vl[i];
+  return vl[i-1];
 }
 
 void LevelManager::escribe(sf::Vector2f &v)
