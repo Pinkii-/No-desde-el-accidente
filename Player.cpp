@@ -141,7 +141,7 @@ double Player::fuerza(double distancia)
   if (tipofuerza==1)
     return sqrt(abs(distancia))*5;
   if (tipofuerza==2)
-    return abs(distancia)/20;
+    return abs(distancia)/200;
   //return 30;
   //return 5000000/(distancia*distancia);
 }
