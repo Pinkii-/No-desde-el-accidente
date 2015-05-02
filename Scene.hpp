@@ -21,8 +21,11 @@ public:
     bool update(float deltaTime);
 
     bool getSuccess() const;
+
 private:
+
     Goal goal;
+    sf::View view;
     Player player;
     sf::Sound sound;
     Background background;
@@ -35,6 +38,7 @@ private:
     bool success; // if you have pass the lvl or not
     IngameMenu iMenu;
     bool menuIsActive;
+    float viewScale;
 
     void releaseChameleon();
     void activeChameleon(sf::Vector2f pos);
