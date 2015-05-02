@@ -8,7 +8,7 @@ camaleon 500 500
 nuevonivel
 inicio 100 100
 final 1500 700
-velocidad 100 0
+velocidad 200 0
 camaleon 300 300
 camaleon 800 300
 camaleon 120 300
@@ -19,7 +19,7 @@ camaleon 120 700
 nuevonivel
 inicio 100 0
 final 100 900
-velocidad 100 0
+velocidad 200 0
 camaleon 100 500
 camaleon 300 500
 camaleon 500 500
@@ -31,7 +31,7 @@ camaleon 1200 500
 nuevonivel
 inicio 100 0
 final 100 500
-velocidad 100 0
+velocidad 200 0
 camaleon 100 300
 camaleon 300 300
 camaleon 500 300
@@ -48,7 +48,7 @@ camaleon 1200 900
 nuevonivel
 inicio 100 0
 final 100 500
-velocidad 100 0
+velocidad 200 0
 camaleon 100 200
 camaleon 200 200
 camaleon 300 200
@@ -74,7 +74,7 @@ camaleon 500 800
 nuevonivel
 inicio 350 500
 final 500 950
-velocidad 100 0
+velocidad 200 0
 camaleon 100 200
 camaleon 200 200
 camaleon 300 200

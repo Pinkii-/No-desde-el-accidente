@@ -6,7 +6,7 @@
 #include "frases.hpp"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(sf::VideoMode::getFullscreenModes()[0].width,sf::VideoMode::getFullscreenModes()[0].height) // Size of the window <width,height>
+    sf::RenderWindow window(sf::VideoMode::getDesktopMode() // Size of the window <width,height>
             ,"Space Tongue" // Title of the window
             ,sf::Style::Fullscreen);
     Resources::load();
@@ -25,7 +25,7 @@ int main() {
 
     LevelManager lvlMng;
 
-    Menu menu;
+    Menu menu(&window);
 
     music.stop();
 
@@ -35,7 +35,7 @@ int main() {
 
     // Aqui tendrá que ir el menú {
     while (true) {
-        int currentLvl = menu.run(&window);
+        int currentLvl = menu.run();
         bool playing = true;
         while (playing) {
             Scene mygame(&window, lvlMng.getLevel(currentLvl)); // Style of the window
@@ -44,6 +44,7 @@ int main() {
                 system("echo > res/lastlevel.txt");
                 currentLvl += 1;
                 if (currentLvl >= lvlMng.getNumLevels()) break;
+                else menu.setLevel(currentLvl);
             }
         }
     }

@@ -74,19 +74,9 @@ void Portada::display(sf::RenderWindow* window, std::string pathImage){
         sf::Event event;
         while (window->pollEvent(event)) {
             switch (event.type) {
-                case sf::Event::Closed:
-                    window->close();
-                    break;
                 case sf::Event::KeyPressed:
-                    if (event.key.code == sf::Keyboard::Escape) {
-                        window->close();
-                        exit(0);
-                    }
-                    break;
                 case sf::Event::MouseButtonPressed:
-                    if (event.mouseButton.button == sf::Mouse::Left) {
-                        open = false;
-                    }
+                     open = false;
                 default:
                     break;
             }

@@ -8,13 +8,11 @@ class Menu {
 public:
 
 
-    Menu();
-
-    int getLevel() const;
+    Menu(sf::RenderWindow *w);
 
     void setLevel(int value);
 
-    int run(sf::RenderWindow *w);
+    int run();
 
 private:
 
@@ -25,7 +23,7 @@ private:
     sf::RenderWindow* window;
     std::vector<Button> levels;
 
-
+    int readMaxLvl();
 };
 
 #endif // MENU_HPP
