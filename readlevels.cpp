@@ -93,10 +93,16 @@ LevelManager::LevelManager()
     }
     Level &level=vl.back();
     if (comando!="inicio" and comando!="final" and
-	comando!="velocidad" and comando!="camaleon") {
+	comando!="velocidad" and comando!="camaleon" and comando!="obstaculo") {
       cout<<"Error line "<<numlinea<<": wrong instruction "<<comando<<"."<<endl;
       exit(0);
     }
+    /*
+    if (comando=="camaleon" and (i+3>=int(vs.size()) or not my_isint(vs[i+1].second) or not my_isint(vs[i+2].second) or not my_isint(vs[i+3].second))) {
+      cout<<"Error line "<<numlinea<<": three integers are needed for "<<comando<<"."<<endl;
+      exit(0);
+    }
+    */
     if (i+2>=int(vs.size()) or not my_isint(vs[i+1].second) or not my_isint(vs[i+2].second)) {
       cout<<"Error line "<<numlinea<<": two integers are needed for "<<comando<<"."<<endl;
       exit(0);
@@ -125,6 +131,10 @@ LevelManager::LevelManager()
       level.velocidad=p;
     } else if (comando=="camaleon") {
       level.camaleon.push_back(p);
+      //level.tipocamaleon.push_back(my_stoi(vs[i+1].second));
+      //i++;
+    } else if (comando=="obstaculo") {
+      level.obstaculo.push_back(p);
     }
     i++;i++;
   }

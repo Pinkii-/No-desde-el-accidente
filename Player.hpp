@@ -44,7 +44,7 @@ private:
     float spriteHeight;
     float spriteAnimation;
     float timeSinceNextSprite;
-
+  int tipofuerza;
     // Camaleon related things
     bool licked;
     bool tensioning;
