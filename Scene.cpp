@@ -21,11 +21,6 @@ Scene::Scene(sf::RenderWindow* w, Level lvl)
     chameleons = std::vector<Chameleon>();
     for (uint i = 0; i < lvl.camaleon.size(); ++i) chameleons.push_back(Chameleon(lvl.camaleon[i]));
 
-    //    chameleons.push_back(Chameleon(sf::Vector2f(200,200)));
-    //    chameleons.push_back(Chameleon(sf::Vector2f(400,20)));
-    //    chameleons.push_back(Chameleon(sf::Vector2f(100,600)));
-    //    chameleons.push_back(Chameleon(sf::Vector2f(1000,800)));
-
 }
 
 Scene::~Scene() {}
@@ -46,25 +41,29 @@ bool Scene::update(float deltaTime){
 
     lookCollisions();
 
+    float offset = 50;
     std::vector<sf::Vector2f> positions;
     positions.push_back(goal.getPosition());
     for(Chameleon &c : chameleons) positions.push_back(c.getPosition());
     float maxX, minX, maxY, minY;
-    maxX = minX = player.getPosition().x;
-    maxY = minY = player.getPosition().y;
+    maxX = player.getPosition().x+offset;
+    minX = player.getPosition().x-offset;
+    maxY = player.getPosition().y+offset;
+    minY = player.getPosition().y-offset;
     for(int i = 0; i < positions.size(); ++i){
-        if(positions[i].x > maxX) maxX = positions[i].x;
-        if(positions[i].x < minX) minX = positions[i].x;
-        if(positions[i].y > maxY) maxY = positions[i].y;
-        if(positions[i].y < minY) minY = positions[i].y;
+        //maxX = max(maxX, positions[i].x + offset);
+        if(positions[i].x+offset > maxX) maxX = positions[i].x+offset;
+        if(positions[i].x-offset < minX) minX = positions[i].x-offset;
+        if(positions[i].y+offset > maxY) maxY = positions[i].y+offset;
+        if(positions[i].y-offset < minY) minY = positions[i].y-offset;
     }
 
-    float escalatX, escalatY, minimumScale;
+    float escalatX, escalatY;
     escalatX = window->getSize().x/(maxX-minX);
     escalatY = window->getSize().y/(maxY-minY);
-    minimumScale = std::min(escalatX, escalatY);
-    view.setCenter((maxX-minX)/2, (maxY-minY)/2);
-    view.setSize(window->getSize().x/minimumScale, window->getSize().y/minimumScale);
+    viewScale = std::min(escalatX, escalatY);
+    view.setCenter((maxX+minX)/2, (maxY+minY)/2);
+    view.setSize(window->getSize().x/viewScale, window->getSize().y/viewScale);
 
     return finishLvl;
 
@@ -77,6 +76,7 @@ void Scene::draw(){
     player.draw(*window);
     for (Chameleon &c : chameleons) c.draw(*window);
     if (menuIsActive) iMenu.draw(*window);
+
 }
 
 void Scene::processEvents(){
@@ -102,7 +102,14 @@ void Scene::processEvents(){
         else if (iMenu.wantToMenu()) goToMenu = true;
     }
     else {
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) activeChameleon(sf::Vector2f(sf::Mouse::getPosition(*window).x,sf::Mouse::getPosition(*window).y));
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+
+            sf::Vector2f mouse;
+            mouse.x = window->getView().getCenter().x + (sf::Mouse::getPosition(*window).x - window->getSize().x/2.0) / viewScale;
+            mouse.y = window->getView().getCenter().y + (sf::Mouse::getPosition(*window).y - window->getSize().y/2.0) / viewScale;
+
+            activeChameleon(sf::Vector2f( mouse.x, mouse.y));
+        }
         else releaseChameleon();
     }
 }
