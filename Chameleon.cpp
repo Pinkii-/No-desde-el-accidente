@@ -3,7 +3,10 @@
 
 Chameleon::Chameleon() {}
 
-Chameleon::Chameleon(sf::Vector2f pos) {
+Chameleon::Chameleon(sf::Vector2f pos, int tipoFuerza)
+  :
+    tipoFuerza(tipoFuerza)
+{
 
     radius = 30; // Elegir el radio segund algo(?)
 
@@ -57,7 +60,11 @@ sf::Vector2f Chameleon::getPosition() {
 }
 
 float Chameleon::getRadius() {
-    return radius;
+  return radius;
+}
+
+int Chameleon::getType() {
+  return tipoFuerza;
 }
 
 

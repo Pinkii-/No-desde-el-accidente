@@ -19,9 +19,9 @@ Scene::Scene(sf::RenderWindow* w, Level lvl)
     currentChameleon = nullptr;
 
     chameleons = std::vector<Chameleon>();
-    for (uint i = 0; i < lvl.camaleon.size(); ++i) chameleons.push_back(Chameleon(lvl.camaleon[i]));
+    for (uint i = 0; i < lvl.camaleon.size(); ++i) chameleons.push_back(Chameleon(lvl.camaleon[i],lvl.tipocamaleon[i]));
     obstacles = std::vector<Obstacle>();
-    for (uint i = 0; i < lvl.obstacle.size(); ++i) obstacles.push_back(Obstacle(lvl.obstacle[i]));
+    for (uint i = 0; i < lvl.obstaculo.size(); ++i) obstacles.push_back(Obstacle(lvl.obstaculo[i]));
 
 }
 
@@ -127,7 +127,7 @@ void Scene::releaseChameleon() {
 
     currentChameleon->release();
     currentChameleon = nullptr;
-    player.setLicked(false,sf::Vector2f(0,0));
+    player.setLicked(false,sf::Vector2f(0,0),0);
 }
 
 void Scene::activeChameleon(sf::Vector2f pos) {
@@ -145,7 +145,7 @@ void Scene::activeChameleon(sf::Vector2f pos) {
 
 
     currentChameleon->lick();
-    player.setLicked(true,currentChameleon->getPosition());
+    player.setLicked(true,currentChameleon->getPosition(),currentChameleon->getType());
 }
 
 void Scene::lookCollisions() {

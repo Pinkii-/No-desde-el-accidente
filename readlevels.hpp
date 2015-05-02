@@ -17,7 +17,8 @@ using namespace std;
 struct Level {
   sf::Vector2f inicio,velocidad,final;
   vector<sf::Vector2f> camaleon;
-  vector<sf::Vector2f> obstacle;
+  vector<sf::Vector2f> obstaculo;
+  vector<int> tipocamaleon;
   bool iniciodefined,velocidaddefined,finaldefined;
   Level() {
     iniciodefined=velocidaddefined=finaldefined=false;

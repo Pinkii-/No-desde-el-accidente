@@ -7,7 +7,7 @@
 class Chameleon {
 public:
     Chameleon();
-    Chameleon(sf::Vector2f pos);
+    Chameleon(sf::Vector2f pos, int tipoFuerza);
     void update(float deltaTime, sf::Vector2f playerPos);
     void draw(sf::RenderWindow &window);
 
@@ -17,12 +17,14 @@ public:
 
     sf::Vector2f getPosition();
     float getRadius();
+    int getType();
 private:
     sf::CircleShape sprite;
     Tongue tongue;
     float angle;
     bool licking;
     float radius;
+    int tipoFuerza;
 };
 
 #endif // CHAMELEON_HPP

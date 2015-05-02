@@ -21,7 +21,7 @@ public:
     //Setters
     void setSpeed(sf::Vector2f newSpeed);
     void setPosition(sf::Vector2f newPos);
-    void setLicked(bool b, sf::Vector2f cPos);
+    void setLicked(bool b, sf::Vector2f cPos, int tipofuerza);
     void setAlive(bool b);
 
     sf::CircleShape getBox();
@@ -41,7 +41,7 @@ private:
     float spriteHeight;
     float spriteAnimation;
     float timeSinceNextSprite;
-
+  int tipofuerza;
     // Camaleon related things
     bool licked;
     bool tensioning;
