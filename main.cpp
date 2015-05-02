@@ -6,6 +6,7 @@
 #include "frases.hpp"
 
 int main() {
+
     sf::RenderWindow window(sf::VideoMode::getDesktopMode() // Size of the window <width,height>
             ,"Space Tongue" // Title of the window
             ,sf::Style::Fullscreen);

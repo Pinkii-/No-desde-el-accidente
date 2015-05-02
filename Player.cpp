@@ -141,8 +141,8 @@ void Player::evoluciona(float fdelta){
 
 double Player::fuerza(double distancia)
 {
-  return abs(distancia)/20;
-  //return sqrt(abs(distancia))*5;
+  //return abs(distancia)/20;
+  return sqrt(abs(distancia))*5;
   //return 30;
   //return 5000000/(distancia*distancia);
 }

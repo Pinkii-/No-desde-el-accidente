@@ -20,7 +20,7 @@ float Frases::computaEscala(float h,float despobjeto)
 }
 
 void Frases::dibujafrase(int centropantalla,int hobservador,int despobservador,
-                         int numfrase,int desp,int hcaracter,string &frase,sf::RenderWindow &window)
+                         int numfrase,int desp,int hcaracter,wstring &frase,sf::RenderWindow &window)
 {
   float factor=3.0;
 
@@ -30,7 +30,7 @@ void Frases::dibujafrase(int centropantalla,int hobservador,int despobservador,
   float escala=computaEscala(float(hobservador),despobjeto-despobservador);
   float escalacaracter=computaEscala(float(hobservador),40+despobjeto-despobservador);
   sf::Text text;
-  text.setString(frase);
+  text.setString(L""+frase);
   text.setFont(font);
   text.setColor(sf::Color::Yellow);
   
@@ -54,12 +54,12 @@ Frases::Frases(sf::RenderWindow& window) : background(window){
         cout<<"no carrega la font"<<endl;
         exit(0);
     }
-    ifstream fci("res/frases.txt");
+    wfstream fci("res/frases.txt");
     if (not fci.is_open()) {
         cout<<"ERROR opening frases.txt"<<endl;
         exit(0);
     }
-    string linea;
+    wstring linea;
     while (getline(fci,linea))
         frases.push_back(linea);
 }

@@ -21,12 +21,12 @@ private:
   float tiempo;
   sf::Font font;
   float velocidad;
-  vector<string> frases;
+  vector<wstring> frases;
 
   float computaEscala(float h,float despobjeto);
 
-  void dibujafrase(int centropantalla,int hobservador,int despobservador,
-                   int numfrase,int desp,int hcaracter,string &frase,sf::RenderWindow &window);
+  void dibujafrase(int centropantalla, int hobservador, int despobservador,
+                   int numfrase, int desp, int hcaracter, wstring &frase, sf::RenderWindow &window);
 
   Background background;
 
