@@ -8,6 +8,8 @@ sf::Texture     Resources::tongue;
 sf::Texture     Resources::goal;
 sf::Texture     Resources::background;
 
+sf::Texture     Resources::obstacle;
+
 sf::Font        Resources::font;
 
 sf::SoundBuffer Resources::buffer;
@@ -23,6 +25,7 @@ void Resources::load() {
     goal.loadFromFile("res/End_01.png");
     font.loadFromFile("res/font.otf");
     background.loadFromFile("res/background.jpg");
+    obstacle.loadFromFile("res/button.png");
     /*
     font.loadFromFile("resources/font.ttf");
     sound.loadFromFile("resources/sound.wav"); //sound must be a short audio

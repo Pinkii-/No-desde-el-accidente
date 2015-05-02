@@ -9,7 +9,6 @@ Player::Player() :
 
     expl.setVolume(100);
     alive = true;
-    endReached = false;
     spriteTimer = 0.0;
     spriteAnimation = 0.0;
     timeSinceNextSprite = 0.2;
@@ -87,16 +86,10 @@ void Player::setAlive(bool b) {
     expl.play();
     }
 }
-bool Player::getEndReached() const {
-    return endReached;
-}
+
 
 bool Player::isAlive() {
     return alive;
-}
-
-void Player::setEndReached(bool value) {
-    endReached = value;
 }
 
 
@@ -141,8 +134,8 @@ void Player::evoluciona(float fdelta){
 
 double Player::fuerza(double distancia)
 {
-  return abs(distancia)/20;
-  //return sqrt(abs(distancia))*5;
+  //return abs(distancia)/20;
+  return sqrt(abs(distancia))*5;
   //return 30;
   //return 5000000/(distancia*distancia);
 }

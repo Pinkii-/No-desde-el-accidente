@@ -20,6 +20,8 @@ Scene::Scene(sf::RenderWindow* w, Level lvl)
 
     chameleons = std::vector<Chameleon>();
     for (uint i = 0; i < lvl.camaleon.size(); ++i) chameleons.push_back(Chameleon(lvl.camaleon[i]));
+    obstacles = std::vector<Obstacle>();
+    for (uint i = 0; i < lvl.obstacle.size(); ++i) obstacles.push_back(Obstacle(lvl.obstacle[i]));
 
     //    chameleons.push_back(Chameleon(sf::Vector2f(200,200)));
     //    chameleons.push_back(Chameleon(sf::Vector2f(400,20)));
@@ -53,6 +55,7 @@ void Scene::draw(){
     goal.draw(*window);
     player.draw(*window);
     for (Chameleon &c : chameleons) c.draw(*window);
+    for (Obstacle &o : obstacles) o.draw(*window);
     if (menuIsActive) iMenu.draw(*window);
 }
 
