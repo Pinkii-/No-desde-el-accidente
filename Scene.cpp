@@ -19,7 +19,9 @@ Scene::Scene(sf::RenderWindow* w, Level lvl)
     currentChameleon = nullptr;
 
     chameleons = std::vector<Chameleon>();
-    for (uint i = 0; i < lvl.camaleon.size(); ++i) chameleons.push_back(Chameleon(lvl.camaleon[i]));
+    for (uint i = 0; i < lvl.camaleon.size(); ++i) chameleons.push_back(Chameleon(lvl.camaleon[i],lvl.tipocamaleon[i]));
+    obstacles = std::vector<Obstacle>();
+    for (uint i = 0; i < lvl.obstaculo.size(); ++i) obstacles.push_back(Obstacle(lvl.obstaculo[i]));
 
 }
 
@@ -75,6 +77,8 @@ void Scene::draw(){
     goal.draw(*window);
     player.draw(*window);
     for (Chameleon &c : chameleons) c.draw(*window);
+    for (Obstacle &o : obstacles) o.draw(*window);
+    window->setView(window->getDefaultView());
     if (menuIsActive) iMenu.draw(*window);
 
 }
@@ -105,8 +109,8 @@ void Scene::processEvents(){
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 
             sf::Vector2f mouse;
-            mouse.x = window->getView().getCenter().x + (sf::Mouse::getPosition(*window).x - window->getSize().x/2.0) / viewScale;
-            mouse.y = window->getView().getCenter().y + (sf::Mouse::getPosition(*window).y - window->getSize().y/2.0) / viewScale;
+            mouse.x = view.getCenter().x + (sf::Mouse::getPosition(*window).x - window->getSize().x/2.0) / viewScale;
+            mouse.y = view.getCenter().y + (sf::Mouse::getPosition(*window).y - window->getSize().y/2.0) / viewScale;
 
             activeChameleon(sf::Vector2f( mouse.x, mouse.y));
         }
@@ -123,7 +127,7 @@ void Scene::releaseChameleon() {
 
     currentChameleon->release();
     currentChameleon = nullptr;
-    player.setLicked(false,sf::Vector2f(0,0));
+    player.setLicked(false,sf::Vector2f(0,0),0);
 }
 
 void Scene::activeChameleon(sf::Vector2f pos) {
@@ -141,7 +145,7 @@ void Scene::activeChameleon(sf::Vector2f pos) {
 
 
     currentChameleon->lick();
-    player.setLicked(true,currentChameleon->getPosition());
+    player.setLicked(true,currentChameleon->getPosition(),currentChameleon->getType());
 }
 
 void Scene::lookCollisions() {
@@ -156,6 +160,17 @@ void Scene::lookCollisions() {
                 return;
             }
         }
+    }
+    for (Obstacle& o : obstacles) {
+      if (isCollisioning(playerBounds.getPosition(),playerBounds.getRadius(),o.getPosition(),o.getRadius())) {
+          //WOPS HA CHOCADO. DO THINGS
+          if (player.isAlive()) {
+              player.setAlive(false);
+              timeFromDeath = 0;
+              //c.eating();
+              return;
+          }
+      }
     }
     if (isCollisioning(playerBounds.getPosition(),playerBounds.getRadius(),goal.getPosition(),goal.getSize()/2)) {
         finishLvl = true;

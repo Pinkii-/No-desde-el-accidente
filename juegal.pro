@@ -22,7 +22,8 @@ SOURCES += main.cpp \
     Button.cpp \
     readlevels.cpp \
     frases.cpp \
-    Background.cpp
+    Background.cpp \
+    Obstacle.cpp
 
 HEADERS += \
     Game.hpp \
@@ -39,4 +40,5 @@ HEADERS += \
     Button.hpp \
     readlevels.hpp \
     frases.hpp \
-    Background.hpp
+    Background.hpp \
+    Obstacle.hpp

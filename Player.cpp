@@ -9,7 +9,6 @@ Player::Player() :
 
     expl.setVolume(100);
     alive = true;
-    endReached = false;
     spriteTimer = 0.0;
     spriteAnimation = 0.0;
     timeSinceNextSprite = 0.2;
@@ -75,7 +74,8 @@ sf::Vector2f Player::getPosition() {
     return pos;
 }
 
-void Player::setLicked(bool b, sf::Vector2f cPos) {
+void Player::setLicked(bool b, sf::Vector2f cPos, int tipofuerza) {
+  this->tipofuerza = tipofuerza;
     camaleonPos = cPos;
     licked = b;
     if (!b) {
@@ -90,16 +90,10 @@ void Player::setAlive(bool b) {
     expl.play();
     }
 }
-bool Player::getEndReached() const {
-    return endReached;
-}
+
 
 bool Player::isAlive() {
     return alive;
-}
-
-void Player::setEndReached(bool value) {
-    endReached = value;
 }
 
 
