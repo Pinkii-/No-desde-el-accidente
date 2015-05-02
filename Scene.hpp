@@ -21,8 +21,11 @@ public:
     bool update(float deltaTime);
 
     bool getSuccess() const;
+
 private:
+
     Goal goal;
+    sf::View view;
     Player player;
     sf::Sound sound;
     Background background;

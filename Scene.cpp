@@ -47,9 +47,30 @@ bool Scene::update(float deltaTime){
 
     lookCollisions();
     return finishLvl;
+
+    std::vector<sf::Vector2f> positions;
+    positions.push_back(goal.getPosition());
+    for(Chameleon &c : chameleons) positions.push_back(c.getPosition());
+    float maxX, minX, maxY, minY;
+    maxX = minX = player.getPosition().x;
+    maxY = minY = player.getPosition().y;
+    for(int i = 0; i < positions.size(); ++i){
+        if(positions[i].x > maxX) maxX = positions[i].x;
+        if(positions[i].x < minX) minX = positions[i].x;
+        if(positions[i].y > maxY) maxY = positions[i].y;
+        if(positions[i].y < minY) minY = positions[i].y;
+    }
+
+    float escalatX, escalatY, minimumScale;
+    escalatX = window->getSize().x/(maxX-minX);
+    escalatY = window->getSize().y/(maxY-minY);
+    minimumScale = std::min(escalatX, escalatY);
+    view.setCenter((maxX-minX)/2, (maxY-minY)/2);
+    view.setSize(window->getSize().x/minimumScale, window->getSize().y/minimumScale);
 }
 
 void Scene::draw(){
+    window->setView(view);
     background.draw(*window);
     goal.draw(*window);
     player.draw(*window);
