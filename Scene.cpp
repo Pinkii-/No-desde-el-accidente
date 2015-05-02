@@ -2,10 +2,9 @@
 
 Scene::Scene(sf::RenderWindow* w, Level lvl)
     : Game(w),
-      iMenu(sf::Vector2f(w->getSize().x/2,w->getSize().y/2)),
-      background(*w)
+      background(*w),
+      iMenu(sf::Vector2f(w->getSize().x/2,w->getSize().y/2))
 {
-
     sound.setBuffer(Resources::buffer);
 
     finishLvl = false;
@@ -20,7 +19,7 @@ Scene::Scene(sf::RenderWindow* w, Level lvl)
     currentChameleon = nullptr;
 
     chameleons = std::vector<Chameleon>();
-    for (int i = 0; i < lvl.camaleon.size(); ++i) chameleons.push_back(Chameleon(lvl.camaleon[i]));
+    for (uint i = 0; i < lvl.camaleon.size(); ++i) chameleons.push_back(Chameleon(lvl.camaleon[i]));
 
     //    chameleons.push_back(Chameleon(sf::Vector2f(200,200)));
     //    chameleons.push_back(Chameleon(sf::Vector2f(400,20)));

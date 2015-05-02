@@ -15,7 +15,7 @@ using namespace std;
 
 /*
 git add -A
-git commit -m "readlevels y stoi"
+git commit -m "cogiendo datos"
 git pull
 git push origin master 
 
@@ -138,7 +138,7 @@ int LevelManager::getNumLevels()
 
 Level LevelManager::getLevel(int i)
 {
-  return vl[i-1];
+  return vl[i];
 }
 
 void LevelManager::escribe(sf::Vector2f &v)

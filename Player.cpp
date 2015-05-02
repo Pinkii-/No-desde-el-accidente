@@ -1,5 +1,6 @@
 #include "Player.hpp"
 #include "Resources.hpp"
+#include "utils.hpp"
 
 Player::Player() :
     pos(sf::Vector2f(0,0)), speed(sf::Vector2f(0,0))
@@ -49,6 +50,7 @@ void Player::update(float deltaTime) {
     if (!alive) return;
     if (licked) timeSinceTriggered += deltaTime;
     evoluciona(deltaTime);
+    //evolucionabis(deltaTime);
     angle = radToAngle(speedToRad(speed))+90;
     sprite.setPosition(pos);
     spriteTimer += deltaTime;
@@ -107,7 +109,6 @@ sf::CircleShape Player::getBox() {
 //Private functions
 
 void Player::evoluciona(float fdelta){
-
     double delta=fdelta;
     point p=vector2point(pos);
     point v=vector2point(speed);
@@ -137,3 +138,31 @@ void Player::evoluciona(float fdelta){
   pos=point2vector(p);
   speed=point2vector(v);
 }
+
+double Player::fuerza(double distancia)
+{
+  return sqrt(abs(distancia))/10;
+}
+
+void Player::evolucionabis(float fdelta)
+{
+  double delta=fdelta;
+  point p=vector2point(pos);
+  point v=vector2point(speed);
+  if (not licked || timeSinceTriggered < animationTime) {
+    p+=v*delta;
+    pos=point2vector(p);
+    return;
+  }
+  point c=vector2point(camaleonPos);
+  int pasos=100;
+  delta/=pasos;
+  for (int paso=0;paso<pasos;paso++) {    
+    point dir=c-p;
+    v=v+(fuerza(abs(dir))*delta/abs(dir))*dir;
+    p=p+v;
+  }
+  pos=point2vector(p);
+  speed=point2vector(v);
+}
+
