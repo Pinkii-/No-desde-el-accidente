@@ -46,7 +46,6 @@ bool Scene::update(float deltaTime){
     goal.update(deltaTime,player.getPosition());
 
     lookCollisions();
-    return finishLvl;
 
     std::vector<sf::Vector2f> positions;
     positions.push_back(goal.getPosition());
@@ -67,6 +66,9 @@ bool Scene::update(float deltaTime){
     minimumScale = std::min(escalatX, escalatY);
     view.setCenter((maxX-minX)/2, (maxY-minY)/2);
     view.setSize(window->getSize().x/minimumScale, window->getSize().y/minimumScale);
+
+    return finishLvl;
+
 }
 
 void Scene::draw(){
