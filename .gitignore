@@ -33,3 +33,5 @@
 
 *~
 *.sh
+
+Makefile

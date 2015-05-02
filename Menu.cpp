@@ -58,6 +58,7 @@ int Menu::run() {
 
         window->display();
     }
+    return -1;
 }
 
 Menu::Menu(sf::RenderWindow* w){
@@ -87,7 +88,8 @@ void Menu::setLevel(int value) {
     if (value > readMaxLvl()) {
       char command[256];
       snprintf(command, 256, "echo -n %d > res/lastlevel.txt", value);
-      system(command);
+      int error = system(command);
+      if (error != 0) std::cout << "Error al guardar el nivel" << std::endl;
     }
 }
 
