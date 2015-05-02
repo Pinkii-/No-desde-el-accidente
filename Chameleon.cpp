@@ -20,6 +20,9 @@ Chameleon::Chameleon(sf::Vector2f pos, int tipoFuerza)
     tongue.setFatherRadius(radius);
 
 
+    if (tipoFuerza == 1) sprite.setFillColor(sf::Color::Red);
+
+
     //std::cout << "chamaleon" << std::endl;
 }
 

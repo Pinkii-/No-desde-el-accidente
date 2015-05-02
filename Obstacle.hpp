@@ -9,8 +9,12 @@ public:
   Obstacle(sf::Vector2f pos);
   void update(float deltaTime);
   void draw(sf::RenderWindow& window);
+
+  float getRadius();
+  sf::Vector2f getPosition();
 private:
   sf::CircleShape sprite;
+  float radius;
 
   float angle;
   int nSprites;

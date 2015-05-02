@@ -161,6 +161,17 @@ void Scene::lookCollisions() {
             }
         }
     }
+    for (Obstacle& o : obstacles) {
+      if (isCollisioning(playerBounds.getPosition(),playerBounds.getRadius(),o.getPosition(),o.getRadius())) {
+          //WOPS HA CHOCADO. DO THINGS
+          if (player.isAlive()) {
+              player.setAlive(false);
+              timeFromDeath = 0;
+              //c.eating();
+              return;
+          }
+      }
+    }
     if (isCollisioning(playerBounds.getPosition(),playerBounds.getRadius(),goal.getPosition(),goal.getSize()/2)) {
         finishLvl = true;
         success = true;
