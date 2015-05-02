@@ -23,11 +23,6 @@ Scene::Scene(sf::RenderWindow* w, Level lvl)
     obstacles = std::vector<Obstacle>();
     for (uint i = 0; i < lvl.obstacle.size(); ++i) obstacles.push_back(Obstacle(lvl.obstacle[i]));
 
-    //    chameleons.push_back(Chameleon(sf::Vector2f(200,200)));
-    //    chameleons.push_back(Chameleon(sf::Vector2f(400,20)));
-    //    chameleons.push_back(Chameleon(sf::Vector2f(100,600)));
-    //    chameleons.push_back(Chameleon(sf::Vector2f(1000,800)));
-
 }
 
 Scene::~Scene() {}
@@ -47,16 +42,44 @@ bool Scene::update(float deltaTime){
     goal.update(deltaTime,player.getPosition());
 
     lookCollisions();
+
+    float offset = 50;
+    std::vector<sf::Vector2f> positions;
+    positions.push_back(goal.getPosition());
+    for(Chameleon &c : chameleons) positions.push_back(c.getPosition());
+    float maxX, minX, maxY, minY;
+    maxX = player.getPosition().x+offset;
+    minX = player.getPosition().x-offset;
+    maxY = player.getPosition().y+offset;
+    minY = player.getPosition().y-offset;
+    for(int i = 0; i < positions.size(); ++i){
+        //maxX = max(maxX, positions[i].x + offset);
+        if(positions[i].x+offset > maxX) maxX = positions[i].x+offset;
+        if(positions[i].x-offset < minX) minX = positions[i].x-offset;
+        if(positions[i].y+offset > maxY) maxY = positions[i].y+offset;
+        if(positions[i].y-offset < minY) minY = positions[i].y-offset;
+    }
+
+    float escalatX, escalatY;
+    escalatX = window->getSize().x/(maxX-minX);
+    escalatY = window->getSize().y/(maxY-minY);
+    viewScale = std::min(escalatX, escalatY);
+    view.setCenter((maxX+minX)/2, (maxY+minY)/2);
+    view.setSize(window->getSize().x/viewScale, window->getSize().y/viewScale);
+
     return finishLvl;
+
 }
 
 void Scene::draw(){
+    window->setView(view);
     background.draw(*window);
     goal.draw(*window);
     player.draw(*window);
     for (Chameleon &c : chameleons) c.draw(*window);
     for (Obstacle &o : obstacles) o.draw(*window);
     if (menuIsActive) iMenu.draw(*window);
+
 }
 
 void Scene::processEvents(){
@@ -82,7 +105,14 @@ void Scene::processEvents(){
         else if (iMenu.wantToMenu()) goToMenu = true;
     }
     else {
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) activeChameleon(sf::Vector2f(sf::Mouse::getPosition(*window).x,sf::Mouse::getPosition(*window).y));
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+
+            sf::Vector2f mouse;
+            mouse.x = window->getView().getCenter().x + (sf::Mouse::getPosition(*window).x - window->getSize().x/2.0) / viewScale;
+            mouse.y = window->getView().getCenter().y + (sf::Mouse::getPosition(*window).y - window->getSize().y/2.0) / viewScale;
+
+            activeChameleon(sf::Vector2f( mouse.x, mouse.y));
+        }
         else releaseChameleon();
     }
 }
