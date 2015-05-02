@@ -35,3 +35,5 @@
 *.sh
 
 Makefile
+juegal
+levelEditor/levelEditor
