@@ -4,6 +4,7 @@ velocidad 100 100
 camaleon 300 400
 camaleon 800 200
 camaleon 500 500
+obstaculo 350 50
 
 nuevonivel
 inicio 100 100
