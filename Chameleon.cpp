@@ -3,7 +3,10 @@
 
 Chameleon::Chameleon() {}
 
-Chameleon::Chameleon(sf::Vector2f pos) {
+Chameleon::Chameleon(sf::Vector2f pos, int tipoFuerza)
+  :
+    tipoFuerza(tipoFuerza)
+{
 
     radius = 30; // Elegir el radio segund algo(?)
 
@@ -15,6 +18,9 @@ Chameleon::Chameleon(sf::Vector2f pos) {
 
     tongue.setOrig(pos);
     tongue.setFatherRadius(radius);
+
+
+    if (tipoFuerza == 1) sprite.setFillColor(sf::Color::Red);
 
 
     //std::cout << "chamaleon" << std::endl;
@@ -57,7 +63,11 @@ sf::Vector2f Chameleon::getPosition() {
 }
 
 float Chameleon::getRadius() {
-    return radius;
+  return radius;
+}
+
+int Chameleon::getType() {
+  return tipoFuerza;
 }
 
 

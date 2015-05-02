@@ -67,19 +67,19 @@ LevelManager::LevelManager()
     while (getline(fci,linea)) {
       numlinea++;
       {
-	for (int i=0;i<int(linea.size())-1;i++) {
-	  if (linea[i]=='/' and linea[i+1]=='/') {
-	    linea=linea.substr(0,i);
-	    break;
-	  }
-	}
+        for (int i=0;i<int(linea.size())-1;i++) {
+          if (linea[i]=='/' and linea[i+1]=='/') {
+            linea=linea.substr(0,i);
+            break;
+          }
+        }
       }
-	istringstream ci(linea);
-	{
-	  string s;
-	  while(ci>>s)
-	    vs.push_back(pair<int,string> (numlinea,s));
-	}
+      istringstream ci(linea);
+      {
+        string s;
+        while(ci>>s)
+          vs.push_back(pair<int,string> (numlinea,s));
+      }
     }
   }
   vl.push_back(Level());
@@ -93,10 +93,16 @@ LevelManager::LevelManager()
     }
     Level &level=vl.back();
     if (comando!="inicio" and comando!="final" and
-	comando!="velocidad" and comando!="camaleon") {
+        comando!="velocidad" and comando!="camaleon" and comando!="obstaculo") {
       cout<<"Error line "<<numlinea<<": wrong instruction "<<comando<<"."<<endl;
       exit(0);
     }
+    /*
+    if (comando=="camaleon" and (i+3>=int(vs.size()) or not my_isint(vs[i+1].second) or not my_isint(vs[i+2].second) or not my_isint(vs[i+3].second))) {
+      cout<<"Error line "<<numlinea<<": three integers are needed for "<<comando<<"."<<endl;
+      exit(0);
+    }
+    */
     if (i+2>=int(vs.size()) or not my_isint(vs[i+1].second) or not my_isint(vs[i+2].second)) {
       cout<<"Error line "<<numlinea<<": two integers are needed for "<<comando<<"."<<endl;
       exit(0);
@@ -104,29 +110,42 @@ LevelManager::LevelManager()
     sf::Vector2f p(my_stof(vs[i+1].second),my_stof(vs[i+2].second));
     if (comando=="inicio") {
       if (level.iniciodefined) {
-	cout<<"Error line "<<numlinea<<": inicio already defined."<<endl;
-	exit(0);
+        cout<<"Error line "<<numlinea<<": inicio already defined."<<endl;
+        exit(0);
       }
       level.iniciodefined=true;
       level.inicio=p;
+      i+=2;
     } else if (comando=="final") {
       if (level.finaldefined) {
-	cout<<"Error line "<<numlinea<<": final already defined."<<endl;
-	exit(0);
+        cout<<"Error line "<<numlinea<<": final already defined."<<endl;
+        exit(0);
       }
       level.finaldefined=true;
       level.final=p;
+      i+=2;
     } else if (comando=="velocidad") {
       if (level.velocidaddefined) {
-	cout<<"Error line "<<numlinea<<": velocidad already defined."<<endl;
-	exit(0);
+        cout<<"Error line "<<numlinea<<": velocidad already defined."<<endl;
+        exit(0);
       }
       level.velocidaddefined=true;
       level.velocidad=p;
+      i+=2;
     } else if (comando=="camaleon") {
       level.camaleon.push_back(p);
+      if (i+3<int(vs.size()) and my_isint(vs[i+3].second)) {
+        level.tipocamaleon.push_back(my_stoi(vs[i+3].second));
+        i+=3;
+      } else {
+        level.tipocamaleon.push_back(0);
+        i+=2;
+      }
+      //i++;
+    } else if (comando=="obstaculo") {
+      level.obstaculo.push_back(p);
+      i+=2;
     }
-    i++;i++;
   }
   checkwelldefined(int(vl.size()),vl.back());
 }

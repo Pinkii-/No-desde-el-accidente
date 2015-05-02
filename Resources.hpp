@@ -13,6 +13,8 @@ public:
     static sf::Texture goal;
     static sf::Texture background;
 
+    static sf::Texture obstacle;
+
     static sf::Font font;
     static sf::SoundBuffer buffer;
     static sf::SoundBuffer expbuf;

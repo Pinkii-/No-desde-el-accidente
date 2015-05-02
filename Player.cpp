@@ -9,7 +9,6 @@ Player::Player() :
 
     expl.setVolume(100);
     alive = true;
-    endReached = false;
     spriteTimer = 0.0;
     spriteAnimation = 0.0;
     timeSinceNextSprite = 0.2;
@@ -20,6 +19,7 @@ Player::Player() :
     sprite.setTextureRect(sf::IntRect(spriteAnimation*spriteWidth, 0, spriteWidth, spriteHeight));
     sprite.setOrigin(sprite.getGlobalBounds().width/2,sprite.getGlobalBounds().height/2);
     licked = tensioning = false;
+    tipofuerza = 0;
 }
 
 /*Player::Player(sf::Vector2f pos, sf::Vector2f speed) :
@@ -49,8 +49,10 @@ void Player::setSpeed(sf::Vector2f newSpeed){
 void Player::update(float deltaTime) {
     if (!alive) return;
     if (licked) timeSinceTriggered += deltaTime;
-    //evoluciona(deltaTime);
-    evolucionabis(deltaTime);
+    if (tipofuerza==0)
+      evoluciona(deltaTime);
+    else
+      evolucionabis(deltaTime);
     angle = radToAngle(speedToRad(speed))+90;
     sprite.setPosition(pos);
     spriteTimer += deltaTime;
@@ -72,7 +74,8 @@ sf::Vector2f Player::getPosition() {
     return pos;
 }
 
-void Player::setLicked(bool b, sf::Vector2f cPos) {
+void Player::setLicked(bool b, sf::Vector2f cPos, int tipofuerza) {
+  this->tipofuerza = tipofuerza;
     camaleonPos = cPos;
     licked = b;
     if (!b) {
@@ -87,16 +90,10 @@ void Player::setAlive(bool b) {
     expl.play();
     }
 }
-bool Player::getEndReached() const {
-    return endReached;
-}
+
 
 bool Player::isAlive() {
     return alive;
-}
-
-void Player::setEndReached(bool value) {
-    endReached = value;
 }
 
 
@@ -141,8 +138,10 @@ void Player::evoluciona(float fdelta){
 
 double Player::fuerza(double distancia)
 {
-  //return abs(distancia)/20;
-  return sqrt(abs(distancia))*5;
+  if (tipofuerza==1)
+    return sqrt(abs(distancia))*5;
+  if (tipofuerza==2)
+    return abs(distancia)/200;
   //return 30;
   //return 5000000/(distancia*distancia);
 }

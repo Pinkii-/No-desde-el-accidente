@@ -9,6 +9,7 @@
 #include <sstream>
 #include <vector>
 #include <cstdlib>
+#include <map>
 
 #include <Background.hpp>
 
@@ -21,12 +22,15 @@ private:
   float tiempo;
   sf::Font font;
   float velocidad;
-  vector<wstring> frases;
+
+  vector<string> frases;
+  map<char,string> c2s;
+
 
   float computaEscala(float h,float despobjeto);
 
   void dibujafrase(int centropantalla, int hobservador, int despobservador,
-                   int numfrase, int desp, int hcaracter, wstring &frase, sf::RenderWindow &window);
+                   int numfrase, int desp, int hcaracter, string &frase, sf::RenderWindow &window);
 
   Background background;
 

@@ -8,6 +8,7 @@
 #include "readlevels.hpp"
 #include "Resources.hpp"
 #include "Background.hpp"
+#include "Obstacle.hpp"
 
 class Scene : public Game {
 public:
@@ -30,6 +31,7 @@ private:
     sf::Sound sound;
     Background background;
     Chameleon *currentChameleon;
+    std::vector<Obstacle> obstacles;
     std::vector<Chameleon> chameleons;
 
     // lvl aids
