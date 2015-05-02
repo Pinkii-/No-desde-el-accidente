@@ -49,8 +49,8 @@ void Player::setSpeed(sf::Vector2f newSpeed){
 void Player::update(float deltaTime) {
     if (!alive) return;
     if (licked) timeSinceTriggered += deltaTime;
-    evoluciona(deltaTime);
-    //evolucionabis(deltaTime);
+    //evoluciona(deltaTime);
+    evolucionabis(deltaTime);
     angle = radToAngle(speedToRad(speed))+90;
     sprite.setPosition(pos);
     spriteTimer += deltaTime;
@@ -141,7 +141,10 @@ void Player::evoluciona(float fdelta){
 
 double Player::fuerza(double distancia)
 {
-  return sqrt(abs(distancia))/10;
+  return abs(distancia)/20;
+  //return sqrt(abs(distancia))*5;
+  //return 30;
+  //return 5000000/(distancia*distancia);
 }
 
 void Player::evolucionabis(float fdelta)
@@ -160,7 +163,7 @@ void Player::evolucionabis(float fdelta)
   for (int paso=0;paso<pasos;paso++) {    
     point dir=c-p;
     v=v+(fuerza(abs(dir))*delta/abs(dir))*dir;
-    p=p+v;
+    p=p+v*delta;
   }
   pos=point2vector(p);
   speed=point2vector(v);
