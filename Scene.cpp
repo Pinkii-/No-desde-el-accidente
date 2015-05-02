@@ -78,6 +78,7 @@ void Scene::draw(){
     player.draw(*window);
     for (Chameleon &c : chameleons) c.draw(*window);
     for (Obstacle &o : obstacles) o.draw(*window);
+    window->setView(window->getDefaultView());
     if (menuIsActive) iMenu.draw(*window);
 
 }
@@ -108,8 +109,8 @@ void Scene::processEvents(){
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 
             sf::Vector2f mouse;
-            mouse.x = window->getView().getCenter().x + (sf::Mouse::getPosition(*window).x - window->getSize().x/2.0) / viewScale;
-            mouse.y = window->getView().getCenter().y + (sf::Mouse::getPosition(*window).y - window->getSize().y/2.0) / viewScale;
+            mouse.x = view.getCenter().x + (sf::Mouse::getPosition(*window).x - window->getSize().x/2.0) / viewScale;
+            mouse.y = view.getCenter().y + (sf::Mouse::getPosition(*window).y - window->getSize().y/2.0) / viewScale;
 
             activeChameleon(sf::Vector2f( mouse.x, mouse.y));
         }
