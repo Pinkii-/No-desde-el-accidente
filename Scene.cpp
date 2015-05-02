@@ -90,6 +90,7 @@ void Scene::processEvents(){
         switch (event.type) {
             case sf::Event::Closed:
                 window->close();
+                exit(0);
                 break;
             case  sf::Event::KeyPressed:
                 //Close key

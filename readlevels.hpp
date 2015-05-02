@@ -39,7 +39,7 @@ private:
 
 public:
 
-  LevelManager();
+  LevelManager(string path);
   int getNumLevels();
   Level getLevel(int i);
   void escribe();

@@ -40,6 +40,7 @@ Player::Player() :
 
 void Player::setPosition(sf::Vector2f newPos){
     pos = newPos;
+    sprite.setPosition(pos);
 }
 
 void Player::setSpeed(sf::Vector2f newSpeed){

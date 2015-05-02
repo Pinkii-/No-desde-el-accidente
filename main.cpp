@@ -23,7 +23,7 @@ int main() {
     Frases frases(window);
     frases.run(window);
 
-    LevelManager lvlMng;
+    LevelManager lvlMng("res/levelsfile.txt");
 
     Menu menu(&window);
 

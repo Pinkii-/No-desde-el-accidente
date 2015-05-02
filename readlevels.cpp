@@ -53,9 +53,9 @@ void LevelManager::checkwelldefined(int numlevel,Level level)
   }
 }
 
-LevelManager::LevelManager()
+LevelManager::LevelManager(std::string path)
 {
-  ifstream fci("res/levelsfile.txt");
+  ifstream fci(path);
   if (not fci.is_open()) {
     cout<<"ERROR opening levelsfile.txt"<<endl;
     exit(0);
