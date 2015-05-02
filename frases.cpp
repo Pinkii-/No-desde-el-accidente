@@ -13,6 +13,41 @@
 
 using namespace std;
 
+wstring stow(string frase)
+{
+  map<string,wstring> mapa;
+  mapa["à"]=L"à";
+  mapa["á"]=L"á";
+  mapa["è"]=L"è";
+  mapa["é"]=L"é";
+  mapa["í"]=L"í";
+  mapa["ì"]=L"ì";
+  mapa["ó"]=L"ó";
+  mapa["ò"]=L"ò";
+  mapa["ú"]=L"ú";
+  mapa["ù"]=L"ù";
+  mapa["ü"]=L"ü";
+  mapa["ç"]=L"ç";
+  wstring wfrase;
+  for (int i=0;i<int(frase.size());) {
+    bool trobat=false;
+    for (map<string,wstring>::iterator it=mapa.begin();it!=mapa.end() and !trobat;it++) {
+      string s=it->first;
+      wstring ws=it->second;
+      if (i+int(s.size())<=int(frase.size()) and frase.substr(i,int(s.size()))==s) {
+	wfrase+=ws;
+	i+=int(ws.size());
+	trobat=true;
+      }
+    }
+    if (not trobat) {
+      wfrase+=frase[i];
+      i++;
+    }
+  }
+  return wfrase;
+}
+
 
 float Frases::computaEscala(float h,float despobjeto)
 {
@@ -30,7 +65,11 @@ void Frases::dibujafrase(int centropantalla,int hobservador,int despobservador,
   float escala=computaEscala(float(hobservador),despobjeto-despobservador);
   float escalacaracter=computaEscala(float(hobservador),40+despobjeto-despobservador);
   sf::Text text;
-  text.setString(frase);
+
+  std::wstring wfrase=stow(frase);
+
+  text.setString(wfrase);
+  //text.setString(wstring(L"íiií àa"));
   text.setFont(font);
   text.setColor(sf::Color::Yellow);
   
