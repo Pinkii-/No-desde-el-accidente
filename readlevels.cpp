@@ -15,7 +15,7 @@ using namespace std;
 
 /*
 git add -A
-git commit -m "readlevels y stoi"
+git commit -m "cogiendo datos"
 git pull
 git push origin master 
 

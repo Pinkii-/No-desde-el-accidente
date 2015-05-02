@@ -53,6 +53,9 @@ private:
 
     void evoluciona(float fdelta);
 
+    double fuerza(double distancia);
+    void evolucionabis(float fdelta);
+
     // Comido
     bool alive;
 };
