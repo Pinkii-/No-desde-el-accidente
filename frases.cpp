@@ -41,6 +41,8 @@ void Frases::dibujafrase(int centropantalla,int hobservador,int despobservador,
   text.setPosition(sf::Vector2f(float(centropantalla),hobservador-hfrase));
 
   //text.setPosition(sf::Vector2f(float(centropantalla),0));
+
+  std::cout<<frase<<std::endl;
   
   window.draw(text);
 }

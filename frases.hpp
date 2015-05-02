@@ -9,6 +9,7 @@
 #include <sstream>
 #include <vector>
 #include <cstdlib>
+#include <map>
 
 #include <Background.hpp>
 
@@ -22,6 +23,7 @@ private:
   sf::Font font;
   float velocidad;
   vector<string> frases;
+  map<char,string> c2s;
 
   float computaEscala(float h,float despobjeto);
 
