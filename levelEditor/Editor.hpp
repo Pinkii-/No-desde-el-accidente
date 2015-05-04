@@ -14,10 +14,13 @@ public:
   Editor(sf::RenderWindow &w);
   void run(sf::RenderWindow& window);
 private:
+  // Aux things
+  int currentLvl;
+  int pincel;
+  // Dibujar
   sf::RenderWindow* window;
   sf::View view;
   Background background;
-  int currentLvl;
   // Elementos para poner en el nivel
   Chameleon camaleon1;
   Chameleon camaleon2;
@@ -35,6 +38,7 @@ private:
   Player pl;
 
   void setLevel(int lvl);
+  void mousePressedAt(sf::Vector2f pos);
 };
 
 #endif // EDITOR_HPP
