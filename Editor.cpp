@@ -86,6 +86,10 @@ int Editor::run() {
   return 0;
 }
 
+int Editor::getCurrentLvl() {
+    return currentLvl;
+}
+
 void Editor::setLevel(int lvl) {
   if (lvl < 0) {
       currentLvl = 0;

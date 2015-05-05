@@ -30,7 +30,11 @@ int Menu::run() {
                     break;
             }
             if (event.type == sf::Event::Closed) { window->close(); exit(0);}
-            if (event.type == sf::Event::KeyPressed){ if (event.key.code == sf::Keyboard::Escape) { window->close(); exit(0); } }
+            if (event.type == sf::Event::KeyPressed){
+                if (event.key.code == sf::Keyboard::Escape) { window->close(); exit(0);}
+                else if (event.key.code == sf::Keyboard::Space) return -1;
+            }
+
         }
 
         if (buttonL.hasBeenClicked()) {

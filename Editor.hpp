@@ -13,6 +13,7 @@ class Editor {
 public:
   Editor(sf::RenderWindow &w, LevelManager *lm);
   int run();
+  int getCurrentLvl();
 private:
   // Current lvl info
   int currentLvl;
