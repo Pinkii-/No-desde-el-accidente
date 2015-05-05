@@ -15,8 +15,9 @@ public:
     void draw(sf::RenderWindow &window);
 
     //Getters
-    sf::Vector2f getPosition();
     bool isAlive();
+    sf::Vector2f getSpeed();
+    sf::Vector2f getPosition();
 
     //Setters
     void setSpeed(sf::Vector2f newSpeed);

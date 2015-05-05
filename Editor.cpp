@@ -2,10 +2,9 @@
 
 Editor::Editor(sf::RenderWindow&w, LevelManager* lm)
   :
-    levels("res/levelsfile.txt"),
     background(w)
 {
-  levels = *lm;
+  levels = lm;
 
   window = &w;
 
@@ -86,16 +85,27 @@ int Editor::run() {
   return 0;
 }
 
-int Editor::getCurrentLvl() {
-    return currentLvl;
+Level Editor::getCurrentLvl() {
+  Level aux;
+  aux.inicio = pl.getPosition();
+  aux.velocidad = pl.getSpeed();
+  aux.final = go.getPosition();
+  for (uint i = 0; i < camaleones.size(); ++i) {
+    aux.camaleon.push_back(camaleones[i].getPosition());
+    aux.tipocamaleon.push_back(camaleones[i].getType());
+  }
+  for (uint i = 0; i < obstaculos.size(); ++i) {
+    aux.obstaculo.push_back(obstaculos[i].getPosition());
+  }
+  return aux;
 }
 
 void Editor::setLevel(int lvl) {
   if (lvl < 0) {
       currentLvl = 0;
       return;
-  } if (lvl >= levels.getNumLevels()) {
-      currentLvl = levels.getNumLevels()-1;
+  } if (lvl >= levels->getNumLevels()) {
+      currentLvl = levels->getNumLevels()-1;
       return;
   }
 
@@ -104,7 +114,7 @@ void Editor::setLevel(int lvl) {
   tCurrentLvl.setPosition(50,50);
 
   // ini lvl
-  Level level = levels.getLevel(lvl);
+  Level level = levels->getLevel(lvl);
 
   sf::Vector2f p;
   float maxX = window->getSize().x;
@@ -182,4 +192,6 @@ void Editor::saveLvl() {
     // TODO: Save the levels on the texfile
     pincel = 0;
     saved = true;
+    levels->setLevel(currentLvl, getCurrentLvl());
+    levels->escribeAFichero();
 }

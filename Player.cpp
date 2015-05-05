@@ -94,7 +94,11 @@ void Player::setAlive(bool b) {
 
 
 bool Player::isAlive() {
-    return alive;
+  return alive;
+}
+
+sf::Vector2f Player::getSpeed() {
+  return speed;
 }
 
 

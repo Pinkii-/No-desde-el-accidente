@@ -1,94 +1,91 @@
-inicio 100 100
+inicio 112 103
 final 1000 560
 velocidad 100 100
 camaleon 300 400 1
-camaleon 800 200
-camaleon 500 500
+camaleon 800 200 0
+camaleon 500 500 0
 obstaculo 350 50
 
 nuevonivel
 inicio 100 100
 final 1500 700
 velocidad 200 0
-camaleon 300 300
-camaleon 800 300
-camaleon 120 300
-camaleon 300 700
-camaleon 800 700
-camaleon 120 700
+camaleon 300 300 0
+camaleon 800 300 0
+camaleon 120 300 0
+camaleon 300 700 0
+camaleon 800 700 0
+camaleon 120 700 0
 
 nuevonivel
 inicio 100 0
 final 100 900
 velocidad 200 0
-camaleon 100 500
-camaleon 300 500
-camaleon 500 500
-camaleon 700 500
-camaleon 900 500
-camaleon 1200 500
-
-
-nuevonivel
-inicio 100 0
-final 100 500
-velocidad 200 0
-camaleon 100 300
-camaleon 300 300
-camaleon 500 300
-camaleon 700 300
-camaleon 900 300
-camaleon 1200 300
-camaleon 100 900
-camaleon 300 900
-camaleon 500 900
-camaleon 700 900
-camaleon 900 900
-camaleon 1200 900
+camaleon 100 500 0
+camaleon 300 500 0
+camaleon 500 500 0
+camaleon 700 500 0
+camaleon 900 500 0
+camaleon 1200 500 0
 
 nuevonivel
 inicio 100 0
 final 100 500
 velocidad 200 0
-camaleon 100 200
-camaleon 200 200
-camaleon 300 200
-camaleon 400 200
-camaleon 500 200
-camaleon 100 350
-camaleon 200 350
-camaleon 300 350
-camaleon 400 350
-camaleon 500 350
-camaleon 100 650
-camaleon 200 650
-camaleon 300 650
-camaleon 400 650
-camaleon 500 650
-camaleon 100 800
-camaleon 200 800
-camaleon 300 800
-camaleon 400 800
-camaleon 500 800
+camaleon 100 300 0
+camaleon 300 300 0
+camaleon 500 300 0
+camaleon 700 300 0
+camaleon 900 300 0
+camaleon 1200 300 0
+camaleon 100 900 0
+camaleon 300 900 0
+camaleon 500 900 0
+camaleon 700 900 0
+camaleon 900 900 0
+camaleon 1200 900 0
 
+nuevonivel
+inicio 100 0
+final 100 500
+velocidad 200 0
+camaleon 100 200 0
+camaleon 200 200 0
+camaleon 300 200 0
+camaleon 400 200 0
+camaleon 500 200 0
+camaleon 100 350 0
+camaleon 200 350 0
+camaleon 300 350 0
+camaleon 400 350 0
+camaleon 500 350 0
+camaleon 100 650 0
+camaleon 200 650 0
+camaleon 300 650 0
+camaleon 400 650 0
+camaleon 500 650 0
+camaleon 100 800 0
+camaleon 200 800 0
+camaleon 300 800 0
+camaleon 400 800 0
+camaleon 500 800 0
 
 nuevonivel
 inicio 350 500
 final 500 950
 velocidad 200 0
-camaleon 100 200
-camaleon 200 200
-camaleon 300 200
-camaleon 400 200
-camaleon 500 200
-camaleon 100 350
-camaleon 500 350
-camaleon 100 650
-camaleon 500 650
-camaleon 100 800
-camaleon 200 800
-camaleon 300 800
-camaleon 400 800
-camaleon 500 800
-
+camaleon 100 200 0
+camaleon 200 200 0
+camaleon 300 200 0
+camaleon 400 200 0
+camaleon 500 200 0
+camaleon 100 350 0
+camaleon 500 350 0
+camaleon 100 650 0
+camaleon 500 650 0
+camaleon 100 800 0
+camaleon 200 800 0
+camaleon 300 800 0
+camaleon 400 800 0
+camaleon 500 800 0
 

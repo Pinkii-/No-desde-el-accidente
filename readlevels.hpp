@@ -29,7 +29,7 @@ struct Level {
 
 class LevelManager {
 private:
-
+  string path;
   vector<Level> vl;
 
   bool isint(string s);
@@ -38,11 +38,13 @@ private:
   void escribe(sf::Vector2f &v);
 
 public:
-
+  LevelManager();
   LevelManager(string path);
   int getNumLevels();
   Level getLevel(int i);
+  void setLevel(int i, Level l);
   void escribe();
+  void escribeAFichero();
 };
 
 #endif

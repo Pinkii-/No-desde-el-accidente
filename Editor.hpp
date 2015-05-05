@@ -13,7 +13,7 @@ class Editor {
 public:
   Editor(sf::RenderWindow &w, LevelManager *lm);
   int run();
-  int getCurrentLvl();
+  Level getCurrentLvl();
 private:
   // Current lvl info
   int currentLvl;
@@ -41,7 +41,7 @@ private:
   Player player;
 
   // Elementos en el nivel
-  LevelManager levels;
+  LevelManager* levels;
 
   // Elementos en el current level
   std::vector<Chameleon> camaleones;

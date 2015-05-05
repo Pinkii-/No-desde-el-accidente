@@ -53,8 +53,11 @@ void LevelManager::checkwelldefined(int numlevel,Level level)
   }
 }
 
+LevelManager::LevelManager() {}
+
 LevelManager::LevelManager(std::string path)
 {
+  this->path = path;
   ifstream fci(path);
   if (not fci.is_open()) {
     cout<<"ERROR opening levelsfile.txt"<<endl;
@@ -160,6 +163,10 @@ Level LevelManager::getLevel(int i)
   return vl[i];
 }
 
+void LevelManager::setLevel(int i, Level l) {
+  vl[i] = l;
+}
+
 void LevelManager::escribe(sf::Vector2f &v)
 {
   cout<<v.x<<" "<<v.y<<endl;
@@ -180,6 +187,27 @@ void LevelManager::escribe()
     cout<<endl;
   }
 }
+
+void LevelManager::escribeAFichero() {
+  ofstream file;
+  file.open(path);
+  for (int i=0;i<int(vl.size());i++) {
+    if (i != 0) file<<"nuevonivel"<<endl;
+    Level &level=vl[i];
+    file<<"inicio " << level.inicio.x << " " << level.inicio.y << endl;
+    file<<"final " << level.final.x << " " << level.final.y << endl;
+    file<<"velocidad " << level.velocidad.x << " " << level.velocidad.y << endl;
+    for (int j=0;j<int(level.camaleon.size());j++) {
+      file<<"camaleon " << level.camaleon[j].x << " " << level.camaleon[j].y << " " << level.tipocamaleon[j] << endl;
+    }
+    for (int j=0;j<int(level.obstaculo.size());j++) {
+      file<<"obstaculo " << level.obstaculo[j].x << " " << level.obstaculo[j].y << endl;
+    }
+    file<<endl;
+  }
+}
+
+
 
 //LevelManager levelManager;
 

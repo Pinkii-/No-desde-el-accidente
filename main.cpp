@@ -55,7 +55,7 @@ int main() {
         else if (currentLvl == -1) { // Editor de niveles
             while (int status = editor.run()) {
                 if (status == 1) {
-                    Scene mygame(&window, lvlMng.getLevel(editor.getCurrentLvl()));
+                    Scene mygame(&window, editor.getCurrentLvl());
                     (void) mygame.run();
                 }
             }
