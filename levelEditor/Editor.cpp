@@ -6,8 +6,16 @@ Editor::Editor(sf::RenderWindow&w)
     background(w)
 {
   window = &w;
+
+  tCurrentLvl.setFont(Resources::font);
+  sSave.setRadius(20);
+  sSave.setFillColor(sf::Color::Red);
+  sSave.setOrigin(10,10);
+  sSave.setPosition(50,50);
   currentLvl = 0;
   setLevel(currentLvl);
+  saved = true;
+
   pincel = 0;
 }
 
@@ -21,9 +29,23 @@ void Editor::run(sf::RenderWindow &window) {
           exit(0);
           break;
         case sf::Event::MouseButtonPressed: {
+          mousePressed = true;
           sf::Vector2i pos = sf::Vector2i(event.mouseButton.x,event.mouseButton.y);
           sf::Vector2f newPos = window.mapPixelToCoords(pos,view);
           mousePressedAt(newPos);
+          break;
+        }
+        case sf::Event::MouseButtonReleased:
+          mousePressed = false;
+          break;
+        case sf::Event::MouseMoved: {
+          if (!control || !mousePressed) break;
+          sf::Vector2i pos = sf::Vector2i(event.mouseMove.x,event.mouseMove.y);
+          sf::Vector2f newPos = window.mapPixelToCoords(pos,view);
+          sf::Vector2f dif = moveCamera - newPos;
+          moveCamera = newPos;
+          sf::Vector2f newCenter = view.getCenter() + dif;
+          view.setCenter(newCenter);
           break;
         }
         case sf::Event::MouseWheelMoved:
@@ -34,7 +56,14 @@ void Editor::run(sf::RenderWindow &window) {
             pincel = event.key.code - sf::Keyboard::Num0;
           }
           else if (event.key.code == sf::Keyboard::Escape) pincel = 0;
+          else if (event.key.code == sf::Keyboard::LControl) control = true;
+          else if (event.key.code == sf::Keyboard::Q && control) window.close();
+          else if (event.key.code == sf::Keyboard::M) setLevel(++currentLvl);
+          else if (event.key.code == sf::Keyboard::N) setLevel(--currentLvl);
+          else if (event.key.code == sf::Keyboard::S && control) saveLvl();
           break;
+        case sf::Event::KeyReleased:
+          if (event.key.code == sf::Keyboard::LControl) control = false;
         default:
           break;
       }
@@ -47,11 +76,25 @@ void Editor::run(sf::RenderWindow &window) {
     pl.draw(window);
     go.draw(window);
     window.setView(window.getDefaultView());
+    if (!saved) window.draw(sSave);
+    window.draw(tCurrentLvl);
     window.display();
   }
 }
 
 void Editor::setLevel(int lvl) {
+  if (lvl < 0) {
+      currentLvl = 0;
+      return;
+  } if (lvl >= levels.getNumLevels()) {
+      currentLvl = levels.getNumLevels()-1;
+      return;
+  }
+
+  tCurrentLvl.setString(std::to_string(lvl));
+  tCurrentLvl.setOrigin(tCurrentLvl.getLocalBounds().width/2, tCurrentLvl.getGlobalBounds().height/2);
+  tCurrentLvl.setPosition(50,50);
+
   // ini lvl
   Level level = levels.getLevel(lvl);
 
@@ -98,6 +141,11 @@ void Editor::setLevel(int lvl) {
 }
 
 void Editor::mousePressedAt(sf::Vector2f pos) {
+  if (control) {
+      moveCamera = pos;
+      return;
+  }
+  if (pincel != 0) saved = false;
   switch (pincel) {
     case 0: // Nada seleccionado para ponerlo en el mapa. Se puede seleccionar cosas del mapa.
 
@@ -120,4 +168,10 @@ void Editor::mousePressedAt(sf::Vector2f pos) {
     default:
       break;
   }
+}
+
+void Editor::saveLvl() {
+    // TODO: Save the levels on the texfile
+    pincel = 0;
+    saved = true;
 }

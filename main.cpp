@@ -1,9 +1,10 @@
 #include "Menu.hpp"
-#include <Scene.hpp>
+#include "Scene.hpp"
 #include "Portada.hpp"
 #include "readlevels.hpp"
-#include <Resources.hpp>
+#include "Resources.hpp"
 #include "frases.hpp"
+#include "Editor.hpp"
 
 int main() {
 
@@ -27,7 +28,7 @@ int main() {
     frases.run(window);
 
     LevelManager lvlMng("res/levelsfile.txt");
-
+    Editor editor(window, &lvlMng);
     Menu menu(&window);
 
     music.stop();
@@ -39,14 +40,23 @@ int main() {
     // Aqui tendrá que ir el menú {
     while (true) {
         int currentLvl = menu.run();
-        bool playing = true;
-        while (playing) {
-            Scene mygame(&window, lvlMng.getLevel(currentLvl)); // Style of the window
-            playing = mygame.run();
-            if (mygame.getSuccess()) {
-                currentLvl += 1;
-                if (currentLvl >= lvlMng.getNumLevels()) break;
-                else menu.setLevel(currentLvl);
+        if (currentLvl >= 0) {
+            bool playing = true;
+            while (playing) {
+                Scene mygame(&window, lvlMng.getLevel(currentLvl)); // Style of the window
+                playing = mygame.run();
+                if (mygame.getSuccess()) {
+                    currentLvl += 1;
+                    if (currentLvl >= lvlMng.getNumLevels()) break;
+                    else menu.setLevel(currentLvl);
+                }
+            }
+        }
+        else if (currentLvl == -1) { // Editor de niveles
+            int status = editor.run();
+            if (status == 1) {
+                Scene mygame(&window, lvlMng.getLevel(editor.getCurrentLvl()));
+                int useless = mygame.run();
             }
         }
     }

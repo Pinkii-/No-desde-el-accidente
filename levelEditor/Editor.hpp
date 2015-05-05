@@ -14,13 +14,24 @@ public:
   Editor(sf::RenderWindow &w);
   void run(sf::RenderWindow& window);
 private:
-  // Aux things
+  // Current lvl info
   int currentLvl;
+  sf::Text tCurrentLvl;
+  bool saved;
+  sf::CircleShape sSave;
+  // Pincel info
   int pincel;
+
+  // Mover la pantalla
+  bool control;
+  bool mousePressed;
+  sf::Vector2f moveCamera;
+
   // Dibujar
   sf::RenderWindow* window;
   sf::View view;
   Background background;
+
   // Elementos para poner en el nivel
   Chameleon camaleon1;
   Chameleon camaleon2;
@@ -39,6 +50,7 @@ private:
 
   void setLevel(int lvl);
   void mousePressedAt(sf::Vector2f pos);
+  void saveLvl();
 };
 
 #endif // EDITOR_HPP
