@@ -194,14 +194,14 @@ void LevelManager::escribeAFichero() {
   for (int i=0;i<int(vl.size());i++) {
     if (i != 0) file<<"nuevonivel"<<endl;
     Level &level=vl[i];
-    file<<"inicio " << level.inicio.x << " " << level.inicio.y << endl;
-    file<<"final " << level.final.x << " " << level.final.y << endl;
-    file<<"velocidad " << level.velocidad.x << " " << level.velocidad.y << endl;
+    file<<"inicio " << (int)level.inicio.x << " " << (int)level.inicio.y << endl;
+    file<<"final " << (int)level.final.x << " " << (int)level.final.y << endl;
+    file<<"velocidad " << (int)level.velocidad.x << " " << (int)level.velocidad.y << endl;
     for (int j=0;j<int(level.camaleon.size());j++) {
-      file<<"camaleon " << level.camaleon[j].x << " " << level.camaleon[j].y << " " << level.tipocamaleon[j] << endl;
+      file<<"camaleon " << (int)level.camaleon[j].x << " " << (int)level.camaleon[j].y << " " << level.tipocamaleon[j] << endl;
     }
     for (int j=0;j<int(level.obstaculo.size());j++) {
-      file<<"obstaculo " << level.obstaculo[j].x << " " << level.obstaculo[j].y << endl;
+      file<<"obstaculo " << (int)level.obstaculo[j].x << " " << (int)level.obstaculo[j].y << endl;
     }
     file<<endl;
   }
