@@ -61,7 +61,7 @@ int Editor::run() {
           else if (event.key.code == sf::Keyboard::Q && control) return 0;
           else if (event.key.code == sf::Keyboard::M) setLevel(++currentLvl);
           else if (event.key.code == sf::Keyboard::N) setLevel(--currentLvl);
-          else if (event.key.code == sf::Keyboard::S && control) saveLvl();
+          else if (event.key.code == sf::Keyboard::S && control && !saved) saveLvl();
           else if (event.key.code == sf::Keyboard::R && control) {
             control = false;
             return 1;
