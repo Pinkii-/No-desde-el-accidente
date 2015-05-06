@@ -12,6 +12,7 @@ public:
 
   float getRadius();
   sf::Vector2f getPosition();
+  void setPosition(sf::Vector2f pos);
 private:
   sf::CircleShape sprite;
   float radius;

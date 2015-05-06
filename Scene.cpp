@@ -52,7 +52,7 @@ bool Scene::update(float deltaTime){
     minX = player.getPosition().x-offset;
     maxY = player.getPosition().y+offset;
     minY = player.getPosition().y-offset;
-    for(int i = 0; i < positions.size(); ++i){
+    for(uint i = 0; i < positions.size(); ++i){
         //maxX = max(maxX, positions[i].x + offset);
         if(positions[i].x+offset > maxX) maxX = positions[i].x+offset;
         if(positions[i].x-offset < minX) minX = positions[i].x-offset;

@@ -1,10 +1,30 @@
-inicio -189 142
-final 1000 560
+inicio 412 227
+final 1406 773
 velocidad 100 100
-camaleon 300 400 1
-camaleon 800 200 0
-camaleon 500 500 0
-obstaculo 350 50
+camaleon 612 527 1
+camaleon 1112 327 0
+camaleon 812 627 0
+camaleon 0 98 0
+obstaculo 662 177
+obstaculo 622 0
+obstaculo 521 16
+obstaculo 433 26
+obstaculo 366 59
+obstaculo 327 118
+obstaculo 302 185
+obstaculo 280 302
+obstaculo 280 302
+obstaculo 267 490
+obstaculo 267 613
+obstaculo 285 663
+obstaculo 325 715
+obstaculo 426 792
+obstaculo 454 800
+obstaculo 541 848
+obstaculo 611 881
+obstaculo 701 899
+obstaculo 771 899
+obstaculo 785 899
 
 nuevonivel
 inicio 100 100

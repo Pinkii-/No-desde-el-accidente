@@ -40,3 +40,7 @@ sf::Vector2f Obstacle::getPosition() {
   return sprite.getPosition();
 }
 
+void Obstacle::setPosition(sf::Vector2f pos) {
+  sprite.setPosition(pos);
+}
+

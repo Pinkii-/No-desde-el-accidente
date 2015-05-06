@@ -62,7 +62,10 @@ int Editor::run() {
           else if (event.key.code == sf::Keyboard::M) setLevel(++currentLvl);
           else if (event.key.code == sf::Keyboard::N) setLevel(--currentLvl);
           else if (event.key.code == sf::Keyboard::S && control) saveLvl();
-          else if (event.key.code == sf::Keyboard::R && control) return 1;
+          else if (event.key.code == sf::Keyboard::R && control) {
+            control = false;
+            return 1;
+          }
           break;
         case sf::Event::KeyReleased:
           if (event.key.code == sf::Keyboard::LControl) control = false;
@@ -154,7 +157,7 @@ void Editor::setLevel(int lvl) {
   else if (p.y > maxY) maxY = p.y;
 
   view.setCenter(minX+(maxX-minX)/2,minY+(maxY-minY)/2);
-  view.setSize(window->getSize().x,window->getSize().y);
+  view.setSize(200+maxX-minX,200+maxY-minY);
   window->setView(view);
 }
 
@@ -195,4 +198,33 @@ void Editor::saveLvl() {
     normaliceLvl();
     levels->setLevel(currentLvl, getCurrentLvl());
     levels->escribeAFichero();
+}
+
+void Editor::normaliceLvl() {
+  sf::Vector2f p;
+  float minX = 0;
+  float minY = 0;
+  for (uint i = 0; i < camaleones.size(); ++i) {
+    p = camaleones[i].getPosition();
+    if (p.x < minX) minX = p.x;
+    if (p.y < minY) minY = p.y;
+  }
+  for (uint i = 0; i < obstaculos.size(); ++i) {
+    p = obstaculos[i].getPosition();
+    if (p.x < minX) minX = p.x;
+    if (p.y < minY) minY = p.y;
+  }
+  p = go.getPosition();
+  if (p.x < minX) minX = p.x;
+  if (p.y < minY) minY = p.y;
+
+  p = pl.getPosition();
+  if (p.x < minX) minX = p.x;
+  if (p.y < minY) minY = p.y;
+
+  sf::Vector2f offset(minX,minY);
+  for (uint i = 0; i < camaleones.size(); ++i) camaleones[i].setPosition(camaleones[i].getPosition()-offset);
+  for (uint i = 0; i < obstaculos.size(); ++i) obstaculos[i].setPosition(obstaculos[i].getPosition()-offset);
+  go.setPosition(go.getPosition()-offset);
+  pl.setPosition(pl.getPosition()-offset);
 }

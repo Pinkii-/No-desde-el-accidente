@@ -55,7 +55,11 @@ void Chameleon::release() {
 }
 
 void Chameleon::eating() {
-    sprite.setTexture(&Resources::chameleon3);
+  sprite.setTexture(&Resources::chameleon3);
+}
+
+void Chameleon::setPosition(sf::Vector2f pos) {
+  sprite.setPosition(pos);
 }
 
 sf::Vector2f Chameleon::getPosition() {
