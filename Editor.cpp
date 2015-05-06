@@ -192,6 +192,7 @@ void Editor::saveLvl() {
     // TODO: Save the levels on the texfile
     pincel = 0;
     saved = true;
+    normaliceLvl();
     levels->setLevel(currentLvl, getCurrentLvl());
     levels->escribeAFichero();
 }
