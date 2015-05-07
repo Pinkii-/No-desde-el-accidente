@@ -120,9 +120,9 @@ void Editor::setLevel(int lvl) {
   Level level = levels->getLevel(lvl);
 
   sf::Vector2f p;
-  float maxX = window->getSize().x;
-  float maxY = window->getSize().y-50;
-  float minX, minY; minX = minY = 0;
+  float minX, maxX, minY, maxY;
+  minX = maxX = level.inicio.x;
+  minY = maxY = level.inicio.y;
   camaleones = std::vector<Chameleon>();
   for (uint i = 0; i < level.camaleon.size(); ++i) {
     p = level.camaleon[i];
@@ -157,8 +157,22 @@ void Editor::setLevel(int lvl) {
   else if (p.y > maxY) maxY = p.y;
 
   view.setCenter(minX+(maxX-minX)/2,minY+(maxY-minY)/2);
-  view.setSize(200+maxX-minX,200+maxY-minY);
-  window->setView(view);
+  // TODO: Hacer que guarde el aspect ratio
+  float x, y;
+  x = maxX-minX;
+  y = maxY-minY;
+  float ratio = window->getSize().x/window->getSize().y;
+  sf::Vector2f offset(ratio*200,200);
+  if (x/y > ratio) {
+    y = x*ratio;
+    offset.y *= ratio;
+  }
+  else {
+    x = y * ratio;
+    offset.x *= ratio;
+  }
+  view.setSize(offset.x+x,offset.y+y);
+  //window->setView(view);
 }
 
 void Editor::mousePressedAt(sf::Vector2f pos) {
