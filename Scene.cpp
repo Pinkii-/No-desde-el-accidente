@@ -97,6 +97,10 @@ void Scene::processEvents(){
                 if (event.key.code == sf::Keyboard::Escape) {
                     menuIsActive = !menuIsActive;
                 }
+                else if (event.key.code == sf::Keyboard::R) { // Restart de lvl
+                  finishLvl = true;
+                  success = false;
+                }
                 break;
             default:
                 break;

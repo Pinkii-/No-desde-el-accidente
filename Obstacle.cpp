@@ -9,6 +9,7 @@ Obstacle::Obstacle(sf::Vector2f pos) {
   sprite.setTexture(&Resources::obstacle);
   sprite.setOrigin(sprite.getGlobalBounds().width/2,sprite.getGlobalBounds().height/2);
   sprite.setPosition(pos);
+  sprite.setRotation(rand()%360);
 
 
   nSprites = 1; // Numero de Sprites

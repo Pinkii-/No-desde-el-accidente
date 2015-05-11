@@ -53,19 +53,20 @@ int Editor::run() {
           view.zoom(1+0.1*event.mouseWheel.delta);
           break;
         case sf::Event::KeyPressed:
-          if (event.key.code >= sf::Keyboard::Num0 && event.key.code <= sf::Keyboard::Num5) {
-            pincel = event.key.code - sf::Keyboard::Num0;
-          }
-          else if (event.key.code == sf::Keyboard::Escape) pincel = 0;
-          else if (event.key.code == sf::Keyboard::LControl) control = true;
+           if (event.key.code == sf::Keyboard::N && control) newLvl();
           else if (event.key.code == sf::Keyboard::Q && control) return 0;
-          else if (event.key.code == sf::Keyboard::M) setLevel(++currentLvl);
-          else if (event.key.code == sf::Keyboard::N) setLevel(--currentLvl);
           else if (event.key.code == sf::Keyboard::S && control && !saved) saveLvl();
           else if (event.key.code == sf::Keyboard::R && control) {
             control = false;
             return 1;
           }
+          else if (event.key.code >= sf::Keyboard::Num0 && event.key.code <= sf::Keyboard::Num5) {
+            pincel = event.key.code - sf::Keyboard::Num0;
+          }
+          else if (event.key.code == sf::Keyboard::Escape) pincel = 0;
+          else if (event.key.code == sf::Keyboard::LControl) control = true;
+          else if (event.key.code == sf::Keyboard::M) setLevel(++currentLvl);
+          else if (event.key.code == sf::Keyboard::N) setLevel(--currentLvl);
           break;
         case sf::Event::KeyReleased:
           if (event.key.code == sf::Keyboard::LControl) control = false;
@@ -158,20 +159,26 @@ void Editor::setLevel(int lvl) {
 
   view.setCenter(minX+(maxX-minX)/2,minY+(maxY-minY)/2);
   // TODO: Hacer que guarde el aspect ratio
-  float x, y;
-  x = maxX-minX;
-  y = maxY-minY;
-  float ratio = window->getSize().x/window->getSize().y;
-  sf::Vector2f offset(ratio*200,200);
-  if (x/y > ratio) {
-    y = x*ratio;
-    offset.y *= ratio;
-  }
-  else {
-    x = y * ratio;
-    offset.x *= ratio;
-  }
-  view.setSize(offset.x+x,offset.y+y);
+//  float x, y;
+//  x = maxX-minX;
+//  y = maxY-minY;
+//  float ratio = float(window->getSize().x)/window->getSize().y;
+//  sf::Vector2f offset(ratio*200,200);
+//  if (x/y > ratio) {
+//    y = x/ratio;
+//    offset.y *= ratio;
+//  }
+//  else {
+//    x = y*ratio;
+//    offset.x *= ratio;
+//  }
+  float escalatX = window->getSize().x/(maxX-minX);
+  float escalatY = window->getSize().y/(maxY-minY);
+  float viewScale = std::min(escalatX, escalatY);
+  view.setCenter((maxX+minX)/2, (maxY+minY)/2);
+  view.setSize((100*escalatX/viewScale)+window->getSize().x/viewScale, (100*escalatY/viewScale)+window->getSize().y/viewScale);
+
+
   //window->setView(view);
 }
 
@@ -241,4 +248,10 @@ void Editor::normaliceLvl() {
   for (uint i = 0; i < obstaculos.size(); ++i) obstaculos[i].setPosition(obstaculos[i].getPosition()-offset);
   go.setPosition(go.getPosition()-offset);
   pl.setPosition(pl.getPosition()-offset);
+}
+
+void Editor::newLvl() {
+  currentLvl = levels->getNumLevels();
+  camaleones = std::vector<Chameleon>();
+  obstaculos = std::vector<Obstacle>();
 }

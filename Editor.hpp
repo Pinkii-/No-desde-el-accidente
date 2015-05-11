@@ -53,6 +53,7 @@ private:
   void mousePressedAt(sf::Vector2f pos);
   void saveLvl();
   void normaliceLvl();
+  void newLvl();
 };
 
 #endif // EDITOR_HPP

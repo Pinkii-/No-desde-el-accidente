@@ -164,7 +164,8 @@ Level LevelManager::getLevel(int i)
 }
 
 void LevelManager::setLevel(int i, Level l) {
-  vl[i] = l;
+  if (i >= vl.size()) vl.push_back(l);
+  else vl[i] = l;
 }
 
 void LevelManager::escribe(sf::Vector2f &v)

@@ -109,3 +109,67 @@ camaleon 300 800 0
 camaleon 400 800 0
 camaleon 500 800 0
 
+nuevonivel
+inicio 150 573
+final 1427 444
+velocidad 100 100
+camaleon 565 230 1
+camaleon 665 841 1
+camaleon 1059 774 1
+camaleon 1010 221 1
+camaleon 0 584 0
+obstaculo 666 711
+obstaculo 658 657
+obstaculo 652 618
+obstaculo 641 557
+obstaculo 640 547
+obstaculo 632 499
+obstaculo 620 449
+obstaculo 616 423
+obstaculo 612 406
+obstaculo 607 379
+obstaculo 605 360
+obstaculo 598 329
+obstaculo 645 582
+obstaculo 657 671
+obstaculo 1015 285
+obstaculo 1015 339
+obstaculo 1016 370
+obstaculo 1026 401
+obstaculo 1036 453
+obstaculo 1040 503
+obstaculo 1040 550
+obstaculo 1040 581
+obstaculo 1046 624
+obstaculo 1051 662
+obstaculo 1054 677
+obstaculo 795 814
+obstaculo 675 914
+obstaculo 675 961
+obstaculo 675 1028
+obstaculo 675 1085
+obstaculo 675 1114
+obstaculo 675 1162
+obstaculo 675 1241
+obstaculo 675 1187
+obstaculo 743 821
+obstaculo 859 824
+obstaculo 884 821
+obstaculo 905 818
+obstaculo 936 809
+obstaculo 958 802
+obstaculo 1007 796
+obstaculo 1037 789
+obstaculo 1071 818
+obstaculo 1071 844
+obstaculo 1071 891
+obstaculo 1071 926
+obstaculo 1071 968
+obstaculo 1071 1031
+obstaculo 1074 1079
+obstaculo 1083 1114
+obstaculo 1083 1155
+obstaculo 1083 1184
+obstaculo 1086 1190
+obstaculo 1086 1225
+
