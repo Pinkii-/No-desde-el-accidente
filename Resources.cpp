@@ -24,7 +24,8 @@ void Resources::load() {
     tongue.loadFromFile("res/tongue.png");
     goal.loadFromFile("res/End_01.png");
     font.loadFromFile("res/font.otf");
-    background.loadFromFile("res/background.jpg");
+    background.loadFromFile("res/fondo1_baja.jpg");
+//    background.loadFromFile("res/background.jpg");
     obstacle.loadFromFile("res/piedra.png");
     /*
     font.loadFromFile("resources/font.ttf");

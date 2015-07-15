@@ -2,7 +2,7 @@
 
 Background::Background(sf::RenderWindow &window) {
     sprite.setTexture(Resources::background);
-    width = 4;
+    width = 1;
     height = 1;
     actualAnimation = 0;
     timeBetweenAnimations = 1;
@@ -12,11 +12,11 @@ Background::Background(sf::RenderWindow &window) {
     animationHeight = sprite.getGlobalBounds().height/height;
 
     if(window.getSize().y/animationHeight < window.getSize().x/animationWidth)
-        sprite.scale(window.getSize().y/animationHeight,window.getSize().y/animationHeight);
+        sprite.scale(2*window.getSize().y/animationHeight,2*window.getSize().y/animationHeight);
     else
-        sprite.scale(window.getSize().x/animationWidth,window.getSize().x/animationWidth);
+        sprite.scale(2*window.getSize().x/animationWidth,2*window.getSize().x/animationWidth);
 
-    sprite.setOrigin(sf::Vector2f(animationWidth/2, animationHeight/2));
+    //sprite.setOrigin(sf::Vector2f(animationWidth/2, animationHeight/2));
     sprite.setPosition(window.getSize().x/2, window.getSize().y/2.0);
 
 }
@@ -30,6 +30,30 @@ void Background::update(float deltaTime) {
 }
 
 void Background::draw(sf::RenderWindow &window) {
-    sprite.setTextureRect(sf::IntRect((actualAnimation%width)*animationWidth, (actualAnimation/width)*animationHeight, animationWidth, animationHeight));
-    window.draw(sprite);
+    int posx = - (window.getView().getSize().x/2 - window.getView().getCenter().x);
+    int posy = - (window.getView().getSize().y/2 - window.getView().getCenter().y);
+
+    int offsetx = sprite.getGlobalBounds().width - (-1*posx)%(int)sprite.getGlobalBounds().width;
+    int offsety = sprite.getGlobalBounds().height - (-1*posy)%(int)sprite.getGlobalBounds().height;
+
+    posx -= offsetx;
+    posy -= offsety;
+    int aux = posy;
+    sprite.setTextureRect(sf::IntRect((actualAnimation%width)*animationWidth,
+                                      (actualAnimation/width)*animationHeight,
+                                      animationWidth, animationHeight));
+
+    while(posx < window.getView().getSize().x){
+
+        while(posy < window.getView().getSize().y){
+
+            sprite.setPosition(posx,posy);
+            window.draw(sprite);
+
+            posy += sprite.getGlobalBounds().height;
+        }
+
+        posx += sprite.getGlobalBounds().width;
+        posy = aux;
+    }
 }
