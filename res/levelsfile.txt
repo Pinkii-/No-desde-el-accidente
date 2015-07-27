@@ -351,3 +351,35 @@ obstaculo 453 472
 obstaculo 1473 770
 obstaculo 239 662
 
+nuevonivel
+inicio 357 196
+final 1406 794
+velocidad 100 100
+camaleon 389 610 0
+camaleon 1311 224 0
+camaleon 1111 556 0
+camaleon 250 36 0
+camaleon 565 329 0
+obstaculo 53 267
+obstaculo 87 329
+obstaculo 138 388
+obstaculo 216 432
+obstaculo 315 458
+obstaculo 425 468
+obstaculo 555 446
+obstaculo 609 400
+obstaculo 493 462
+obstaculo 661 342
+obstaculo 707 254
+obstaculo 1107 0
+obstaculo 1107 66
+obstaculo 1101 154
+obstaculo 1098 226
+obstaculo 1089 287
+obstaculo 1073 354
+obstaculo 1048 422
+obstaculo 1013 494
+obstaculo 984 526
+obstaculo 958 601
+obstaculo 912 670
+

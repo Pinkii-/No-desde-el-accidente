@@ -2,7 +2,10 @@
 
 Editor::Editor(sf::RenderWindow&w, LevelManager* lm)
   :
-    background(w)
+    background(w),
+    newChameleon (sf::Vector2f(0,0),0),
+    newChameleon2 (sf::Vector2f(0,0),1),
+    newObstacle (sf::Vector2f(0,0))
 {
   levels = lm;
 
@@ -62,8 +65,9 @@ int Editor::run() {
           }
           else if (event.key.code >= sf::Keyboard::Num0 && event.key.code <= sf::Keyboard::Num5) {
             pincel = event.key.code - sf::Keyboard::Num0;
+            pincelimg = pincel;
           }
-          else if (event.key.code == sf::Keyboard::Escape) pincel = 0;
+          else if (event.key.code == sf::Keyboard::Escape) pincel = pincelimg = 0;
           else if (event.key.code == sf::Keyboard::LControl) control = true;
           else if (event.key.code == sf::Keyboard::M) setLevel(++currentLvl);
           else if (event.key.code == sf::Keyboard::N) setLevel(--currentLvl);
@@ -84,6 +88,35 @@ int Editor::run() {
     window->setView(window->getDefaultView());
     if (!saved) window->draw(sSave);
     window->draw(tCurrentLvl);
+    
+    sf::Vector2f mousepos = sf::Vector2f(sf::Mouse::getPosition());
+
+    switch (pincelimg) {
+    case 0: // Nada seleccionado para ponerlo en el mapa. Se puede seleccionar cosas del mapa.
+      break;
+    case 1: // Principio
+      newPlayer.setPosition(mousepos);
+      newPlayer.draw((*window));
+      break;
+    case 2: // Final
+      newGoal.setPosition(mousepos);
+      newGoal.draw(*window);
+      break;
+    case 3: // Camaleon 1
+      newChameleon.setPosition(mousepos);
+      newChameleon.draw((*window));
+      break;
+    case 4: // Camaleon 2
+        newChameleon2.setPosition(mousepos);
+        newChameleon2.draw((*window));
+        break;
+    case 5: // Obstaculo
+        newObstacle.setPosition(mousepos);
+        newObstacle.draw((*window));
+      break;
+    default:
+      break;
+  }
     window->display();
   }
   return 0;

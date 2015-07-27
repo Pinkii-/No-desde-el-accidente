@@ -14,6 +14,14 @@ public:
   Editor(sf::RenderWindow &w, LevelManager *lm);
   int run();
   Level getCurrentLvl();
+
+  //mouse image
+  Player newPlayer;
+  Goal newGoal;
+  Chameleon newChameleon;
+  Chameleon newChameleon2;
+  Obstacle newObstacle;
+
 private:
   // Current lvl info
   int currentLvl;
@@ -22,6 +30,7 @@ private:
   sf::CircleShape sSave;
   // Pincel info
   int pincel;
+  int pincelimg;
 
   // Mover la pantalla
   bool control;
@@ -48,6 +57,8 @@ private:
   std::vector<Obstacle> obstaculos;
   Goal go;
   Player pl;
+
+
 
   void setLevel(int lvl);
   void mousePressedAt(sf::Vector2f pos);
