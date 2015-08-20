@@ -1,30 +1,155 @@
-inicio 412 227
-final 1406 773
+inicio 715 420
+final 1167 461
+velocidad 0 100
+camaleon 908 459 0
+camaleon 366 4 0
+camaleon 274 196 0
+camaleon 157 315 0
+camaleon 314 386 0
+camaleon 342 564 0
+camaleon 220 605 0
+camaleon 344 722 0
+camaleon 537 675 0
+camaleon 544 857 0
+camaleon 707 890 0
+camaleon 880 828 0
+camaleon 1333 883 0
+camaleon 1368 690 0
+camaleon 1605 733 0
+camaleon 1713 372 0
+camaleon 1521 463 0
+camaleon 1375 220 0
+camaleon 1571 141 0
+camaleon 600 35 0
+camaleon 1258 3 0
+camaleon 939 30 0
+camaleon 413 189 1
+camaleon 209 428 1
+camaleon 458 758 1
+camaleon 1097 890 1
+camaleon 664 807 1
+camaleon 1454 814 1
+camaleon 1647 536 1
+camaleon 1470 325 1
+camaleon 1443 87 1
+camaleon 1354 90 1
+camaleon 1097 15 1
+camaleon 699 8 1
+camaleon 788 23 1
+camaleon 391 287 1
+obstaculo 885 139
+obstaculo 814 133
+obstaculo 746 130
+obstaculo 676 131
+obstaculo 613 149
+obstaculo 577 187
+obstaculo 545 247
+obstaculo 526 315
+obstaculo 536 389
+obstaculo 532 459
+obstaculo 536 508
+obstaculo 573 546
+obstaculo 634 577
+obstaculo 671 615
+obstaculo 698 672
+obstaculo 736 714
+obstaculo 807 722
+obstaculo 874 715
+obstaculo 950 710
+obstaculo 1004 745
+obstaculo 1066 765
+obstaculo 1145 773
+obstaculo 1194 758
+obstaculo 1239 710
+obstaculo 1274 655
+obstaculo 1318 579
+obstaculo 1333 498
+obstaculo 1341 390
+obstaculo 1323 323
+obstaculo 1364 442
+obstaculo 1280 250
+obstaculo 928 117
+obstaculo 992 121
+obstaculo 1060 139
+obstaculo 1120 126
+obstaculo 1181 143
+obstaculo 1224 181
+
+nuevonivel
+inicio 411 466
+final 1413 521
 velocidad 100 100
-camaleon 612 527 1
-camaleon 1112 327 0
-camaleon 812 627 0
-camaleon 0 98 0
-obstaculo 662 177
-obstaculo 622 0
-obstaculo 521 16
-obstaculo 433 26
-obstaculo 366 59
-obstaculo 327 118
-obstaculo 302 185
-obstaculo 280 302
-obstaculo 280 302
-obstaculo 267 490
-obstaculo 267 613
-obstaculo 285 663
-obstaculo 325 715
-obstaculo 426 792
-obstaculo 454 800
-obstaculo 541 848
-obstaculo 611 881
-obstaculo 701 899
-obstaculo 771 899
-obstaculo 785 899
+camaleon 578 476 0
+camaleon 932 484 0
+camaleon 1160 495 0
+camaleon 54 866 0
+camaleon 0 23 0
+camaleon 1693 13 0
+camaleon 1702 902 0
+obstaculo 519 83
+obstaculo 600 83
+obstaculo 440 78
+obstaculo 696 85
+obstaculo 769 87
+obstaculo 836 87
+obstaculo 908 93
+obstaculo 979 96
+obstaculo 1043 100
+obstaculo 1116 103
+obstaculo 1171 103
+obstaculo 1237 104
+obstaculo 1314 104
+obstaculo 1367 107
+obstaculo 1431 109
+obstaculo 1489 116
+obstaculo 1555 127
+obstaculo 411 857
+obstaculo 472 857
+obstaculo 553 863
+obstaculo 628 865
+obstaculo 716 882
+obstaculo 795 872
+obstaculo 861 870
+obstaculo 940 870
+obstaculo 1000 869
+obstaculo 1063 870
+obstaculo 1131 873
+obstaculo 1197 873
+obstaculo 1255 876
+obstaculo 1319 883
+obstaculo 1387 878
+obstaculo 1429 870
+obstaculo 1481 876
+obstaculo 1569 873
+obstaculo 1634 145
+obstaculo 1637 185
+obstaculo 1641 243
+obstaculo 1647 312
+obstaculo 1647 366
+obstaculo 1647 403
+obstaculo 1648 442
+obstaculo 1631 868
+obstaculo 1638 807
+obstaculo 1638 752
+obstaculo 1640 677
+obstaculo 1641 604
+obstaculo 1649 512
+obstaculo 352 72
+obstaculo 249 74
+obstaculo 158 100
+obstaculo 103 166
+obstaculo 78 243
+obstaculo 65 325
+obstaculo 39 399
+obstaculo 40 470
+obstaculo 48 560
+obstaculo 54 633
+obstaculo 101 707
+obstaculo 157 761
+obstaculo 210 789
+obstaculo 278 833
+obstaculo 353 846
+
 
 nuevonivel
 inicio 100 100
@@ -110,6 +235,92 @@ camaleon 400 800 0
 camaleon 500 800 0
 
 nuevonivel
+inicio 357 196
+final 1406 794
+velocidad 100 100
+camaleon 389 610 0
+camaleon 1311 224 0
+camaleon 1111 556 0
+camaleon 250 36 0
+camaleon 565 329 0
+obstaculo 53 267
+obstaculo 87 329
+obstaculo 138 388
+obstaculo 216 432
+obstaculo 315 458
+obstaculo 425 468
+obstaculo 555 446
+obstaculo 609 400
+obstaculo 493 462
+obstaculo 661 342
+obstaculo 707 254
+obstaculo 1107 0
+obstaculo 1107 66
+obstaculo 1101 154
+obstaculo 1098 226
+obstaculo 1089 287
+obstaculo 1073 354
+obstaculo 1048 422
+obstaculo 1013 494
+obstaculo 984 526
+obstaculo 958 601
+obstaculo 912 670
+
+nuevonivel
+inicio 721 472
+final 1167 461
+velocidad 100 100
+camaleon 845 468 1
+camaleon 1000 466 1
+
+nuevonivel
+inicio 412 227
+final 1406 773
+velocidad 100 100
+camaleon 612 527 1
+camaleon 1112 327 0
+camaleon 812 627 0
+camaleon 0 98 0
+obstaculo 662 177
+obstaculo 622 0
+obstaculo 521 16
+obstaculo 433 26
+obstaculo 366 59
+obstaculo 327 118
+obstaculo 302 185
+obstaculo 280 302
+obstaculo 280 302
+obstaculo 267 490
+obstaculo 267 613
+obstaculo 285 663
+obstaculo 325 715
+obstaculo 426 792
+obstaculo 454 800
+obstaculo 541 848
+obstaculo 611 881
+obstaculo 701 899
+obstaculo 771 899
+obstaculo 785 899
+
+nuevonivel
+inicio 164 222
+final 1568 149
+velocidad 100 100
+camaleon 494 169 0
+camaleon 638 757 0
+camaleon 1082 564 0
+camaleon 736 429 1
+camaleon 796 70 1
+camaleon 1120 806 1
+camaleon 1523 551 1
+camaleon 1352 56 1
+obstaculo 1067 210
+obstaculo 836 652
+obstaculo 453 472
+obstaculo 1473 770
+obstaculo 239 662
+
+nuevonivel
 inicio 150 573
 final 1427 444
 velocidad 100 100
@@ -172,214 +383,3 @@ obstaculo 1083 1155
 obstaculo 1083 1184
 obstaculo 1086 1190
 obstaculo 1086 1225
-
-nuevonivel
-inicio 411 466
-final 1413 521
-velocidad 100 100
-camaleon 578 476 0
-camaleon 932 484 0
-camaleon 1160 495 0
-camaleon 54 866 0
-camaleon 0 23 0
-camaleon 1693 13 0
-camaleon 1702 902 0
-obstaculo 519 83
-obstaculo 600 83
-obstaculo 440 78
-obstaculo 696 85
-obstaculo 769 87
-obstaculo 836 87
-obstaculo 908 93
-obstaculo 979 96
-obstaculo 1043 100
-obstaculo 1116 103
-obstaculo 1171 103
-obstaculo 1237 104
-obstaculo 1314 104
-obstaculo 1367 107
-obstaculo 1431 109
-obstaculo 1489 116
-obstaculo 1555 127
-obstaculo 411 857
-obstaculo 472 857
-obstaculo 553 863
-obstaculo 628 865
-obstaculo 716 882
-obstaculo 795 872
-obstaculo 861 870
-obstaculo 940 870
-obstaculo 1000 869
-obstaculo 1063 870
-obstaculo 1131 873
-obstaculo 1197 873
-obstaculo 1255 876
-obstaculo 1319 883
-obstaculo 1387 878
-obstaculo 1429 870
-obstaculo 1481 876
-obstaculo 1569 873
-obstaculo 1634 145
-obstaculo 1637 185
-obstaculo 1641 243
-obstaculo 1647 312
-obstaculo 1647 366
-obstaculo 1647 403
-obstaculo 1648 442
-obstaculo 1631 868
-obstaculo 1638 807
-obstaculo 1638 752
-obstaculo 1640 677
-obstaculo 1641 604
-obstaculo 1649 512
-obstaculo 352 72
-obstaculo 249 74
-obstaculo 158 100
-obstaculo 103 166
-obstaculo 78 243
-obstaculo 65 325
-obstaculo 39 399
-obstaculo 40 470
-obstaculo 48 560
-obstaculo 54 633
-obstaculo 101 707
-obstaculo 157 761
-obstaculo 210 789
-obstaculo 278 833
-obstaculo 353 846
-
-nuevonivel
-inicio 721 472
-final 1167 461
-velocidad 100 100
-camaleon 908 459 0
-camaleon 366 4 0
-camaleon 274 196 0
-camaleon 157 315 0
-camaleon 314 386 0
-camaleon 342 564 0
-camaleon 220 605 0
-camaleon 344 722 0
-camaleon 537 675 0
-camaleon 544 857 0
-camaleon 707 890 0
-camaleon 880 828 0
-camaleon 1333 883 0
-camaleon 1368 690 0
-camaleon 1605 733 0
-camaleon 1713 372 0
-camaleon 1521 463 0
-camaleon 1375 220 0
-camaleon 1571 141 0
-camaleon 600 35 0
-camaleon 1258 3 0
-camaleon 939 30 0
-camaleon 413 189 1
-camaleon 209 428 1
-camaleon 458 758 1
-camaleon 1097 890 1
-camaleon 664 807 1
-camaleon 1454 814 1
-camaleon 1647 536 1
-camaleon 1470 325 1
-camaleon 1443 87 1
-camaleon 1354 90 1
-camaleon 1097 15 1
-camaleon 699 8 1
-camaleon 788 23 1
-camaleon 391 287 1
-obstaculo 885 139
-obstaculo 814 133
-obstaculo 746 130
-obstaculo 676 131
-obstaculo 613 149
-obstaculo 577 187
-obstaculo 545 247
-obstaculo 526 315
-obstaculo 536 389
-obstaculo 532 459
-obstaculo 536 508
-obstaculo 573 546
-obstaculo 634 577
-obstaculo 671 615
-obstaculo 698 672
-obstaculo 736 714
-obstaculo 807 722
-obstaculo 874 715
-obstaculo 950 710
-obstaculo 1004 745
-obstaculo 1066 765
-obstaculo 1145 773
-obstaculo 1194 758
-obstaculo 1239 710
-obstaculo 1274 655
-obstaculo 1318 579
-obstaculo 1333 498
-obstaculo 1341 390
-obstaculo 1323 323
-obstaculo 1364 442
-obstaculo 1280 250
-obstaculo 928 117
-obstaculo 992 121
-obstaculo 1060 139
-obstaculo 1120 126
-obstaculo 1181 143
-obstaculo 1224 181
-
-nuevonivel
-inicio 721 472
-final 1167 461
-velocidad 100 100
-camaleon 845 468 1
-camaleon 1000 466 1
-
-nuevonivel
-inicio 164 222
-final 1568 149
-velocidad 100 100
-camaleon 494 169 0
-camaleon 638 757 0
-camaleon 1082 564 0
-camaleon 736 429 1
-camaleon 796 70 1
-camaleon 1120 806 1
-camaleon 1523 551 1
-camaleon 1352 56 1
-obstaculo 1067 210
-obstaculo 836 652
-obstaculo 453 472
-obstaculo 1473 770
-obstaculo 239 662
-
-nuevonivel
-inicio 357 196
-final 1406 794
-velocidad 100 100
-camaleon 389 610 0
-camaleon 1311 224 0
-camaleon 1111 556 0
-camaleon 250 36 0
-camaleon 565 329 0
-obstaculo 53 267
-obstaculo 87 329
-obstaculo 138 388
-obstaculo 216 432
-obstaculo 315 458
-obstaculo 425 468
-obstaculo 555 446
-obstaculo 609 400
-obstaculo 493 462
-obstaculo 661 342
-obstaculo 707 254
-obstaculo 1107 0
-obstaculo 1107 66
-obstaculo 1101 154
-obstaculo 1098 226
-obstaculo 1089 287
-obstaculo 1073 354
-obstaculo 1048 422
-obstaculo 1013 494
-obstaculo 984 526
-obstaculo 958 601
-obstaculo 912 670
-
