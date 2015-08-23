@@ -164,6 +164,10 @@ void Button::disableClickEffect(){ clickEffect = false; }
 bool Button::clickEffectActivated(){ return clickEffect; }
 
 void Button::handleEvent(sf::Event e){
+    float delayx, delayy;
+    delayx = sprite.getOrigin().x*sprite.getScale().x;
+    delayy = sprite.getOrigin().y*sprite.getScale().y;
+    sprite.move(-delayx, -delayy);
     if(e.type == sf::Event::MouseButtonPressed){
         if (e.mouseButton.button == sf::Mouse::Left) {
             sf::Vector2f click(e.mouseButton.x, e.mouseButton.y);
@@ -184,4 +188,5 @@ void Button::handleEvent(sf::Event e){
             if(clickEffect && sprite.getTexture() != &texture) sprite.setTexture(texture);
         }
     }
+    sprite.move(delayx, delayy);
 }
