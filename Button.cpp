@@ -6,55 +6,14 @@ Button::Button(){
     is_clicked = false;
     clickEffect = true;
 
-
-    if(!font.loadFromFile("defaultFont.otf")){ std::cerr << "Can't find the font file" << std::endl; }
+   /* if(!font.loadFromFile("defaultFont.otf")){ std::cerr << "Can't find the font file" << std::endl; }
     else setFont(font); setCharacterSize(30); setTextColor(sf::Color::White);
 
     if(!texture.loadFromFile("defaultButton.png")) std::cerr << "Default texture not loaded" << std::endl;
     else sprite.setTexture(texture);
 
     if(!pressed_texture.loadFromFile("defaultPressedButton.png")) std::cerr << "presedButton text. not loaded" << std::endl;
-
-
-    setPosition(0,0);
-}
-
-Button::Button(std::string myText, std::string texturePath, float sizeX, float sizeY){
-    text.setString(myText);
-    clicked = false;
-    is_clicked = false;
-    clickEffect = true;
-
-
-    if(!font.loadFromFile("defaultFont.otf")){ std::cerr << "Can't find the font file" << std::endl; }
-    else setFont(font); setCharacterSize(30); setTextColor(sf::Color::White);
-
-    if(!texture.loadFromFile(texturePath)) std::cerr << "Failed on load texture from " << texturePath << std::endl;
-    else sprite.setTexture(texture);
-
-    disableClickEffect();
-
-    setPosition(0,0);
-}
-
-Button::Button(std::string myText, std::string texturePath, std::string pressedTexturePath, float sizeX, float sizeY){
-    text.setString(myText);
-    clicked = false;
-    is_clicked = false;
-    clickEffect = true;
-
-
-    if(!font.loadFromFile("defaultFont.otf")){ std::cerr << "Can't find the font file" << std::endl; }
-    else setFont(font); setCharacterSize(30); setTextColor(sf::Color::White);
-
-    if(!texture.loadFromFile(texturePath)) std::cerr << "Failed on load texture from " << texturePath << std::endl;
-    else sprite.setTexture(texture);
-
-    if(!pressed_texture.loadFromFile(pressedTexturePath))  std::cerr << "Failed on load texture from " << pressedTexturePath << std::endl;
-    else sprite.setTexture(pressed_texture);
-
-    enableClickEffect();
-
+*/
     setPosition(0,0);
 }
 
@@ -90,7 +49,7 @@ sf::Vector2f Button::getSize(){
 
 void Button::setSize(sf::Vector2f size){
     sprite.setScale(size.x/sprite.getGlobalBounds().width, size.y/sprite.getGlobalBounds().height);
-    this->setTextResizeText(text.getString());
+    this->setText(text.getString());
 }
 
 void Button::setSize(float x, float y){ setSize(sf::Vector2f(x,y)); }
@@ -120,41 +79,32 @@ void Button::setText(std::string s = "Click"){
 
 std::string Button::getText(){ return text.getString();}
 
-
-void Button::setTextResizeButton(std::string s = "Click"){
+//TODO should be a resize for text and a resize for button
+void Button::setTextResize(std::string s = "Click"){
     text.setString(s);
     if(s.size() != 0){
         float actualTextSize, factor;
         actualTextSize = text.getGlobalBounds().width;
-        factor = (actualTextSize)/sprite.getGlobalBounds().width;
-        sprite.scale(factor, 1);
-    }
-}
-
-void Button::setTextResizeText(std::string s = "Click"){
-    text.setString(s);
-    if(s.size() != 0){
-        float actualTextSize, factor;
-        actualTextSize = text.getGlobalBounds().width;
-        factor = sprite.getGlobalBounds().width/(actualTextSize);
-        text.scale(factor, factor);
+        //WTF THIS 10?¿?¿?¿? well... it works :$
+        factor = (actualTextSize)/10/sprite.getGlobalBounds().width;
+        sprite.setScale(factor, factor);
     }
 }
 
 void Button::draw(sf::RenderWindow& w){
     sf::Vector2f position = getPosition();
-    text.setPosition(position.x + sprite.getGlobalBounds().width/2 - text.getGlobalBounds().width/2, position.y + sprite.getGlobalBounds().height/2 - text.getGlobalBounds().height/2);
+    text.setPosition(position.x + sprite.getGlobalBounds().width/2 - text.getGlobalBounds().width/2, position.y + sprite.getGlobalBounds().height/2 - text.getGlobalBounds().height);
     w.draw(sprite);
     w.draw(text);
 }
 
-void Button::setTexture(std::string name){
-    float sizeX = getSize().x;
-    float sizeY = getSize().y;
-    if(!texture.loadFromFile(name)) std::cerr << "Default texture not loaded on setTexture" << std::endl;
-    else sprite.setTexture(texture, true);
-    setSize(sizeX, sizeY);
+void Button::setOrigin(sf::Vector2f origin){
+    sprite.setOrigin(origin);
 }
+
+void Button::setTexture(std::string name){
+    if(!texture.loadFromFile(name)) std::cerr << "Default texture not loaded on setTexture" << std::endl;
+    else sprite.setTexture(texture); }
 
 void Button::setPressedTexture(std::string name){
     if(!pressed_texture.loadFromFile(name)) std::cerr << "presedButton text. not loaded on Setter" << std::endl; }
@@ -164,6 +114,11 @@ void Button::disableClickEffect(){ clickEffect = false; }
 bool Button::clickEffectActivated(){ return clickEffect; }
 
 void Button::handleEvent(sf::Event e){
+    
+    float delayx, delayy;
+    delayx = sprite.getOrigin().x*sprite.getScale().x;
+    delayy = sprite.getOrigin().y*sprite.getScale().y;
+    sprite.move(-delayx, -delayy);
     if(e.type == sf::Event::MouseButtonPressed){
         if (e.mouseButton.button == sf::Mouse::Left) {
             sf::Vector2f click(e.mouseButton.x, e.mouseButton.y);
@@ -184,4 +139,5 @@ void Button::handleEvent(sf::Event e){
             if(clickEffect && sprite.getTexture() != &texture) sprite.setTexture(texture);
         }
     }
+    sprite.move(delayx, delayy);
 }

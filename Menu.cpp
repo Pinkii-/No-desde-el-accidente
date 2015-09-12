@@ -6,14 +6,14 @@ int Menu::run() {
 
     Button b;
     b.disableClickEffect();
-  //  sf::Font f;
-    //f.loadFromFile("res/font.otf");
-    //b.setFont(f);
+    sf::Font f;
+    f.loadFromFile("res/font.otf");
+    b.setFont(f);
     b.setTexture("res/empty.png");
     b.setText(std::to_string(maxLvl));
     b.setPosition(window->getSize().x/2, window->getSize().y/2);
     b.setSize(window->getSize().x/20, window->getSize().x/10);
-
+    b.setOrigin(sf::Vector2f(b.getSize().x/2, b.getSize().y/2));
 
     while(running){
 
@@ -57,7 +57,9 @@ int Menu::run() {
         std::stringstream ss;
         ss << level;
         std::string str = ss.str();
-        b.setTextResizeText(str);
+        
+        b.setText(str);
+
         b.draw(*window);
 
         window->display();
@@ -80,10 +82,10 @@ Menu::Menu(sf::RenderWindow* w){
     buttonR.setText("");
 
     //Buttons initialization
-    buttonL.setSize(5*145, 5*146);
+    buttonL.setSize(145, 146);
     buttonL.setPosition(0 +10, window->getSize().y/2);
 
-    buttonR.setSize(5*145, 5*146);
+    buttonR.setSize(145, 146);
     buttonR.setPosition(window->getSize().x - buttonR.getSize().x -10, window->getSize().y/2);
 }
 

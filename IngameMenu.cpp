@@ -3,14 +3,13 @@
 
 IngameMenu::IngameMenu() {}
 
-IngameMenu::IngameMenu(sf::Vector2f center) :
-    resume("", "res/boton_01.png", center.x/8,center.y/6),
-    menu("", "res/boton_02.png", center.x/8,center.y/6)
-{
-
+IngameMenu::IngameMenu(sf::Vector2f center){
+    
+    resume.setTexture("res/boton_01.png");
     resume.setSize(center.x/4,center.y/3);
     resume.setPosition(center.x-resume.getSize().x,center.y + 10);
 
+    menu.setTexture("res/boton_02.png");
     menu.setSize(center.x/4,center.y/3);
     menu.setPosition(center.x-menu.getSize().x,center.y - center.y/3);
 
