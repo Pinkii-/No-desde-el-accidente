@@ -1,3 +1,6 @@
+# Space Tongue
+![title](Title.png)
+
 From a GameJam in VGA, we made this game, the game was build in 48 hours (after that we made some improvements)
 Hope you can enjoy this funny game.
 
@@ -5,6 +8,7 @@ To use it just open the .pro file with qtcreator, set the debug file, and make a
 
 v0.1.
 
+![screenshot](screenshot.png)
 ## Controls
 ### Menu
 + Left click to the number to start a level.
